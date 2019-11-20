@@ -3,6 +3,7 @@
 
 # Log file
 *.log
+$PRODUCT_WORKSPACE_FILE$
 
 # BlueJ files
 *.ctxt
