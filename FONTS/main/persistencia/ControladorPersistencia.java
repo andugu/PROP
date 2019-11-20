@@ -4,27 +4,33 @@ import java.io.*;
 
 public class ControladorPersistencia {
 
-    public ControladorPersistencia(String path, byte[] contingut){
+    public static void main(String[] args) {}
 
-    }
+    public ControladorPersistencia(){}
 
     public static void Save(String nou_path, byte[] contingut) throws IOException {
 
-        File file2 = new File(nou_path);
+        File file = new File(nou_path);
 
-        while(file2.exists()) {
-            if (file2.exists()) {
-                int index = nou_path.lastIndexOf('.');
-                String prefix = nou_path.substring(0, index) + "output";
-                nou_path = prefix + nou_path.substring(index);
-                file2 = new File(nou_path);
+        if (file.exists()) {
+
+            int index = nou_path.lastIndexOf('.');
+
+            String prefix = nou_path.substring(0, index);
+            String postfix = nou_path.substring(index);
+
+            int num = 0;
+
+            while (file.exists()) {
+                file = new File(prefix + (num) + postfix);
+                ++num;
             }
         }
 
-        OutputStream os = new FileOutputStream(file2);
+        OutputStream os = new FileOutputStream(file);
         os.write(contingut);
 
-        System.out.println("El fitxer ha estat guardat, en el següent directori: " + nou_path);
+        System.out.println("\u001B[32m" + "El fitxer ha estat guardat, en el següent directori: " + nou_path + "\u001B[0m");
     }
 
     public static byte[] Llegeix(String path) throws IOException {
@@ -35,14 +41,25 @@ public class ControladorPersistencia {
         fis.read(b);
         fis.close();
 
-        System.out.println("El fitxer ha estat llegit");
+        System.out.println("\u001B[32m" + "El fitxer ha estat llegit" + "\u001B[0m");
 
         return b;
     }
+
     public static boolean existeix_path(String path){
         File file = new File(path);
-
         return file.exists();
     }
 
+    public static String[] getNames(String path){
+
+        File file = new File(path);
+        return file.list();
+    }
+
+    public static boolean isCarpeta(String path){
+
+        File file = new File(path);
+        return file.isDirectory();
+    } 
 }
