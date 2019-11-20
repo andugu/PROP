@@ -1,0 +1,2 @@
+domini -> codi dels tests de la capa de domini
+JUnitJARs -> conte els jars per executar el JUNIT

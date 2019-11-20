@@ -1,0 +1,26 @@
+Classes desenvolupades per cada un dels membres del grup:
+
+Gonzalez Herrera, Roger
+1. LZ78
+2. ControladorDomini
+3. ControladorPresentacio
+i els corresponents drivers, tests i documentacio
+
+Llanza Carmona, Anna
+1. LZSS
+2. EstadistiquesGenerals
+3. Comprimit
+4. ControladorPresentacio
+i els corresponents drivers, tests i documentacio
+
+Olive Fernandez, Josep Maria
+1. Algorisme
+2. JPEG
+3. EstadistiquesGeneralsTest (JUnit)
+i el corresponent driver, test i documentacio del JPEG
+
+Roman Iglesias Adrian
+1. LZW
+2. Fitxer
+3. Descomprimit
+i els corresponents drivers, tests i documentacio

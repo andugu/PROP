@@ -1,0 +1,9 @@
+JPEG -> Aquest directori conte els executables per provar la classe JPEG.
+LZW-> Aquest directori conte els executables per provar la classe LZW.
+LZSS -> Aquest directori conte els executables per provar la classe LZSS.
+LZ78 -> Aquest directori conte els executables per provar la classe LZ78.
+Fitxer -> Aquest directori conte els executables per provar la classe Fitxer.
+Descomprimit -> Aquest directori conte els executables per provar la classe Descomprimit.
+Comprimit -> Aquest directori conte els executables per provar la classe Comprimit.
+ControladorDomini -> Aquest directori conte els executables per provar la classe ControladorDomini.
+EstadistiquesGenerals -> Aquest directori conte els executables per provar la classe EstadistiquesGenerals.

@@ -1,0 +1,6 @@
+LZW_Driver.jar -> Executable del driver de la classe LZW, que ens permet comprimir i descomprimir arxius de text.
+
+Info.txt -> Informacio extra del executable LZW_Driver.jar
+
+Test -> Subdirectori que conte un test automatitzat.
+

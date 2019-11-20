@@ -1,0 +1,12 @@
+ 
+Objecte de la prova: En aquesta prova es comproven els metodes de la classe Controlador Domini
+
+Drivers: Es crida de forma iterativa a totes les funcions de la classe Controlador Domini
+
+Fitxers necessaris: Tots els fitxers necessaris per la prova es troben ja dins del .jar, per la comoditat del qui ho hagui de provar, aixi doncs, no cal modificar res, nomes executar el .jar.
+
+Valors estudiats i efectes estudiats: Estudiem el comportament de els diferents metodes i les funcions de la classe Controlador Domini
+
+Operativa: Aquest test es 100% automatic, nomes cal executar el .jar,
+
+

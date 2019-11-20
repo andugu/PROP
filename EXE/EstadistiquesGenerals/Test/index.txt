@@ -1,0 +1,5 @@
+EstadistiquesGenerals_Test.jar -> Executable per tal de realitzar la prova.
+
+Info.txt -> Informacio de la prova i la seva motivacio
+
+

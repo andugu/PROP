@@ -1,0 +1,19 @@
+Algorisme.java -> Codi font de la classe Algorisme
+JPEG.java -> Codi font de la classe JPEG
+JPEG_Driver.java -> Codi font del driver de la classe JPEG
+EstadistiquesGenerals.java -> Codi font de la classe EstadistiquesGenerals
+DriverClasseEstadistiquesGenerals.java -> Codi font del driver de la classe EstadistiquesGenerals
+Comprimit.java -> Codi font de la classe Comprimit
+DriverClasseComprimit.java -> Codi font del driver de la classe Comprimit
+ControladorDomini.java -> Codi font de la classe ControladorDomini
+DriverControladorDomini.java ->  Codi font del driver de la classe ControladorDomini
+Descomprimit.java -> Codi font de la classe Descomprimit
+DriverDescomprimit.java -> Codi font del driver de la classe Descomprimit
+Fitxer.java -> Codi font de la classe Fitxer
+DriverFitxer.java -> Codi font del driver de la classe Fitxer
+LZ78.java -> Codi font de la classe LZ78
+DriverClasseLZ78 ->  Codi font del driver de la classe LZ78
+LZSS.java -> Codi font de la classe LZSS
+DriverClasseLZSS -> Codi font del driver de la classe LZSS
+LZW.java -> Codi font de la classe LZW
+DriverLZW.java -> Codi font del driver de la classe LZW

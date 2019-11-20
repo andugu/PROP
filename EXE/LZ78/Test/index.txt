@@ -1,0 +1,5 @@
+LZ78_Test.jar -> Executable per tal de realitzar la prova.
+
+*.txt -> Fitxers utilitzats en el test.
+
+Info.txt -> Informacio de la prova.

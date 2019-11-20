@@ -1,0 +1,5 @@
+LZ78_Driver.jar -> Executable del driver de la classe LZ78 que ens permet comprimir fitxers .txt i descomprimir fitxers .LZ78
+
+Info.txt -> Informacio extra del executable LZ78
+
+Test -> Subdirectori que conte un test automatitzat de la classe LZ78.

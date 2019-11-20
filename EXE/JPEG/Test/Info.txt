@@ -1,0 +1,10 @@
+Objecte de la prova: En aquesta prova es comproven els metodes comprimir() i descomprimir() de la classe JPEG, que formen part dels casos d'us Comprimir i Descomprimir respectivament.
+
+Drivers: S'aprofita el codi del driver JPEG_Driver, tot i que no te res a veure amb aquesta prova, ja que el driver ens deixa posar-li qualsevol imatge a la classe JPEG, mentres que aquest Test, consta de 15 imatges preestablertes.
+
+Fitxers necessaris: Tots els fitxers necessaris per la prova es troben ja dins del .jar, per la comoditat del qui ho hagui de provar, aixi doncs, no cal modificar res, nomes executar el .jar.
+
+Valors estudiats i efectes estudiats: Estudiem el comportament de l'algorisme que hem programat en una seleccio d'imatges, en ningun tipus d'imatge en concret, ja que hi ha bastanta varietat. El nostre objectiu es veure si l'algorisme es comporta igual de be amb diferents tipus d'imatges, i si no fos aixi, intentar entendre perque en base a la imatge que falla.
+
+Operativa: Aquest test es 100% automatic, nomes cal executar el .jar, i veure la diferencia de tamany entre la imatge original *.ppm i la comprimida *.compressedPPM, i la diferencia de qualitat entre la imatge original i la descomprimida *-uncompressed.ppm.
+ES IMPORTANT TROBAR-SE EN EL DIRECTORI /Test QUAN S'EXECUTA EL .jar, JA QUE SINO, NO ES TROBARAN LES IMATGES QUE CONTE AQUEST DIRECTORI

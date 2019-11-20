@@ -1,0 +1,6 @@
+DriverClasseDescomprimit.jar -> Executable del driver de la classe Descomprimit, que ens permet comprimir fitxers arbitraris, i comprimir fitxers que han estat comprimits pels diferents algorismes.
+
+Info.txt -> Informacio extra del executable DriverClasseDescomprimit.jar
+
+Test -> Subdirectori que conte un test automatitzat de la classe Descomprimit, amb 7 fitxers preestablerts.
+

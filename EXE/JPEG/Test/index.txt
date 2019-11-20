@@ -1,0 +1,9 @@
+JPEG_Test.jar -> Executable per tal de realitzar la prova.
+
+*.ppm -> Imatges ppm que s'utilitzaran en el test.
+
+*.compressedPPM -> Fitxers que es generaran després de realitzar la prova, son les imatges .ppm comprimides.
+
+*-uncompressed.ppm -> Fitxers que es generaran després de la prova, son les imatges resultants de fer una compresio i descompresio.
+
+Info.txt -> Informacio de la prova i la seva motivacio

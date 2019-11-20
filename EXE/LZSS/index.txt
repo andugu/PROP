@@ -1,0 +1,6 @@
+DriverClasseLZSS.jar -> Executable del driver de la classe LZSS, que ens permet comprimir fitxers .txt arbitraris, i descomprimir fitxers que han estat comprimits per la nostra classe LZSS.
+
+Info.txt -> Informacio extra del executable DriverClasseLZSS.jar
+
+Test -> Subdirectori que conte un test automatitzat de la classe LZSS, amb 7 fitxers preestablerts.
+

@@ -1,0 +1,5 @@
+ControladorDomini_Driver.jar -> Executable del driver de la classe ControladorDomini que prova tots els metodes de la classe ControladorDomini.
+
+Info.txt -> Informacio extra del executable ControladorDomini
+
+Test -> Subdirectori que conte un test automatitzat de la classe ControladorDomini

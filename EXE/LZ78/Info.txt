@@ -1,0 +1,9 @@
+Objecte de la prova: En aquesta prova es comproven els metodes comprimir() i descomprimir() de la classe LZ78 que formen part dels casos d'us Comprimir i Descomprimir respectivament.
+
+Drivers: Ens indica, el LZ78_Driver.jar es un executable del driver de la classe LZ78.
+
+Fitxers necessaris: Tots els fitxers necessaris per la prova es troben ja dins del .jar, per la comoditat del qui ho hagui de provar, aixi doncs, no cal modificar res, nomes executar el .jar.
+
+Valors estudiats i efectes estudiats: Estudiem el comportament de l'algorisme que hem programat amb fitxers arbitraris, introduits per l'usuari. El nostre objectiu es veure si l'algorisme es comporta igual de be amb diferents tipus de fitxers, i si no fos aixi, intentar entendre perque falla.
+
+Operativa: Executem .jar i tot es fa automaticament, ens treu un missatge de que ha acabat si es correcte i sino el programa es paralitza.

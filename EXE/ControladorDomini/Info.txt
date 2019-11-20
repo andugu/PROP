@@ -1,0 +1,9 @@
+Objecte de la prova: En aquesta prova es comproven els metodes de la classe ControladorDomini.
+
+Drivers: El ControladorDomini_Driver.jar es un executable del driver de la classe ControladorDomini.
+
+Fitxers necessaris: Tots els fitxers necessaris per la prova es troben ja dins del .jar, per la comoditat del qui ho hagui de provar, aixi doncs, no cal modificar res, nomes executar el .jar.
+
+Valors estudiats i efectes estudiats: Estudiem el comportament de la classe ControladoDomini que hem programat. El nostre objectiu es veure com es comporta la classe en les diferents funcionssi l'algorisme es comporta igual de be amb diferents tipus de funcions.
+
+Operativa: Executar el .jar, i triar l'opcio que volem, cada opcio es una funció. Aixi dons ens permet provar tots els metodes de la classe amb els valors que volem

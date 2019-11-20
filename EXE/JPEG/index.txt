@@ -1,0 +1,5 @@
+JPEG_Driver.jar -> Executable del driver de la classe JPEG, que ens permet comprimir imatges .ppm arbitraries, i descomprimir imatges que han estat comprimides per la nostra classe JPEG.
+
+Info.txt -> Informacio extra del executable JPEG_Driver.jar
+
+Test -> Subdirectori que conte un test automatitzat de la classe JPEG, amb 15 imatges preestablertes.
