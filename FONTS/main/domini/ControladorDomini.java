@@ -112,8 +112,34 @@ public class ControladorDomini {
         return new byte[1];
     }
 
-    public static void comprimirCarpeta(String path, String algorisme){
+    public static void comprimirCarpeta(String path, String path_nou, String algorisme){
+        String [] noms = ControladorPersistencia.getNames(path);
+        int n = noms.length;
+        while(int i = 0; i < n; ++i){
+            boolean = es_pot_comprimir = true;
+            String path_arxiu = path + noms[i];
+            char[] nou_path_a_arxius = path_arxiu.toCharArray();
+            String algorisme_a_comprimir = algorisme;
+            int mida = nou_path_a_arxius.length();
+            if (){//arxiu es .txt -> cridar comprimir algorisme
+                es_pot_comprimir = true;
+                algorisme_a_comprimir = algorisme;
+            }
+            else if (){//arxiu es .ppm -> cridar comprimir amb JPEG
+                es_pot_comprimir = true;
+                algorisme_a_comprimir = "JPEG";
+            }
+            else if (esCarpeta(nou_path)){ //arxiu es carpeta -> cridar
+                comprimirCarpeta(path_arxiu, path_nou+noms[i], algorisme);//cridarem a la carpeta amb el path_del seu arxiu, i el path nou TODO: mirarho!
+                es_pot_comprimir = false;
+            }
+            else{//no fer res
+                es_pot_comprimir = false;
+            }
+            if (es_pot_comprimir){//fer tot el proces de comprimir! sobretot guardar-ho amb el path nou
 
+            }
+        }
     }
 
     public static void descomprimirCarpeta(String path, String algorisme){
