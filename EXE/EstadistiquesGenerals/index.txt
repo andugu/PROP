@@ -1,0 +1,7 @@
+DriverClasseEstadistiquesGenerals.jar -> Executable del driver de la classe EstadistiquesGenerals, que ens permet calcular estadistiques arbitraries.
+
+Info.txt -> Informacio extra del executable DriverClasseEstadistiquesGenerals.jar
+
+Test -> Subdirectori que conte un test automatitzat de la classe EstadistiquesGenerals.
+
+

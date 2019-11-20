@@ -1,0 +1,6 @@
+DriverClasseFitxer.jar -> Executable del driver de la classe Fitxer, que ens permet 
+
+Info.txt -> Informacio extra del executable DriverClasseFitxer.jar
+
+Test -> Subdirectori que conte un test automatitzat de la classe Fitxer
+

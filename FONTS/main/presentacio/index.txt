@@ -1,0 +1,1 @@
+ControladorPresentacio -> codi font del controlador de presentacio

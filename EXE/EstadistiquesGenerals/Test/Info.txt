@@ -1,0 +1,10 @@
+Objecte de la prova: En aquesta prova es comproven els metodes EstadistiquesGenerals(), AssignarNovaEstadistica() i GetEstadistiques() de la classe EstadistiquesGenerals.
+
+Drivers: S'aprofita el codi del driver DriverClasseEstadistiquesGenerals, tot i que no te res a veure amb aquesta prova, ja que el driver ens deixa posar-li qualsevol dada a la classe EstadistiquesGenerals, mentres que aquest Test, consta de dades preestablertes.
+
+Fitxers necessaris: Tots els fitxers necessaris per la prova es troben ja dins del .jar, per la comoditat del qui ho hagui de provar, aixi doncs, no cal modificar res, nomes executar el .jar.
+
+Valors estudiats i efectes estudiats: Estudiem el comportament de la classe  EstadistiquesGenerals que hem programat amb dades arbitraries. El nostre objectiu es comprovar que calculi correctament les mitjanes.
+
+Operativa: Aquest test es 100% automatic, nomes cal executar el .jar, i veure que les estadistiques estan ben calculades.
+

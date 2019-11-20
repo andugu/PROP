@@ -1,0 +1,5 @@
+Descripcio del grup -> Noms i cognoms dels participants del grup amb els corresponents e-mail's.
+DOCS -> Conte els documents del contingut de la entrega.
+FONTS -> Classes implementades pel grup, amb els seus stubs i drivers, seguint la estructura de packages, amb el corresponent makefile que permet compilar els drivers.
+EXE -> Executables per provar les classes i funcionalitats implementades i els seus jocs d'assaig.
+shares.txt -> Responsabilitats de cada un dels membres del grup

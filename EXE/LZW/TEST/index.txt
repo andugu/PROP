@@ -1,0 +1,7 @@
+LZW_Test.jar -> Executable per tal de realitzar la prova.
+
+*.txt -> Fitxers txt que s'utilitzaran o es generaran en el test.
+
+*.LZW -> Fitxers que es generaran després de realitzar la prova, son els fitxers .LZW comprimits.
+
+Info.txt -> Informacio de la prova i la seva motivacio
