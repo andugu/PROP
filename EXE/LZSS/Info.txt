@@ -1,0 +1,11 @@
+Objecte de la prova: En aquesta prova es comproven els metodes comprimir() i descomprimir() de la classe LZSS, que formen part dels casos d'us Comprimir i Descomprimir respectivament.
+
+Drivers: Evidentment, com el nom del executable ja ens indica, el DriverClasseLZSS.jar es un executable del driver de la classe LZSS.
+
+Fitxers necessaris: Tots els fitxers necessaris per la prova es troben al mateix directori que el del .jar, per la comoditat del qui ho hagui de provar, aixi doncs, no cal modificar res, nomes executar el .jar.
+
+Valors estudiats i efectes estudiats: Estudiem el comportament de l'algorisme que hem programat en fitxer arbitraris. El nostre objectiu es veure si l'algorisme es comporta igual de be amb diferents tipus de fitxers, i si no fos aixi, intentar entendre perque en base al fitxer que falla.
+
+Operativa: Executar el .jar, i triar una de les 4 opcions, introduint el nombre corresponent. A continuacio, introduir les dades que necessiti. En el cas de comprimir s’ha d’indicar el path del fitxer a comprimir, el nom de l’arxiu de sortida i el path del fitxer de sortida. En el cas de descomprimir també pero en ordre invers.
+
+

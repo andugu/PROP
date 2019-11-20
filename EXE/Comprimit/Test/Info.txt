@@ -1,0 +1,10 @@
+Objecte de la prova: En aquesta prova es comprova el metode descomprimir() de la classe Comprimit.
+
+Drivers: S'aprofita el codi del driver DriverClasseComprimit, tot i que no te res a veure amb aquesta prova, ja que el driver ens deixa posar-li qualsevol fitxer a la classe Comprimit, mentres que aquest Test, consta de 7 fitxers preestablerts.
+
+Fitxers necessaris: Tots els fitxers necessaris per la prova estan a dins d'quest directori, es important no caviar-los de directori ni moure'ls perquè si no el doc de proves no funcionara.
+
+Valors estudiats i efectes estudiats: Estudiem el comportament de l'algorisme que hem programat amb fitxers variats. El nostre objectiu es veure si l'algorisme es comporta igual de be amb diferents tipus de fitxers, i si no fos aixi, intentar entendre perque en base al fitxers que falla.
+
+Operativa: Aquest test es 100% automatic, nomes cal executar el .jar, i veure si del fitxer comprimit *.LZSS crea un fitxer descomprimit .txt.
+

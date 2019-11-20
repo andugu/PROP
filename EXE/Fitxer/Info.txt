@@ -1,0 +1,10 @@
+Objecte de la prova: En aquesta prova es comprova els metodes Fitxer(), calcularEstadistica() de la classe Fitxer.
+
+Drivers: Evidentment, com el nom del executable ja ens indica, el DriverClasseFitxer.jar es un executable del driver de la classe Fitxer.
+
+Fitxers necessaris: Tots els fitxers necessaris per la prova es troben al mateix directori que el del .jar, per la comoditat del qui ho hagui de provar, aixi doncs, no cal modificar res, nomes executar el .jar.
+
+Valors estudiats i efectes estudiats: Estudiem el comportament de la classe que hem programat.
+
+Operativa: Executar el .jar, i triar una de les 3 opcions, introduint el nombre corresponent. A continuacio, introduir les dades que necessiti.
+

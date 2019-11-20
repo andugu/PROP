@@ -1,0 +1,9 @@
+Objecte de la prova: En aquesta prova es comproven els metodes comprimir() i descomprimir() de la classe LZW, que formen part dels casos d'us Comprimir i Descomprimir respectivament.
+
+Drivers: S'aprofita el codi del driver DriverClasseLZW, tot i que no te res a veure amb aquesta prova, ja que el driver ens deixa posar-li qualsevol fitxer a la classe LZW, mentres que aquest Test, consta de 7 fitxers preestablerts.
+
+Fitxers necessaris: Tots els fitxers necessaris per la prova es troben ja dins del .jar, per la comoditat del qui ho hagui de provar, aixi doncs, no cal modificar res, nomes executar el .jar.
+
+Valors estudiats i efectes estudiats: Estudiem el comportament de l'algorisme que hem programat amb fitxers variats. El nostre objectiu es veure si l'algorisme es comporta igual de be amb diferents tipus de fitxers, i si no fos aixi, intentar entendre perque en base al fitxers que falla.
+
+Operativa: Aquest test es 100% automatic, nomes cal executar el .jar, i veure la diferencia de tamany entre el fitxer original *.txt i el comprimit *.LZW, i comprovar que el fitxer original tingui el mateix contingut que el fitxer descomprimit.

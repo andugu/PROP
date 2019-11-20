@@ -1,0 +1,9 @@
+Comprimit_Test.jar -> Executable per tal de realitzar la prova.
+
+*.txt -> Fitxers txt que es generaran en el test.
+
+*.LZSS -> Fitxers que s’utilitzaran per a realitzar la prova, son els fitxer .LZSS comprimits.
+
+Info.txt -> Informacio de la prova i la seva motivacio
+
+

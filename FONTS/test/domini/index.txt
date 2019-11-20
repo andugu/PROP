@@ -1,0 +1,11 @@
+EstadistiquesGeneralsTest.java -> Test de la classe EstadistiquesGenerals fet amb JUnit
+S'executa amb el script RunJUnitTestEstadistiquesGenerals.sh a la carpeta FONT.
+
+EstadistiquesGenerals_Test.java -> Test de la classe EstadistiquesGenerals, el test per executar es troba a la carpeta EXE/EstadistiquesGenerals/TEST
+JPEG_Test.java -> Test de la classe JPEG automatic amb 15 imatges, el test per executar es troba a la carpeta EXE/JPEG/TEST
+LZSS_Test.java -> Test de la classe LZSS automatic amb 7 fitxers, el test per executar es troba a la carpeta EXE/LZSS/TEST
+Comprimit_Test.java -> Test de la classe Comprimit automatic amb 7 fitxers, el test per executar es troba a la carpeta EXE/COMPRIMIT/TEST
+Descomprimit_Test.java -> Test de la classe Descomprimit automatic amb 7 fitxers, el test per executar es troba a la carpeta EXE/DESCOMPRIMIT/TEST
+LZ78_Test.java ->  Test de la classe LZ78 automatic amb 7 fitxers, el test per executar es troba a la carpeta EXE/LZ78/TEST
+ControladorDomini_Test.java ->Test de la classe ControladorDomini automatic, el test per executar es troba a la carpeta EXE/CONTROLADORDOMINI/TEST
+LZW_Test.java ->  Test de la classe LZW automatic amb 7 fitxers, el test per executar es troba a la carpeta EXE/LZW/TEST
