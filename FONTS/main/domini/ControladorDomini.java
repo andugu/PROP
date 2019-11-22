@@ -212,4 +212,12 @@ public class ControladorDomini {
         }
         return new String[1];
     }
+
+    public Object [] getAllEstadistiques() {
+        return Est.getAllEstadistiques();
+    }
+
+    public void setAllEstadistiques(Object[] estadistiques) {
+        Est.setAllEstadistiques(estadistiques);
+    }
  }
