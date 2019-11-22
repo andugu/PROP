@@ -1,12 +1,17 @@
 package main.persistencia;
 
+import main.domini.ControladorDomini;
+
 import java.io.*;
 
 public class ControladorPersistencia {
+    private FitxerEstadistiquesGenerals FitxerEstGen;
 
     public static void main(String[] args) {}
 
-    public ControladorPersistencia(){}
+    public ControladorPersistencia(){
+        FitxerEstGen = new FitxerEstadistiquesGenerals();
+    }
 
     public static void Save(String nou_path, byte[] contingut) throws IOException {
 
@@ -61,5 +66,14 @@ public class ControladorPersistencia {
 
         File file = new File(path);
         return file.isDirectory();
-    } 
+    }
+
+    public void setAllEstadistiquesFile(Object[] estadistiques) {
+        FitxerEstGen.saveAllEstadistiquesFile(estadistiques);
+    }
+
+    public Object [] getAllEstadistiquesFile() {
+        return FitxerEstGen.getAllEstadistiquesFile();
+    }
+
 }
