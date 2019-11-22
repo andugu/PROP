@@ -85,4 +85,12 @@ public class EstadistiquesGenerals {
 
 		return estadistiques;
 	}
+
+	public Object [] getAllEstadistiques() {
+		return estgen;
+	}
+
+	public void setAllEstadistiques(Object[] estadistiques) {
+		estgen = estadistiques;
+	}
 }
