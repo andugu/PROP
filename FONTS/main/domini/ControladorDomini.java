@@ -217,7 +217,7 @@ public class ControladorDomini {
         return new String[1];
     }
 
-    public void saveAllestadistiques() {
+    public void saveAllEstadistiques() {
         Object[] AllEstadistiques = Est.getAllEstadistiques();
 
         CPer.setAllEstadistiquesFile(AllEstadistiques);
