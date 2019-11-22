@@ -147,7 +147,7 @@ public class ControladorPresentacio {
                 System.out.println("");
             }
             else if (opcio == 6) {
-                cDom.saveAllestadistiques();
+                cDom.saveAllEstadistiques();
                 System.exit(-1);
             }
 
