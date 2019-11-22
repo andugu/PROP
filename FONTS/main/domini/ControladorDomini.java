@@ -5,16 +5,20 @@ import java.io.IOException;
 
 public class ControladorDomini {
     //atributs:
+    private static ControladorPersistencia CPer;
     private static EstadistiquesGenerals Est;
     private static Algorisme[] Algorismes;
 
     public ControladorDomini(){ //classe creadora que tindra l'assosiació EstadistiquesGenerals
+        CPer = new ControladorPersistencia();
         Est = new EstadistiquesGenerals();
         Algorismes = new Algorisme[4];
         Algorismes[0] = new LZ78();
         Algorismes[1] = new LZSS();
         Algorismes[2] = new LZW();
         Algorismes[3] = new JPEG();
+
+        setAllEstadistiques(); //Inicialitza les estadistiques generals amb els valors del fitxer Estadistiques Generals
     }
 
     public static Object[] comprimir(String path, String algorisme) throws IOException {
@@ -213,11 +217,17 @@ public class ControladorDomini {
         return new String[1];
     }
 
-    public Object [] getAllEstadistiques() {
-        return Est.getAllEstadistiques();
+    public void saveALLEstadistiques() {
+        Object[] AllEstadistiques = Est.getAllEstadistiques();
+
+        CPer.setAllEstadistiquesFile(AllEstadistiques);
     }
 
-    public void setAllEstadistiques(Object[] estadistiques) {
-        Est.setAllEstadistiques(estadistiques);
+    public void setAllEstadistiques() {
+        Object[] Allestadistiques = CPer.getAllEstadistiquesFile();
+
+        if(Allestadistiques.length != 0)
+            Est.setAllEstadistiques(Allestadistiques);
     }
+
  }
