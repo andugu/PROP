@@ -116,28 +116,46 @@ public class ControladorDomini {
         String [] noms = ControladorPersistencia.getNames(path);
         int n = noms.length;
         while(int i = 0; i < n; ++i){
-            boolean = es_pot_comprimir = true;
+            boolean es_pot_comprimir = true;
             String path_arxiu = path + noms[i];
-            char[] nou_path_a_arxius = path_arxiu.toCharArray();
+            char[] nou_path_a_arxius = path_arxiu.toCharArray(); //per comprobar txt o ppm
             String algorisme_a_comprimir = algorisme;
             int mida = nou_path_a_arxius.length();
-            if (){//arxiu es .txt -> cridar comprimir algorisme
+            if (nou_path_a_arxius[mida-1] = 't' & nou_path_a_arxius[mida-2] = 'x' & nou_path_a_arxius[mida-3] = 't' ){//arxiu es .txt -> cridar comprimir algorisme
                 es_pot_comprimir = true;
                 algorisme_a_comprimir = algorisme;
             }
-            else if (){//arxiu es .ppm -> cridar comprimir amb JPEG
+            else if (nou_path_a_arxius[mida-1] = 'm' & nou_path_a_arxius[mida-2] = 'p' & nou_path_a_arxius[mida-3] = 'p'){//arxiu es .ppm -> cridar comprimir amb JPEG
                 es_pot_comprimir = true;
                 algorisme_a_comprimir = "JPEG";
             }
             else if (esCarpeta(nou_path)){ //arxiu es carpeta -> cridar
-                comprimirCarpeta(path_arxiu, path_nou+noms[i], algorisme);//cridarem a la carpeta amb el path_del seu arxiu, i el path nou TODO: mirarho!
+                comprimirCarpeta(path_arxiu, path_nou+noms[i], algorisme_a_comprimir);//cridarem a la carpeta amb el path_del seu arxiu, i el path nou TODO: mirarho!
                 es_pot_comprimir = false;
             }
             else{//no fer res
                 es_pot_comprimir = false;
+                System.out.println("Aquest Fitxer amb nom: " + noms[i] + " no es pot Comprimir no es comprimible amb l'opció seleccionada");
             }
             if (es_pot_comprimir){//fer tot el proces de comprimir! sobretot guardar-ho amb el path nou
+                byte[] contingut = llegirFitxer(path);
+                int tamany = contingut.length;
+                int i=2;
+                if (algorisme_a_comprimir = "LZ78") i = 0;
+                else if (algorisme_a_comprimir = "LZSS") i = 1;
+                else if (algorisme_a_comprimir = "LZW") i = 2;
+                else if (algorisme_a_comprimir = "JPEG") i = 3;
 
+                Descomprimit Des = new Descomprimit(path_nou+noms[i], tamany, Algorismes[i]); //oju al descomprimit canviarho a Comprimit
+                Object[] A = Des.comprimir(contingut)
+
+                byte[] contingut_retorn = (byte[]) A[0];
+                double grau = (double) A[1];
+                double velocitat = (double) A[2];
+                long temps = (long) A[3];
+                saveFile(path_nou+noms[i], algorisme_a_comprimir, contingut_retorn, true);
+                boolean comprimit = false; //canviarho a true al descomprimir
+                Est.assignarNovaEstadistica(grau, velocitat, temps, algorisme_a_comprimir, comprimit);
             }
         }
     }
