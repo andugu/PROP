@@ -135,18 +135,18 @@ public class ControladorDomini {
             }
             else{//no fer res
                 es_pot_comprimir = false;
-                System.out.println("Aquest Fitxer amb nom: " + noms[i] + " no es pot Comprimir no es comprimible amb l'opció seleccionada");
+                System.out.println("Aquest Fitxer amb nom: " + noms[i] + " no es pot Comprimir perque no es comprimible amb l'opció seleccionada");
             }
-            if (es_pot_comprimir){//fer tot el proces de comprimir! sobretot guardar-ho amb el path nou
+            if (es_pot_comprimir){//fer tot el proces de comprimir, sobretot guardar-ho amb el path nou
                 byte[] contingut = llegirFitxer(path);
                 int tamany = contingut.length;
-                int i=2;
-                if (algorisme_a_comprimir = "LZ78") i = 0;
-                else if (algorisme_a_comprimir = "LZSS") i = 1;
-                else if (algorisme_a_comprimir = "LZW") i = 2;
-                else if (algorisme_a_comprimir = "JPEG") i = 3;
+                int j=2;
+                if (algorisme_a_comprimir = "LZ78") j = 0;
+                else if (algorisme_a_comprimir = "LZSS") j = 1;
+                else if (algorisme_a_comprimir = "LZW") j = 2;
+                else if (algorisme_a_comprimir = "JPEG") j = 3;
 
-                Descomprimit Des = new Descomprimit(path_nou+noms[i], tamany, Algorismes[i]); //oju al descomprimit canviarho a Comprimit
+                Descomprimit Des = new Descomprimit(path_nou+noms[i], tamany, Algorismes[j]); //oju al descomprimit canviarho a Comprimit
                 Object[] A = Des.comprimir(contingut)
 
                 byte[] contingut_retorn = (byte[]) A[0];
@@ -160,7 +160,49 @@ public class ControladorDomini {
         }
     }
 
-    public static void descomprimirCarpeta(String path, String algorisme){
+    public static void descomprimirCarpeta(String path, String path_nou, String algorisme){
+        String [] noms = ControladorPersistencia.getNames(path);
+        int n = noms.length;
+        while(int i = 0; i < n; ++i){
+            boolean es_pot_descomprimir = true;
+            String path_arxiu = path + noms[i];
+            char[] nou_path_a_arxius = path_arxiu.toCharArray(); //per comprobar txt o ppm
+            String algorisme_a_descomprimir = algorisme;
+            char[] algorisme_char = algorisme_a_descomprimir.toCharArray();
+            int mida_path = nou_path_a_arxius.length();
+            int mida_alg = algorisme_char.length();
+            if (algorisme_char[mida_alg-1] == nou_path_a_arxius[mida_path-1] & algorisme_char[mida_alg-2] == nou_path_a_arxius[mida_path-2] & algorisme_char[mida_alg-3] == nou_path_a_arxius[mida_path-3]){
+                es_pot_descomprimir = true;
+            }
+            else if (esCarpeta(nou_path)){ //arxiu es carpeta -> cridar
+                descomprimirCarpeta(path_arxiu, path_nou+noms[i], algorisme_a_descomprimir);//cridarem a la carpeta amb el path_del seu arxiu, i el path nou TODO: mirarho!
+                es_pot_descomprimir = false;
+            }
+            else{//no fer res
+                es_pot_descomprimir = false;
+                System.out.println("Aquest Fitxer amb nom: " + noms[i] + " no es pot Descomprimir perque no es compatible amb l'opció seleccionada");
+            }
+            if (es_pot_descomprimir){//fer tot el proces de comprimir, sobretot guardar-ho amb el path nou
+                byte[] contingut = llegirFitxer(path);
+                int tamany = contingut.length;
+                int j=2;
+                if (algorisme_a_descomprimir = "LZ78") j = 0;
+                else if (algorisme_a_descomprimir = "LZSS") j = 1;
+                else if (algorisme_a_descomprimir = "LZW") j = 2;
+                else if (algorisme_a_descomprimir = "JPEG") j = 3;
+
+                Comprimit Com = new Comprimit(path_nou+noms[i], tamany, Algorismes[j]);
+                Object[] A = Com.descomprimir(contingut)
+
+                byte[] contingut_retorn = (byte[]) A[0];
+                double grau = (double) A[1];
+                double velocitat = (double) A[2];
+                long temps = (long) A[3];
+                saveFile(path_nou+noms[i], algorisme_a_descomprimir, contingut_retorn, true);
+                boolean comprimit = true;
+                Est.assignarNovaEstadistica(grau, velocitat, temps, algorisme_a_descomprimir, comprimit);
+            }
+        }
 
     }
 
