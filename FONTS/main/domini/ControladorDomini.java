@@ -133,7 +133,7 @@ public class ControladorDomini {
                 es_pot_comprimir = true;
                 algorisme_a_comprimir = "JPEG";
             }
-            else if (esCarpeta(nou_path)){ //arxiu es carpeta -> cridar
+            else if (CPer.isCarpeta(path_arxiu)){ //arxiu es carpeta -> cridar
                 comprimirCarpeta(path_arxiu, path_nou+noms[i], algorisme_a_comprimir);//cridarem a la carpeta amb el path_del seu arxiu, i el path nou TODO: mirarho!
                 es_pot_comprimir = false;
             }
@@ -178,7 +178,7 @@ public class ControladorDomini {
             if (algorisme_char[mida_alg-1] == nou_path_a_arxius[mida_path-1] & algorisme_char[mida_alg-2] == nou_path_a_arxius[mida_path-2] & algorisme_char[mida_alg-3] == nou_path_a_arxius[mida_path-3]){
                 es_pot_descomprimir = true;
             }
-            else if (esCarpeta(nou_path)){ //arxiu es carpeta -> cridar
+            else if (CPer.isCarpeta(path_arxiu)){ //arxiu es carpeta -> cridar
                 descomprimirCarpeta(path_arxiu, path_nou+noms[i], algorisme_a_descomprimir);//cridarem a la carpeta amb el path_del seu arxiu, i el path nou TODO: mirarho!
                 es_pot_descomprimir = false;
             }
