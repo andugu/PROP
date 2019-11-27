@@ -1,5 +1,6 @@
 // Por lo general, necesitarás paquetes Swing y Awt
 // incluso si estás trabajando con solo swings.
+package main.presentacio;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*; 
@@ -19,6 +20,7 @@ public class interficie implements ActionListener{
 	// Creando MenuBar y agregando componentes   
 	 mb = new JMenuBar();
 	 m1 = new JMenu("Selecciona una opcio");
+
 
 	mb.add(m1);
 	mcomprimir = new JMenuItem("Comprimir");
