@@ -119,7 +119,7 @@ public class ControladorDomini {
     public static void comprimirCarpeta(String path, String path_nou, String algorisme){
         String [] noms = ControladorPersistencia.getNames(path);
         int n = noms.length;
-        while(int i = 0; i < n; ++i){
+        for (int i = 0; i < n; ++i){
             boolean es_pot_comprimir = true;
             String path_arxiu = path + noms[i];
             char[] nou_path_a_arxius = path_arxiu.toCharArray(); //per comprobar txt o ppm
