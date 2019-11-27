@@ -30,7 +30,7 @@ public class ControladorDomini {
             byte[] contingut = llegirFitxer(path);
             int tamany = contingut.length;
 
-            int i=2;
+            int i = 2;
             if (algorisme.equals("LZ78")) i = 0;
             else if (algorisme.equals("LZSS")) i = 1;
             else if (algorisme.equals("LZW")) i = 2;
@@ -116,98 +116,88 @@ public class ControladorDomini {
         return new byte[1];
     }
 
-    public static void comprimirCarpeta(String path, String path_nou, String algorisme){
-        String [] noms = ControladorPersistencia.getNames(path);
-        int n = noms.length;
-        for (int i = 0; i < n; ++i){
-            boolean es_pot_comprimir = true;
-            String path_arxiu = path + noms[i];
-            char[] nou_path_a_arxius = path_arxiu.toCharArray(); //per comprobar txt o ppm
-            String algorisme_a_comprimir = algorisme;
-            int mida = nou_path_a_arxius.length();
-            if (nou_path_a_arxius[mida-1] = 't' & nou_path_a_arxius[mida-2] = 'x' & nou_path_a_arxius[mida-3] = 't' ){//arxiu es .txt -> cridar comprimir algorisme
-                es_pot_comprimir = true;
-                algorisme_a_comprimir = algorisme;
-            }
-            else if (nou_path_a_arxius[mida-1] = 'm' & nou_path_a_arxius[mida-2] = 'p' & nou_path_a_arxius[mida-3] = 'p'){//arxiu es .ppm -> cridar comprimir amb JPEG
-                es_pot_comprimir = true;
-                algorisme_a_comprimir = "JPEG";
-            }
-            else if (CPer.isCarpeta(path_arxiu)){ //arxiu es carpeta -> cridar
-                comprimirCarpeta(path_arxiu, path_nou+noms[i], algorisme_a_comprimir);//cridarem a la carpeta amb el path_del seu arxiu, i el path nou TODO: mirarho!
-                es_pot_comprimir = false;
-            }
-            else{//no fer res
-                es_pot_comprimir = false;
-                System.out.println("Aquest Fitxer amb nom: " + noms[i] + " no es pot Comprimir perque no es comprimible amb l'opció seleccionada");
-            }
-            if (es_pot_comprimir){//fer tot el proces de comprimir, sobretot guardar-ho amb el path nou
-                byte[] contingut = llegirFitxer(path);
-                int tamany = contingut.length;
-                int j=2;
-                if (algorisme_a_comprimir = "LZ78") j = 0;
-                else if (algorisme_a_comprimir = "LZSS") j = 1;
-                else if (algorisme_a_comprimir = "LZW") j = 2;
-                else if (algorisme_a_comprimir = "JPEG") j = 3;
+    public static void comprimirCarpeta(String path, String algorisme) throws IOException {
 
-                Descomprimit Des = new Descomprimit(path_nou+noms[i], tamany, Algorismes[j]); //oju al descomprimit canviarho a Comprimit
-                Object[] A = Des.comprimir(contingut)
-
-                byte[] contingut_retorn = (byte[]) A[0];
-                double grau = (double) A[1];
-                double velocitat = (double) A[2];
-                long temps = (long) A[3];
-                saveFile(path_nou+noms[i], algorisme_a_comprimir, contingut_retorn, true);
-                boolean comprimit = false; //canviarho a true al descomprimir
-                Est.assignarNovaEstadistica(grau, velocitat, temps, algorisme_a_comprimir, comprimit);
-            }
-        }
+        Object[] a = comprimirCarpeta_rec(path, algorisme);
+        ControladorPersistencia.Save(path + ".DirectoriComprimit", (byte[]) a[0]);
     }
 
-    public static void descomprimirCarpeta(String path, String path_nou, String algorisme){
+    private static Object[] comprimirCarpeta_rec(String path, String algorisme) throws IOException {
+
+        try {
+            if (!ControladorPersistencia.existeix_path(path)) throw new Exception("Path no existent");
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            System.exit(-1);
+        }
+
+        if (algorisme == "Automatic")
+            algorisme = "LZW";
+
+        int i = 2;
+        if (algorisme.equals("LZ78")) i = 0;
+        else if (algorisme.equals("LZSS")) i = 1;
+        else if (algorisme.equals("LZW")) i = 2;
+        else if (algorisme.equals("JPEG")) i = 3;
+
         String [] noms = ControladorPersistencia.getNames(path);
         int n = noms.length;
-        while(int i = 0; i < n; ++i){
-            boolean es_pot_descomprimir = true;
-            String path_arxiu = path + noms[i];
-            char[] nou_path_a_arxius = path_arxiu.toCharArray(); //per comprobar txt o ppm
-            String algorisme_a_descomprimir = algorisme;
-            char[] algorisme_char = algorisme_a_descomprimir.toCharArray();
-            int mida_path = nou_path_a_arxius.length();
-            int mida_alg = algorisme_char.length();
-            if (algorisme_char[mida_alg-1] == nou_path_a_arxius[mida_path-1] & algorisme_char[mida_alg-2] == nou_path_a_arxius[mida_path-2] & algorisme_char[mida_alg-3] == nou_path_a_arxius[mida_path-3]){
-                es_pot_descomprimir = true;
-            }
-            else if (CPer.isCarpeta(path_arxiu)){ //arxiu es carpeta -> cridar
-                descomprimirCarpeta(path_arxiu, path_nou+noms[i], algorisme_a_descomprimir);//cridarem a la carpeta amb el path_del seu arxiu, i el path nou TODO: mirarho!
-                es_pot_descomprimir = false;
-            }
-            else{//no fer res
-                es_pot_descomprimir = false;
-                System.out.println("Aquest Fitxer amb nom: " + noms[i] + " no es pot Descomprimir perque no es compatible amb l'opció seleccionada");
-            }
-            if (es_pot_descomprimir){//fer tot el proces de comprimir, sobretot guardar-ho amb el path nou
-                byte[] contingut = llegirFitxer(path);
-                int tamany = contingut.length;
-                int j=2;
-                if (algorisme_a_descomprimir = "LZ78") j = 0;
-                else if (algorisme_a_descomprimir = "LZSS") j = 1;
-                else if (algorisme_a_descomprimir = "LZW") j = 2;
-                else if (algorisme_a_descomprimir = "JPEG") j = 3;
 
-                Comprimit Com = new Comprimit(path_nou+noms[i], tamany, Algorismes[j]);
-                Object[] A = Com.descomprimir(contingut)
+        byte[] output = new byte[0];
+        float total_time = 0.0f;
+
+        for (int x = 0; x < n; ++x){
+
+            String path_arxiu = path + noms[x];
+
+            // Comprimeix carpeta
+            if (ControladorPersistencia.isCarpeta(path_arxiu)){
+                Object[] c = comprimirCarpeta_rec(path_arxiu, algorisme);
+                total_time += (float) c[1];
+                // Inici carpeta
+                String prefix = "IC";
+                // Fi carpeta
+                String sufix = "FC";
+                byte[] aux = concatenateByteArray(prefix.getBytes(), (byte[]) c[0]);
+                aux = concatenateByteArray(aux, sufix.getBytes());
+                output = concatenateByteArray(output, aux);
+            }
+
+            // Comprimeix arxiu
+            else {
+                byte[] contingut = llegirFitxer(path_arxiu);
+                int tamany = contingut.length;
+
+                // Per defecte, usem el JPEG per imatges
+                if (path_arxiu.substring(path_arxiu.length() - 4) == ".ppm")
+                    i = 3;
+            
+                Descomprimit Des = new Descomprimit(path_arxiu, tamany, Algorismes[i]);
+                Object[] A = Des.comprimir(contingut);
 
                 byte[] contingut_retorn = (byte[]) A[0];
+
                 double grau = (double) A[1];
                 double velocitat = (double) A[2];
                 long temps = (long) A[3];
-                saveFile(path_nou+noms[i], algorisme_a_descomprimir, contingut_retorn, true);
-                boolean comprimit = true;
-                Est.assignarNovaEstadistica(grau, velocitat, temps, algorisme_a_descomprimir, comprimit);
+                Est.assignarNovaEstadistica(grau, velocitat, temps, algorisme, false);
+                total_time += temps;
+
+                String prefix = noms[x] + " " + tamany + "\n";
+                byte[] aux = concatenateByteArray(prefix.getBytes(), contingut_retorn);
+
+                output = concatenateByteArray(output, aux);
             }
         }
 
+        Object[] ret = new Object[2];
+        ret[0] = output;
+        ret[1] = total_time;
+        return ret;
+    }
+
+    public static void descomprimirCarpeta(String path, String path_nou, String algorisme) throws IOException {
     }
 
     public static void saveFile(String path, String algoritme, byte[] contingut, boolean comprimir) throws IOException {
@@ -303,17 +293,25 @@ public class ControladorDomini {
         return new String[1];
     }
 
-    public void saveAllEstadistiques() {
+    public static void saveAllEstadistiques() throws IOException {
         Object[] AllEstadistiques = Est.getAllEstadistiques();
 
         CPer.setAllEstadistiquesFile(AllEstadistiques);
     }
 
-    public void setAllEstadistiques() {
+    public static void setAllEstadistiques() throws IOException {
         Object[] Allestadistiques = CPer.getAllEstadistiquesFile();
 
         if(Allestadistiques.length != 0)
             Est.setAllEstadistiques(Allestadistiques);
     }
 
+    // Concatena dos byte[]
+    private static byte[] concatenateByteArray(byte[] b1, byte[] b2){
+
+        byte[] b = new byte[b1.length + b2.length];
+        System.arraycopy(b1, 0, b, 0, b1.length);
+        System.arraycopy(b2, 0, b, b1.length, b2.length);
+        return b;
+    }
  }
