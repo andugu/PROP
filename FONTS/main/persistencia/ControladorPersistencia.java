@@ -68,11 +68,11 @@ public class ControladorPersistencia {
         return file.isDirectory();
     }
 
-    public void setAllEstadistiquesFile(Object[] estadistiques) {
+    public void setAllEstadistiquesFile(Object[] estadistiques) throws IOException {
         FitxerEstGen.saveAllEstadistiquesFile(estadistiques);
     }
 
-    public Object [] getAllEstadistiquesFile() {
+    public Object [] getAllEstadistiquesFile() throws IOException {
         return FitxerEstGen.getAllEstadistiquesFile();
     }
 
