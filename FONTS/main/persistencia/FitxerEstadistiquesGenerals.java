@@ -35,11 +35,8 @@ public class FitxerEstadistiquesGenerals {
     public void saveAllEstadistiquesFile(Object[] estadistiques) throws IOException {
 
         File file = new File(path);
-
         FileWriter w = new FileWriter(file);
-
         BufferedWriter bw = new BufferedWriter(w);
-
         PrintWriter wr = new PrintWriter(bw);
 
         for(int i = 0; i < estadistiques.length; ++i){
@@ -58,57 +55,7 @@ public class FitxerEstadistiquesGenerals {
         }
 
         wr.close();
-
         bw.close();
-
-    }
-
-    public static void main(String[] args) throws IOException {
-        FitxerEstadistiquesGenerals fEstGen = new FitxerEstadistiquesGenerals();
-
-        Object[] estadistiques = new Object[32];
-        //Object[] estadistiques = fEstGen.getAllEstadistiquesFile();
-
-        /*
-        for(int i = 0; i < estadistiques.length; ++i) {
-        	if(i == 3||i == 7||i == 11||i == 15||i == 19||i == 23||i == 27||i == 31) {
-        		System.out.println((int)estadistiques[i]);
-        	}
-        	else
-        		System.out.println((double)estadistiques[i]);
-        }
-
-        */
-
-        for(int i = 0; i < estadistiques.length; ++i) {
-            if(i == 3||i == 7||i == 11||i == 15||i == 19||i == 23||i == 27||i == 31) {
-                estadistiques[i] = 1;
-            }
-            else
-                estadistiques[i] = 246.467;
-        }
-
-        fEstGen.saveAllEstadistiquesFile(estadistiques);
-
-        //estadistiques = fEstGen.getAllEstadistiquesFile();
-
-        /*
-        for(int i = 0; i < estadistiques.length; ++i) {
-        	if(i == 3||i == 7||i == 11||i == 15||i == 19||i == 23||i == 27||i == 31) {
-        		System.out.println((int)estadistiques[i]);
-        	}
-        	else
-        		System.out.println((double)estadistiques[i]);
-        }
-        */
-
-        String cadena;
-        FileReader f = new FileReader(path);
-        BufferedReader b = new BufferedReader(f);
-        while((cadena = b.readLine())!=null) {
-            System.out.println(cadena);
-        }
-        b.close();
 
     }
 }
