@@ -9,7 +9,7 @@ public class ControladorDomini {
     private static EstadistiquesGenerals Est;
     private static Algorisme[] Algorismes;
 
-    public ControladorDomini(){ //classe creadora que tindra l'assosiació EstadistiquesGenerals
+    public ControladorDomini() throws IOException { //classe creadora que tindra l'assosiació EstadistiquesGenerals
         CPer = new ControladorPersistencia();
         Est = new EstadistiquesGenerals();
         Algorismes = new Algorisme[4];
