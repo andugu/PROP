@@ -29,21 +29,21 @@ public class EstadistiquesGenerals {
 
 	public void assignarNovaEstadistica(double grau, double velocitat, long temps, String nomalgorisme, boolean comprimit) {
 		if(comprimit) {
-			if(nomalgorisme == "LZ78")
+			if(nomalgorisme.equals("LZ78"))
 				assignarNovaEstadisticai(grau, velocitat, temps, 0);
-			else if(nomalgorisme == "LZSS")
+			else if(nomalgorisme.equals("LZSS"))
 				assignarNovaEstadisticai(grau, velocitat, temps, 4);
-			else if(nomalgorisme == "LZW")
+			else if(nomalgorisme.equals("LZW"))
 				assignarNovaEstadisticai(grau, velocitat, temps, 8);
 			else
 				assignarNovaEstadisticai(grau, velocitat, temps, 12);
 		}
 		else {
-			if(nomalgorisme == "LZ78")
+			if(nomalgorisme.equals("LZ78"))
 				assignarNovaEstadisticai(grau, velocitat, temps, 16);
-			else if(nomalgorisme == "LZSS")
+			else if(nomalgorisme.equals("LZSS"))
 				assignarNovaEstadisticai(grau, velocitat, temps, 20);
-			else if(nomalgorisme == "LZW")
+			else if(nomalgorisme.equals("LZW"))
 				assignarNovaEstadisticai(grau, velocitat, temps, 24);
 			else
 				assignarNovaEstadisticai(grau, velocitat, temps, 28);
@@ -63,21 +63,21 @@ public class EstadistiquesGenerals {
 	public Object[] getEstadistiques(String nomalgorisme, boolean comprimit) {
 		Object[] estadistiques;
 		if(comprimit) {
-			if(nomalgorisme == "LZ78")
+			if(nomalgorisme.equals("LZ78"))
 				estadistiques = getEstadistiquesi(0);
-			else if(nomalgorisme == "LZSS")
+			else if(nomalgorisme.equals("LZSS"))
 				estadistiques = getEstadistiquesi(4);
-			else if(nomalgorisme == "LZW")
+			else if(nomalgorisme.equals("LZW"))
 				estadistiques = getEstadistiquesi(8);
 			else
 				estadistiques = getEstadistiquesi(12);
 		}
 		else {
-			if(nomalgorisme == "LZ78")
+			if(nomalgorisme.equals("LZ78"))
 				estadistiques = getEstadistiquesi(16);
-			else if(nomalgorisme == "LZSS")
+			else if(nomalgorisme.equals("LZSS"))
 				estadistiques = getEstadistiquesi(20);
-			else if(nomalgorisme == "LZW")
+			else if(nomalgorisme.equals("LZW"))
 				estadistiques = getEstadistiquesi(24);
 			else
 				estadistiques = getEstadistiquesi(28);
