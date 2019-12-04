@@ -38,6 +38,10 @@ public class ControladorPersistencia {
         System.out.println("\u001B[32m" + "El fitxer ha estat guardat, en el següent directori: " + nou_path + "\u001B[0m");
     }
 
+    public static void MakeDir(String path) throws IOException {
+        new File(path).mkdir();
+    }
+
     public static byte[] Llegeix(String path) throws IOException {
 
         File file = new File(path);
