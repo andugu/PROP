@@ -302,7 +302,7 @@ public class ControladorDomini {
     public static void setAllEstadistiques() {
         Object[] Allestadistiques = CPer.getAllEstadistiquesFile();
 
-        if(Allestadistiques.length != 0) //Crec que no fa falta
+        if(Allestadistiques.length != 0)
             Est.setAllEstadistiques(Allestadistiques);
     }
 
