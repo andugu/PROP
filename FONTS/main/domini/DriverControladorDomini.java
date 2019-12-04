@@ -39,22 +39,22 @@ public class DriverControladorDomini {
         System.out.print("La funció Llegir Fitxer ha estat cridada correctament ");
     }
 
-    public static void testcompirmirCarpeta() throws IOException {
+    public static void testcompirmirCarpeta() throws IOException{
         Scanner in = new Scanner(System.in);
         System.out.print("Escriu el path on es troba la Carpeta a comprimir");
         String path = in.next();
         String nomalgorisme = escriu_algorisme();
-        ControladorDomini.comprimirCarpeta(path,nomalgorisme);
+        ControladorDomini.comprimirCarpeta(path, nomalgorisme);
         System.out.print("La funció Comprimir Carpeta ha estat cridada correctament ");
 
     }
 
-    public static void testdescomprimirCarpeta(){
+    public static void testdescomprimirCarpeta() throws IOException{
         Scanner in = new Scanner(System.in);
         System.out.print("Escriu el path on es troba ubicat la Carpeta a descomprimir");
         String path = in.next();
         String nomalgorisme = escriu_algorisme();
-        ControladorDomini.descomprimirCarpeta(path,nomalgorisme);
+        ControladorDomini.descomprimirCarpeta(path);
 
         System.out.print("La funció Descomprimir Carpeta ha estat cridada correctament ");
     }

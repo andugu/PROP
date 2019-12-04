@@ -9,7 +9,7 @@ public class ControladorDomini {
     private static EstadistiquesGenerals Est;
     private static Algorisme[] Algorismes;
 
-    public ControladorDomini() { //classe creadora que tindra l'assosiació EstadistiquesGenerals
+    public ControladorDomini(){ //classe creadora que tindra l'assosiació EstadistiquesGenerals
         CPer = new ControladorPersistencia();
         Est = new EstadistiquesGenerals();
         Algorismes = new Algorisme[4];
@@ -18,10 +18,16 @@ public class ControladorDomini {
         Algorismes[2] = new LZW();
         Algorismes[3] = new JPEG();
 
-        setAllEstadistiques(); //Inicialitza les estadistiques generals amb els valors del fitxer Estadistiques Generals
+        try {
+            setAllEstadistiques(); //Inicialitza les estadistiques generals amb els valors del fitxer Estadistiques Generals
+        }
+        catch (IOException e) {
+            System.out.println(e.getMessage());
+            System.exit(-1);
+        }
     }
 
-    public static Object[] comprimir(String path, String algorisme) {
+    public static Object[] comprimir(String path, String algorisme) throws IOException {
         try {
             if (!ControladorPersistencia.existeix_path(path)) throw new Exception("Path no existent");
             if (algorisme == "Automatic") {
@@ -63,7 +69,7 @@ public class ControladorDomini {
         return new Object[1];
     }
 
-    public static Object[] descomprimir(String path, String algorisme) {
+    public static Object[] descomprimir(String path, String algorisme) throws IOException {
         try {
             if (!ControladorPersistencia.existeix_path(path)) throw new Exception("Path no existent");
             byte[] contingut = llegirFitxer(path);
@@ -103,7 +109,7 @@ public class ControladorDomini {
 
     }
 
-    public static byte[] llegirFitxer(String path) {
+    public static byte[] llegirFitxer(String path) throws IOException {
         try {
             if (!ControladorPersistencia.existeix_path(path)) throw new Exception("Path no existent");
             return ControladorPersistencia.Llegeix(path);
@@ -118,28 +124,25 @@ public class ControladorDomini {
 
     public static void comprimirCarpeta(String path, String algorisme) throws IOException {
 
+        if (algorisme == "Automatic")
+            algorisme = "LZW";
+
         Object[] a = comprimirCarpeta_rec(path, algorisme);
-        ControladorPersistencia.Save(path + ".DirectoriComprimit", (byte[]) a[0]);
+        String prefix = path.substring(path.lastIndexOf("/"), path.length()) + "\n" + algorisme + "\n";
+        byte[] aux = concatenateByteArray(prefix.getBytes(), (byte[]) a[0]);
+        ControladorPersistencia.Save(path + ".DirectoriComprimit", aux);
     }
 
     private static Object[] comprimirCarpeta_rec(String path, String algorisme) throws IOException {
 
         try {
-            if (!ControladorPersistencia.existeix_path(path)) throw new Exception("Path no existent");
+            if (!ControladorPersistencia.existeix_path(path))
+                throw new Exception("Path no existent");
         }
         catch (Exception e){
             System.out.println(e.getMessage());
             System.exit(-1);
         }
-
-        if (algorisme == "Automatic")
-            algorisme = "LZW";
-
-        int i = 2;
-        if (algorisme.equals("LZ78")) i = 0;
-        else if (algorisme.equals("LZSS")) i = 1;
-        else if (algorisme.equals("LZW")) i = 2;
-        else if (algorisme.equals("JPEG")) i = 3;
 
         String [] noms = ControladorPersistencia.getNames(path);
         int n = noms.length;
@@ -151,14 +154,21 @@ public class ControladorDomini {
 
             String path_arxiu = path + noms[x];
 
+            int i = 2;
+            if (algorisme.equals("LZ78")) i = 0;
+            else if (algorisme.equals("LZSS")) i = 1;
+            // LZW == 2
+            if (path_arxiu.substring(path_arxiu.length() - 4) == ".ppm")
+                i = 3;
+
             // Comprimeix carpeta
             if (ControladorPersistencia.isCarpeta(path_arxiu)){
                 Object[] c = comprimirCarpeta_rec(path_arxiu, algorisme);
                 total_time += (float) c[1];
                 // Inici carpeta
-                String prefix = "IC";
+                String prefix = "IC\n" + noms[x] + "\n";
                 // Fi carpeta
-                String sufix = "FC";
+                String sufix = "FC\n";
                 byte[] aux = concatenateByteArray(prefix.getBytes(), (byte[]) c[0]);
                 aux = concatenateByteArray(aux, sufix.getBytes());
                 output = concatenateByteArray(output, aux);
@@ -168,10 +178,6 @@ public class ControladorDomini {
             else {
                 byte[] contingut = llegirFitxer(path_arxiu);
                 int tamany = contingut.length;
-
-                // Per defecte, usem el JPEG per imatges
-                if (path_arxiu.substring(path_arxiu.length() - 4) == ".ppm")
-                    i = 3;
             
                 Descomprimit Des = new Descomprimit(path_arxiu, tamany, Algorismes[i]);
                 Object[] A = Des.comprimir(contingut);
@@ -184,7 +190,7 @@ public class ControladorDomini {
                 Est.assignarNovaEstadistica(grau, velocitat, temps, algorisme, false);
                 total_time += temps;
 
-                String prefix = noms[x] + " " + tamany + "\n";
+                String prefix = noms[x] + "\n" + tamany + "\n";
                 byte[] aux = concatenateByteArray(prefix.getBytes(), contingut_retorn);
 
                 output = concatenateByteArray(output, aux);
@@ -197,10 +203,83 @@ public class ControladorDomini {
         return ret;
     }
 
-    public static void descomprimirCarpeta(String path, String path_nou, String algorisme) throws IOException {
+    public static void descomprimirCarpeta(String path) throws IOException {
+
+        byte[] input = ControladorPersistencia.Llegeix(path);
+        String[] prefix = new String(input).split(System.getProperty("line.separator"));
+        String nom_carpeta = prefix[0];
+        String algorisme = prefix[1];
+        String path_nou = path.substring(0, path.lastIndexOf(".")-1);
+        ControladorPersistencia.MakeDir(path_nou + "/" + nom_carpeta);
+
+        descomprimirCarpeta_rec(path_nou + "/" + nom_carpeta, algorisme, input, nom_carpeta.length()+algorisme.length()+2);
     }
 
-    public static void saveFile(String path, String algoritme, byte[] contingut, boolean comprimir) {
+    // Retorna el index en el que s'ha quedat
+    private static int descomprimirCarpeta_rec(String path, String algorisme, byte[] input, int index){
+
+        while (index < input.length){
+            byte[] content = segregateFromByteArray(input, index, input.length);
+            String[] prefix = new String(content).split(System.getProperty("line.separator"));
+
+            // Inici de carpeta
+            if (prefix[0] == "IC") {
+                String nomCarpeta = prefix[1];
+                int aux_index = index + prefix[0].length() + prefix[1].length() + 2;
+                try {
+                    ControladorPersistencia.MakeDir(path + "/" + nomCarpeta);
+                }
+                catch (IOException e){
+                    System.out.println(e.getMessage());
+                    System.exit(-1);
+                }
+                index = descomprimirCarpeta_rec(path + "/" + nomCarpeta, algorisme, input, aux_index);
+            }
+
+            else if (prefix[0] == "FC")
+                return index + prefix[0].length() + 1;
+
+            // Tenim un fitxer
+            else {
+                String nomFitxer = prefix[0];
+
+                int i = 2;
+                if (algorisme.equals("LZ78")) i = 0;
+                else if (algorisme.equals("LZSS")) i = 1;
+                // LZW == 2
+                if (nomFitxer.substring(nomFitxer.length() - 4) == ".ppm")
+                    i = 3;
+
+                int size = Integer.parseInt(prefix[1]);
+                int start = index + prefix[0].length() + prefix[1].length() + 2;
+                byte[] fitxer = segregateFromByteArray(input, start, start + size);
+
+                Comprimit Comp = new Comprimit(path + "/" + nomFitxer, size, Algorismes[i]);
+                Object[] A = Comp.descomprimir(fitxer);
+
+                byte[] contingut_retorn = (byte[]) A[0];
+
+                double grau = (double) A[1];
+                double velocitat = (double) A[2];
+                long temps = (long) A[3];
+                Est.assignarNovaEstadistica(grau, velocitat, temps, algorisme, true);
+
+                try { 
+                ControladorPersistencia.Save(path + "/" + nomFitxer, contingut_retorn);
+                }
+                catch (IOException e){
+                    System.out.println(e.getMessage());
+                    System.exit(-1);
+                }
+
+                index += prefix[0].length() + prefix[1].length() + 2 + size;
+            }
+        }
+
+        return index;
+    }
+
+    public static void saveFile(String path, String algoritme, byte[] contingut, boolean comprimir) throws IOException {
         try{
             if (!ControladorPersistencia.existeix_path(path)) throw new Exception("Path no existent");
             String nou_path;
@@ -236,7 +315,7 @@ public class ControladorDomini {
     }
 
     //OPCIO POT SER: Comprimir (1), Descomprimir(2) o Comparar(4)
-    public static String[] triaAlgorisme(String path_entrada, int opcio) {
+    public static String[] triaAlgorisme(String path_entrada, int opcio) throws Exception {
         try {
             if (!ControladorPersistencia.existeix_path(path_entrada)) throw new Exception("Path no existent");
             String[] algorismes;
@@ -293,13 +372,13 @@ public class ControladorDomini {
         return new String[1];
     }
 
-    public static void saveAllEstadistiques() {
+    public static void saveAllEstadistiques() throws IOException {
         Object[] AllEstadistiques = Est.getAllEstadistiques();
 
         CPer.setAllEstadistiquesFile(AllEstadistiques);
     }
 
-    public static void setAllEstadistiques() {
+    public static void setAllEstadistiques() throws IOException {
         Object[] Allestadistiques = CPer.getAllEstadistiquesFile();
 
         if(Allestadistiques.length != 0)
@@ -312,6 +391,13 @@ public class ControladorDomini {
         byte[] b = new byte[b1.length + b2.length];
         System.arraycopy(b1, 0, b, 0, b1.length);
         System.arraycopy(b2, 0, b, b1.length, b2.length);
+        return b;
+    }
+
+    // Retorna un subbyteArray de input amb el primer element apuntat per start i que te mida size
+    private static byte[] segregateFromByteArray(byte[] input, int start, int end){
+        byte[] b = new byte[end-start];
+        System.arraycopy(input, start, b, 0, end-start);
         return b;
     }
  }

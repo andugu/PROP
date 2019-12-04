@@ -20,8 +20,10 @@ if [ $n == 1 ]; then
 fi
 
 if [ $n == 2 ]; then
-	rm -rf main/domini/*.class
-	rm -rf main/presentacio/*.class
-	rm -rf main/persistencia/*.class
-	rm -rf test/domini/*.class
+	rm -rf ./*.class
+	rm -rf ./main/domini/*.class
+	rm -rf ./main/persistencia/*.class
+	rm -rf ./main/presentacio/*.class
+	rm -rf ./test/domini/*.class
+	rm -rf ./*.jar
 fi
