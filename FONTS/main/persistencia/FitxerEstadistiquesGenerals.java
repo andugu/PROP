@@ -21,7 +21,7 @@ public class FitxerEstadistiquesGenerals {
         - numeroElements (int)
         */
 
-        
+
         String cadena;
         FileReader f = new FileReader(path);
         BufferedReader b = new BufferedReader(f);
