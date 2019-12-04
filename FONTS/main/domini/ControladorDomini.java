@@ -9,7 +9,7 @@ public class ControladorDomini {
     private static EstadistiquesGenerals Est;
     private static Algorisme[] Algorismes;
 
-    public ControladorDomini() throws IOException { //classe creadora que tindra l'assosiació EstadistiquesGenerals
+    public ControladorDomini() { //classe creadora que tindra l'assosiació EstadistiquesGenerals
         CPer = new ControladorPersistencia();
         Est = new EstadistiquesGenerals();
         Algorismes = new Algorisme[4];
@@ -21,7 +21,7 @@ public class ControladorDomini {
         setAllEstadistiques(); //Inicialitza les estadistiques generals amb els valors del fitxer Estadistiques Generals
     }
 
-    public static Object[] comprimir(String path, String algorisme) throws IOException {
+    public static Object[] comprimir(String path, String algorisme) {
         try {
             if (!ControladorPersistencia.existeix_path(path)) throw new Exception("Path no existent");
             if (algorisme == "Automatic") {
@@ -63,7 +63,7 @@ public class ControladorDomini {
         return new Object[1];
     }
 
-    public static Object[] descomprimir(String path, String algorisme) throws IOException {
+    public static Object[] descomprimir(String path, String algorisme) {
         try {
             if (!ControladorPersistencia.existeix_path(path)) throw new Exception("Path no existent");
             byte[] contingut = llegirFitxer(path);
@@ -103,7 +103,7 @@ public class ControladorDomini {
 
     }
 
-    public static byte[] llegirFitxer(String path) throws IOException {
+    public static byte[] llegirFitxer(String path) {
         try {
             if (!ControladorPersistencia.existeix_path(path)) throw new Exception("Path no existent");
             return ControladorPersistencia.Llegeix(path);
@@ -200,7 +200,7 @@ public class ControladorDomini {
     public static void descomprimirCarpeta(String path, String path_nou, String algorisme) throws IOException {
     }
 
-    public static void saveFile(String path, String algoritme, byte[] contingut, boolean comprimir) throws IOException {
+    public static void saveFile(String path, String algoritme, byte[] contingut, boolean comprimir) {
         try{
             if (!ControladorPersistencia.existeix_path(path)) throw new Exception("Path no existent");
             String nou_path;
@@ -236,7 +236,7 @@ public class ControladorDomini {
     }
 
     //OPCIO POT SER: Comprimir (1), Descomprimir(2) o Comparar(4)
-    public static String[] triaAlgorisme(String path_entrada, int opcio) throws Exception {
+    public static String[] triaAlgorisme(String path_entrada, int opcio) {
         try {
             if (!ControladorPersistencia.existeix_path(path_entrada)) throw new Exception("Path no existent");
             String[] algorismes;
@@ -293,13 +293,13 @@ public class ControladorDomini {
         return new String[1];
     }
 
-    public static void saveAllEstadistiques() throws IOException {
+    public static void saveAllEstadistiques() {
         Object[] AllEstadistiques = Est.getAllEstadistiques();
 
         CPer.setAllEstadistiquesFile(AllEstadistiques);
     }
 
-    public static void setAllEstadistiques() throws IOException {
+    public static void setAllEstadistiques() {
         Object[] Allestadistiques = CPer.getAllEstadistiquesFile();
 
         if(Allestadistiques.length != 0) //Crec que no fa falta
