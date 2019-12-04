@@ -39,7 +39,7 @@ public class DriverControladorDomini {
         System.out.print("La funció Llegir Fitxer ha estat cridada correctament ");
     }
 
-    public static void testcompirmirCarpeta(){
+    public static void testcompirmirCarpeta() throws IOException {
         Scanner in = new Scanner(System.in);
         System.out.print("Escriu el path on es troba la Carpeta a comprimir");
         String path = in.next();
