@@ -17,6 +17,7 @@ Olive Fernandez, Josep Maria
 1. Algorisme
 2. JPEG
 3. EstadistiquesGeneralsTest (JUnit)
+4. Comprimir i Descomprimir Carpeta
 i el corresponent driver, test i documentacio del JPEG
 
 Roman Iglesias Adrian
