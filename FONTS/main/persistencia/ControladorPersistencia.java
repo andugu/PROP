@@ -68,12 +68,21 @@ public class ControladorPersistencia {
         return file.isDirectory();
     }
 
-    public void setAllEstadistiquesFile(Object[] estadistiques) throws IOException {
-        FitxerEstGen.saveAllEstadistiquesFile(estadistiques);
+    public void setAllEstadistiquesFile(Object[] estadistiques)  {
+        try {
+            FitxerEstGen.saveAllEstadistiquesFile(estadistiques);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public Object [] getAllEstadistiquesFile() throws IOException {
-        return FitxerEstGen.getAllEstadistiquesFile();
+    public Object [] getAllEstadistiquesFile() {
+        try {
+            return FitxerEstGen.getAllEstadistiquesFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return new Object[0];
     }
 
 }
