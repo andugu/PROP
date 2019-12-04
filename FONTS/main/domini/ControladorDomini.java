@@ -302,7 +302,7 @@ public class ControladorDomini {
     public static void setAllEstadistiques() throws IOException {
         Object[] Allestadistiques = CPer.getAllEstadistiquesFile();
 
-        if(Allestadistiques.length != 0)
+        if(Allestadistiques.length != 0) //Crec que no fa falta
             Est.setAllEstadistiques(Allestadistiques);
     }
 
