@@ -45,8 +45,6 @@ public class ControladorDomini {
             Descomprimit Des = new Descomprimit(path, tamany, Algorismes[i]); //oju al descomprimit canviarho a Comprimit
             Object[] A = Des.comprimir(contingut);
 
-            System.out.println("Ja s'ha comprimit l'arxiu que es troba al directori següent: " + path);
-
             byte[] contingut_retorn = (byte[]) A[0];
             double grau = (double) A[1];
             double velocitat = (double) A[2];
@@ -84,8 +82,6 @@ public class ControladorDomini {
 
             Comprimit Comp = new Comprimit(path, tamany, Algorismes[i]);
             Object[] A = Comp.descomprimir(contingut);
-
-            System.out.println("Ja s'ha descomprimit l'arxiu que es troba al directori següent: " + path);
 
             byte[] contingut_retorn = (byte[]) A[0];
             double grau = (double) A[1];
@@ -130,7 +126,7 @@ public class ControladorDomini {
         Object[] a = comprimirCarpeta_rec(path, algorisme);
         String prefix = path.substring(path.lastIndexOf("/")+1, path.length()) + "\n" + algorisme + "\n";
         byte[] aux = concatenateByteArray(prefix.getBytes(), (byte[]) a[0]);
-        ControladorPersistencia.Save(path + ".DirectoriComprimit", aux);
+        ControladorPersistencia.Save(path + ".DirComp", aux);
     }
 
     private static Object[] comprimirCarpeta_rec(String path, String algorisme) throws IOException {
@@ -323,14 +319,22 @@ public class ControladorDomini {
        return Est.getEstadistiques(nom_algorisme,comprimit);
     }
 
-    //OPCIO POT SER: Comprimir (1), Descomprimir(2) o Comparar(4)
     public static String[] triaAlgorisme(String path_entrada, int opcio) throws Exception {
         try {
             if (!ControladorPersistencia.existeix_path(path_entrada)) throw new Exception("Path no existent");
             String[] algorismes;
             int llargada = path_entrada.length()-1;
             char [] path = path_entrada.toCharArray();
-            if ((path[llargada] == 't') && (path[llargada-1] == 'x') && (path[llargada-2] == 't')) { //fitxer DESCOMPRIMIT TEXT
+
+            if (ControladorPersistencia.isCarpeta(path_entrada)){
+                algorismes = new String[4];
+                algorismes[0] = "Automatic";
+                algorismes[1] = "LZ78";
+                algorismes[2] = "LZSS";
+                algorismes[3] = "LZW";
+                return algorismes;
+            }
+            else if ((path[llargada] == 't') && (path[llargada-1] == 'x') && (path[llargada-2] == 't')) { //fitxer DESCOMPRIMIT TEXT
                 if (opcio == 2)throw new Exception("No es pot descomprimir un fitxer que no esta comprimit");
                 algorismes = new String[4];
                 algorismes[0] = "Automatic";
