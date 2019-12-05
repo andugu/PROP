@@ -60,16 +60,16 @@ public class JPEG extends Algorisme {
 
 	/* The quantitzation table used in the 
 	quantitzation step */
+	/*int quantitzationTableChroma[][] = {
+								{70, 70, 70, 70, 70, 70, 70, 70},
+							  	{70, 70, 70, 70, 70, 70, 70, 70},
+								{70, 70, 70, 70, 70, 70, 70, 70},
+							  	{70, 70, 70, 70, 70, 70, 70, 70},
+							  	{70, 70, 70, 70, 70, 70, 70, 70},
+							  	{70, 70, 70, 70, 70, 70, 70, 70},
+							  	{70, 70, 70, 70, 70, 70, 70, 70},
+							  	{70, 70, 70, 70, 70, 70, 70, 70}};*/
 	int quantitzationTableChroma[][] = {
-								{70, 70, 70, 70, 70, 70, 70, 70},
-							  	{70, 70, 70, 70, 70, 70, 70, 70},
-								{70, 70, 70, 70, 70, 70, 70, 70},
-							  	{70, 70, 70, 70, 70, 70, 70, 70},
-							  	{70, 70, 70, 70, 70, 70, 70, 70},
-							  	{70, 70, 70, 70, 70, 70, 70, 70},
-							  	{70, 70, 70, 70, 70, 70, 70, 70},
-							  	{70, 70, 70, 70, 70, 70, 70, 70}};
-/*	int quantitzationTableChroma[][] = {
 								{17, 18, 24, 47, 99, 99, 99, 99},
 							  	{18, 21, 26, 66, 99, 99, 99, 99},
 								{24, 26, 56, 99, 99, 99, 99, 99},
@@ -77,7 +77,7 @@ public class JPEG extends Algorisme {
 							  	{99, 99, 99, 99, 99, 99, 99, 99},
 							  	{99, 99, 99, 99, 99, 99, 99, 99},
 							  	{99, 99, 99, 99, 99, 99, 99, 99},
-							  	{99, 99, 99, 99, 99, 99, 99, 99}};*/
+							  	{99, 99, 99, 99, 99, 99, 99, 99}};
 
 	/* Both T and transposed T, used in the DCT2 and
 	inverse DCT2 transformations */
@@ -152,8 +152,6 @@ public class JPEG extends Algorisme {
 	public JPEG(boolean debug) {
 		this.debuging = debug;
 	}
-
-	public static void main(String[] args) {}
 
 	/* Gets a byte[] as a n input and returns an Object with the compressed
 	byte[] in the position 0 and the time needed in position 1 */
