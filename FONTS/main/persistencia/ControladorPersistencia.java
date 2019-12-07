@@ -1,7 +1,5 @@
 package main.persistencia;
 
-import main.domini.ControladorDomini;
-
 import java.io.*;
 
 public class ControladorPersistencia {
