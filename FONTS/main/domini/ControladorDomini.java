@@ -18,13 +18,7 @@ public class ControladorDomini {
         Algorismes[2] = new LZW();
         Algorismes[3] = new JPEG();
 
-        try {
-            setAllEstadistiques(); //Inicialitza les estadistiques generals amb els valors del fitxer Estadistiques Generals
-        }
-        catch (IOException e) {
-            System.out.println(e.getMessage());
-            System.exit(-1);
-        }
+        setAllEstadistiques(); //Inicialitza les estadistiques generals amb els valors del fitxer Estadistiques Generals
     }
 
     public static Object[] comprimir(String path, String algorisme) throws IOException {
@@ -384,13 +378,13 @@ public class ControladorDomini {
         return new String[1];
     }
 
-    public static void saveAllEstadistiques() throws IOException {
+    public static void saveAllEstadistiques() {
         Object[] AllEstadistiques = Est.getAllEstadistiques();
 
         CPer.setAllEstadistiquesFile(AllEstadistiques);
     }
 
-    public static void setAllEstadistiques() throws IOException {
+    public static void setAllEstadistiques() {
         Object[] Allestadistiques = CPer.getAllEstadistiquesFile();
 
         if(Allestadistiques.length != 0)
