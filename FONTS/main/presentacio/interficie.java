@@ -1,67 +1,121 @@
-// Por lo general, necesitarás paquetes Swing y Awt
-// incluso si estás trabajando con solo swings.
-package main.presentacio;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*; 
+
+public class interficie{
+    JFrame frame;  
+
     
-public class interficie implements ActionListener{    
-	JFrame frame;    
-	JMenuBar mb;    
-	JMenu m1;   
-	JMenuItem mcomprimir, mdescomprimir, mvisualitzar, mcomparar, mcomprimirCarpeta, mdescomprimirCarpeta, musage;  
-	JTextArea ta;    
+    public static void main(String[] args) {
+        interficiev2 i = new interficiev2();
+        i.interficie_pestaña();
+    }
 
-	public void MenuExample(){    
-	// Creando el Marco        
-	 frame = new JFrame("Compresor");
+    public void interficie_pestaña() {
+    frame = new JFrame("Compresor");
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	frame.setSize(400, 400);
-	// Creando MenuBar y agregando componentes   
-	 mb = new JMenuBar();
-	 m1 = new JMenu("Selecciona una opcio");
-
-
-	mb.add(m1);
-	mcomprimir = new JMenuItem("Comprimir");
-	mdescomprimir = new JMenuItem("Descomprimir");
-	mvisualitzar = new JMenuItem("Visualitzar estadistiques");
-	 mcomparar = new JMenuItem("Comparar");
-	 mcomprimirCarpeta = new JMenuItem("Comprimir Carpeta");
-	 mdescomprimirCarpeta= new JMenuItem("Descomprimir Carpeta");
-	 musage = new JMenuItem("Usage");
-
-	m1.add(mcomprimir);
-	m1.add(mdescomprimir);
-	m1.add(mvisualitzar);
-	m1.add(mcomparar);
-	m1.add(mcomprimirCarpeta);
-	m1.add(mdescomprimirCarpeta);
-
-	m1.add(musage);
-
-	//events
-
-	mcomprimir.addActionListener(this);
+    frame.setSize(512, 256);
+   
+    
+    //grid organitzar elements
+    GridBagConstraints c = new GridBagConstraints();
+    c.weightx = 1;
+    c.weighty = 1;
+    c.fill = GridBagConstraints.BOTH;//que ocupin tot el que puguin
 
 
 
 
 
 
-	// Agregar componentes al marco.      
+    
+    //Creamos el conjunto de pestañas
+    JTabbedPane pestañas=new JTabbedPane();
+    //Creamos el panel y lo añadimos a las pestañas
+    JPanel panel_usage=new JPanel(new GridBagLayout());
 
-	frame.getContentPane().add(BorderLayout.NORTH, mb);
+    //Componentes del panel1
+    JLabel et_p1=new JLabel("Estas a la pestanya de USAGE");
+    panel_usage.add(et_p1);
+    //Añadimos un nombre de la pestaña y el panel
+    pestañas.addTab("Usage", panel_usage);
 
-	frame.setVisible(true);   
-	}     
+    //JTextField tf_usage = new JTextField();
+   
 
-public void actionPerformed(ActionEvent e) {    
-	System.out.println("Has apretat comprimir");
-  
-}     
-public static void main(String[] args) {    
-    interficie i = new interficie();  
-    i.MenuExample();  
-}    
-}    
+        //comprimir
+    JPanel panel_comprimir = new JPanel(new GridBagLayout());
+
+    JLabel et_comp = new JLabel("Estas a la pestanya de comprimir");
+    c.gridx = 0;
+    c.gridy = 0;
+    c.gridwidth = 3;
+    panel_comprimir.add(et_comp,c);
+    pestañas.addTab("Comprimir", panel_comprimir);
+    JTextField tf_compr = new JTextField(20);
+    c.gridx = 2;
+    c.gridy = 1;
+
+
+
+
+
+
+
+
+
+
+
+
+    c.gridwidth = 1;
+    panel_comprimir.add(tf_compr,c);
+
+
+    //descomprimir
+    JPanel panel_descomprimir = new JPanel();
+    JLabel et_descomp = new JLabel("Estas a la pestanya de descomprimir");
+    panel_descomprimir.add(et_descomp);
+    pestañas.addTab("Descomprimir", panel_descomprimir);
+    JTextField tf_descomp = new JTextField(20);
+    panel_descomprimir.add(tf_descomp);
+
+    //comparar
+    JPanel panel_comparar = new JPanel();
+    JLabel et_comparar = new JLabel("Estas a la pestanya de comprimir");
+    panel_comparar.add(et_comparar);
+    pestañas.addTab("Comparar", panel_comparar);
+    JTextField tf_comparar = new JTextField(20);
+    panel_comparar.add(tf_comparar);
+
+    //estadistiques
+    JPanel panel_estadistiques = new JPanel();
+    JLabel et_est = new JLabel("Estas a la pestanya estadistiques");
+    panel_estadistiques.add(et_est);
+    pestañas.addTab("Estadistiques", panel_estadistiques);
+    JTextField tf_estad = new JTextField(20);
+    panel_estadistiques.add(tf_estad);
+
+    //comprimir carpeta
+    JPanel panel_compr_carpeta = new JPanel();
+    JLabel et_carpeta_compr = new JLabel("Estas a la pestanya comprimir carpeta");
+    panel_compr_carpeta.add(et_carpeta_compr);
+    pestañas.addTab("Comprimir carpeta", panel_compr_carpeta);
+    JTextField tf_carpeta_compr = new JTextField(20);
+    panel_compr_carpeta.add(tf_carpeta_compr);
+
+    //descomprimir carpeta
+    JPanel panel_descompr_carpeta = new JPanel();
+    JLabel et_carpeta_descompr = new JLabel("Estas a la pestanya descomprimir carpeta");
+    panel_descompr_carpeta.add(et_carpeta_descompr);
+    pestañas.addTab("Descomprimir carpeta", panel_descompr_carpeta);
+    JTextField tf_carpeta_descompr = new JTextField(20);
+    panel_descompr_carpeta.add(tf_carpeta_descompr);
+
+
+    
+    frame.getContentPane().add(pestañas);
+
+    frame.setVisible(true); 
+    }
+}
+
