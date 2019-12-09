@@ -173,12 +173,18 @@ public class ControladorDomini {
         String nom_carpeta = prefix[0];
         String algorisme = prefix[1];
         int index = path.lastIndexOf("/");
-        if (index == -1)
-            index = 0;
-        String path_nou = path.substring(0, index);
-        ControladorPersistencia.MakeDir(path_nou + "/" + nom_carpeta);
-
-        descomprimirCarpeta_rec(path_nou + "/" + nom_carpeta, algorisme, input, nom_carpeta.length()+algorisme.length()+2);
+        String path_nou;
+        
+        // En el cas de que el path sigui relatiu
+        if (index == -1){
+            ControladorPersistencia.MakeDir(nom_carpeta);
+            descomprimirCarpeta_rec(nom_carpeta, algorisme, input, nom_carpeta.length()+algorisme.length()+2);
+        }
+        else {
+            path_nou = path.substring(0, index);
+            ControladorPersistencia.MakeDir(path_nou + "/" + nom_carpeta);
+            descomprimirCarpeta_rec(path_nou + "/" + nom_carpeta, algorisme, input, nom_carpeta.length()+algorisme.length()+2);
+        }
     }
 
     // Retorna el index en el que s'ha quedat
