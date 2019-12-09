@@ -12,7 +12,7 @@ public class DriverControladorDomini {
         System.out.println("Ja s'ha creat una instància de la classe EstadistiquesGenerals.");
     }
 
-    public static void testcomprimir() throws IOException {
+    public static void testcomprimir() throws Exception {
         Scanner in = new Scanner(System.in);
         System.out.print("Escriu el path on es troba ubicat el fitxer a comprimir");
         String path = in.next();
@@ -21,7 +21,7 @@ public class DriverControladorDomini {
         System.out.print("La funció Comprimir ha estat cridada correctament ");
     }
 
-    public static void testdescomprimir() throws IOException {
+    public static void testdescomprimir() throws Exception {
         Scanner in = new Scanner(System.in);
         System.out.print("Escriu el path on es troba ubicat el fitxer a descomprimir");
         String path = in.next();
@@ -31,7 +31,7 @@ public class DriverControladorDomini {
 
     }
 
-    public static void testllegirFitxer() throws IOException {
+    public static void testllegirFitxer() throws Exception {
         Scanner in = new Scanner(System.in);
         System.out.print("Escriu el path on es troba ubicat el fitxer a llegir");
         String path = in.next();
@@ -39,7 +39,7 @@ public class DriverControladorDomini {
         System.out.print("La funció Llegir Fitxer ha estat cridada correctament ");
     }
 
-    public static void testcompirmirCarpeta() throws IOException{
+    public static void testcompirmirCarpeta() throws Exception{
         Scanner in = new Scanner(System.in);
         System.out.print("Escriu el path on es troba la Carpeta a comprimir");
         String path = in.next();
@@ -49,7 +49,7 @@ public class DriverControladorDomini {
 
     }
 
-    public static void testdescomprimirCarpeta() throws IOException{
+    public static void testdescomprimirCarpeta() throws Exception{
         Scanner in = new Scanner(System.in);
         System.out.print("Escriu el path on es troba ubicat la Carpeta a descomprimir");
         String path = in.next();
@@ -59,7 +59,7 @@ public class DriverControladorDomini {
         System.out.print("La funció Descomprimir Carpeta ha estat cridada correctament ");
     }
 
-    public static void testsaveFile() throws IOException {
+    public static void testsaveFile() throws Exception {
         Scanner in = new Scanner(System.in);
         System.out.print("Escriu el path on es troba la Carpeta a comprimir");
         String path = in.next();
