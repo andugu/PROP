@@ -88,6 +88,7 @@ public class ControladorDomini {
         return ControladorPersistencia.Llegeix(path);
     }
 
+    // Comprimeix la carpet a que es troba al path parametre amb l'algorisme parametre
     public static void comprimirCarpeta(String path, String algorisme) throws Exception {
 
         if (algorisme.equals("Automatic"))
@@ -99,6 +100,7 @@ public class ControladorDomini {
         ControladorPersistencia.Save(path + ".DirComp", aux);
     }
 
+    // Comprimeix tots els arxius d'una carpeta i els ajunta en una byte array de forma recursiva
     private static Object[] comprimirCarpeta_rec(String path, String algorisme) throws Exception {
         if (!ControladorPersistencia.existeix_path(path)) throw new Exception("Path no existent");
 
@@ -166,6 +168,7 @@ public class ControladorDomini {
         return ret;
     }
 
+    // Descomprimeix una carpeta que es troba al path parametre
     public static void descomprimirCarpeta(String path) throws Exception {
 
         byte[] input = ControladorPersistencia.Llegeix(path);
@@ -187,7 +190,8 @@ public class ControladorDomini {
         }
     }
 
-    // Retorna el index en el que s'ha quedat
+    // Descomprimeix una carpeta de forma recursiva i
+    // retorna el index en el que s'ha quedat la descompresio recursiva
     private static int descomprimirCarpeta_rec(String path, String algorisme, byte[] input, int index) throws Exception {
         while (index < input.length){
             byte[] content = segregateFromByteArray(input, index, input.length);
