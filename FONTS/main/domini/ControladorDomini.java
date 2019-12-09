@@ -83,7 +83,7 @@ public class ControladorDomini {
         return RETORN;
     }
 
-    private static byte[] llegirFitxer(String path) throws Exception {
+    public static byte[] llegirFitxer(String path) throws Exception {
         if (!ControladorPersistencia.existeix_path(path)) throw new Exception("Path no existent");
         return ControladorPersistencia.Llegeix(path);
     }
@@ -229,7 +229,7 @@ public class ControladorDomini {
         return index;
     }
 
-    private static void saveFile(String path, String algoritme, byte[] contingut, boolean comprimir) throws Exception {
+    public static void saveFile(String path, String algoritme, byte[] contingut, boolean comprimir) throws Exception {
 
         if (!ControladorPersistencia.existeix_path(path)) throw new Exception("Path no existent");
         String nou_path;
