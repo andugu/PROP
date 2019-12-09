@@ -66,7 +66,7 @@ public class ControladorPersistencia {
         return file.isDirectory();
     }
 
-    public void setAllEstadistiquesFile(Object[] estadistiques) throws Exception {
+    public void setAllEstadistiquesFile(Object[] estadistiques) {
         try {
             FitxerEstGen.saveAllEstadistiquesFile(estadistiques);
         } catch (IOException e) {}
