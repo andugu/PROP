@@ -22,7 +22,7 @@ public class ControladorPersistencia {
             String prefix = nou_path.substring(0, index);
             String postfix = nou_path.substring(index);
 
-            int num = 0;
+            int num = 2;
 
             while (file.exists()) {
                 file = new File(prefix + (num) + postfix);
