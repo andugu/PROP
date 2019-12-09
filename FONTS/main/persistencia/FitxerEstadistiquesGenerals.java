@@ -2,17 +2,15 @@ package main.persistencia;
 
 import java.io.*;
 
-
 public class FitxerEstadistiquesGenerals {
     //atributs
-    private final static String path = "FONTS/main/persistencia/FitxerEstadistiquesGenerals.txt";  //TODO: es correcte aquest path?
+    private final static String path = "./FitxerEstadistiquesGenerals.txt";
 
-    public FitxerEstadistiquesGenerals() {
-    }
+    public FitxerEstadistiquesGenerals() {}
 
     public Object [] getAllEstadistiquesFile() throws IOException {
-        Object[] AllEstadistiques = new Object[32];
 
+        Object[] AllEstadistiques = new Object[32];
 
         String cadena;
         double valor;
@@ -56,6 +54,5 @@ public class FitxerEstadistiquesGenerals {
 
         wr.close();
         bw.close();
-
     }
 }

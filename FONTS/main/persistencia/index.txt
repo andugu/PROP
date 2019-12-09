@@ -1,1 +1,2 @@
-ControladorPersistencia -> codi font del controlador de persistencia
+ControladorPersistencia.java -> codi font del controlador de persistencia
+FitxerEstadistiquesGenerals.java -> codi font per gestionar el fitxer que guarda les estadistiques
