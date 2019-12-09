@@ -1,5 +1,3 @@
-package main.presentacio;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*; 
@@ -23,7 +21,7 @@ public class interficie{
     GridBagConstraints c = new GridBagConstraints();
     c.weightx = 1;
     c.weighty = 1;
-    c.fill = GridBagConstraints.BOTH;//que ocupin tot el que puguin
+    c.fill = GridBagConstraints.HORIZONTAL;//que ocupin tot el que puguin
 
 
 
@@ -55,22 +53,40 @@ public class interficie{
     panel_comprimir.add(et_comp,c);
     pestañas.addTab("Comprimir", panel_comprimir);
     JTextField tf_compr = new JTextField(20);
-    c.gridx = 2;
-    c.gridy = 1;
-
-
-
-
-
-
-
-
-
-
-
-
+    c.gridx = 0;
+    c.gridy = 2;
     c.gridwidth = 1;
     panel_comprimir.add(tf_compr,c);
+    
+    JComboBox menu_combo_compr = new JComboBox();
+    menu_combo_compr.addItem("LZ78");
+    menu_combo_compr.addItem("LZSS");
+    menu_combo_compr.addItem("LZW");
+    menu_combo_compr.addItem("JPEG");
+    c.gridx = 1;
+    c.gridy = 4;
+    c.gridwidth = 3;
+    panel_comprimir.add(menu_combo_compr,c);
+
+
+    /*JMenu menu_algorismes = new JMenu("Tria l'algorisme");
+    JMenuItem lz78 = new JMenuItem("LZ78");
+    JMenuItem lzss = new JMenuItem("LZSS");
+    JMenuItem lzw = new JMenuItem("LZW");
+    JMenuItem jpeg = new JMenuItem("JPEG");
+    menu_algorismes.add(lz78);
+    menu_algorismes.add(lzss);
+    menu_algorismes.add(lzw);
+    menu_algorismes.add(jpeg);
+    menu_bar_compr.add(menu_algorismes);
+
+
+    panel_comprimir.add(menu_bar_compr,c);*/
+    
+    
+    
+
+
 
 
     //descomprimir
