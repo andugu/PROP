@@ -21,98 +21,74 @@ public class ControladorDomini {
         setAllEstadistiques(); //Inicialitza les estadistiques generals amb els valors del fitxer Estadistiques Generals
     }
 
-    public static Object[] comprimir(String path, String algorisme) throws IOException {
-        try {
-            if (!ControladorPersistencia.existeix_path(path)) throw new Exception("Path no existent");
-            if (algorisme == "Automatic") {
-                algorisme = "LZW"; //perque es el millor
-            }
-            byte[] contingut = llegirFitxer(path);
-            int tamany = contingut.length;
-
-            int i = 2;
-            if (algorisme.equals("LZ78")) i = 0;
-            else if (algorisme.equals("LZSS")) i = 1;
-            else if (algorisme.equals("LZW")) i = 2;
-            else if (algorisme.equals("JPEG")) i = 3;
-
-            Descomprimit Des = new Descomprimit(path, tamany, Algorismes[i]); //oju al descomprimit canviarho a Comprimit
-            Object[] A = Des.comprimir(contingut);
-
-            byte[] contingut_retorn = (byte[]) A[0];
-            double grau = (double) A[1];
-            double velocitat = (double) A[2];
-            long temps = (long) A[3];
-            saveFile(path, algorisme, contingut_retorn, true);
-            boolean comprimit = false;
-            Est.assignarNovaEstadistica(grau, velocitat, temps, algorisme, comprimit);
-            Object[] Estadistiques_generades = new Object[3];
-            Estadistiques_generades[0] = grau;
-            Estadistiques_generades[1] = velocitat;
-            Estadistiques_generades[2] = temps;
-
-            return Estadistiques_generades;
+    public static Object[] comprimir(String path, String algorisme) throws Exception {
+        if (!ControladorPersistencia.existeix_path(path)) throw new Exception("Path no existent");
+        if (algorisme == "Automatic") {
+            algorisme = "LZW"; //perque es el millor
         }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-            System.exit(-1);
+        byte[] contingut = llegirFitxer(path);
+        int tamany = contingut.length;
 
-        }
-        return new Object[1];
+        int i = 2;
+        if (algorisme.equals("LZ78")) i = 0;
+        else if (algorisme.equals("LZSS")) i = 1;
+        else if (algorisme.equals("LZW")) i = 2;
+        else if (algorisme.equals("JPEG")) i = 3;
+
+        Descomprimit Des = new Descomprimit(path, tamany, Algorismes[i]); //oju al descomprimit canviarho a Comprimit
+        Object[] A = Des.comprimir(contingut);
+
+        byte[] contingut_retorn = (byte[]) A[0];
+        double grau = (double) A[1];
+        double velocitat = (double) A[2];
+        long temps = (long) A[3];
+        saveFile(path, algorisme, contingut_retorn, true);
+        boolean comprimit = false;
+        Est.assignarNovaEstadistica(grau, velocitat, temps, algorisme, comprimit);
+        Object[] Estadistiques_generades = new Object[3];
+        Estadistiques_generades[0] = grau;
+        Estadistiques_generades[1] = velocitat;
+        Estadistiques_generades[2] = temps;
+
+        return Estadistiques_generades;
     }
 
-    public static Object[] descomprimir(String path, String algorisme) throws IOException {
-        try {
-            if (!ControladorPersistencia.existeix_path(path)) throw new Exception("Path no existent");
-            byte[] contingut = llegirFitxer(path);
-            //Creem descomprimit
-            int tamany = contingut.length;
+    public static Object[] descomprimir(String path, String algorisme) throws Exception {
 
-            int i = 2;
-            if (algorisme.equals("LZ78")) i = 0;
-            else if (algorisme.equals("LZSS")) i = 1;
-            else if (algorisme.equals("LZW")) i = 2;
-            else if (algorisme.equals("JPEG")) i = 3;
+        if (!ControladorPersistencia.existeix_path(path)) throw new Exception("Path no existent");
+        byte[] contingut = llegirFitxer(path);
+        //Creem descomprimit
+        int tamany = contingut.length;
 
-            Comprimit Comp = new Comprimit(path, tamany, Algorismes[i]);
-            Object[] A = Comp.descomprimir(contingut);
+        int i = 2;
+        if (algorisme.equals("LZ78")) i = 0;
+        else if (algorisme.equals("LZSS")) i = 1;
+        else if (algorisme.equals("LZW")) i = 2;
+        else if (algorisme.equals("JPEG")) i = 3;
 
-            byte[] contingut_retorn = (byte[]) A[0];
-            double grau = (double) A[1];
-            double velocitat = (double) A[2];
-            long temps = (long) A[3];
-            saveFile(path, algorisme, contingut_retorn, false);
-            boolean comprimit = true;
-            Est.assignarNovaEstadistica(grau, velocitat, temps, algorisme, comprimit);
-            Object[] RETORN = new Object[3];
-            RETORN[0] = grau;
-            RETORN[1] = velocitat;
-            RETORN[2] = temps;
-            return RETORN;
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-            System.exit(-1);
+        Comprimit Comp = new Comprimit(path, tamany, Algorismes[i]);
+        Object[] A = Comp.descomprimir(contingut);
 
-        }
-        return new Object[1];
-
+        byte[] contingut_retorn = (byte[]) A[0];
+        double grau = (double) A[1];
+        double velocitat = (double) A[2];
+        long temps = (long) A[3];
+        saveFile(path, algorisme, contingut_retorn, false);
+        boolean comprimit = true;
+        Est.assignarNovaEstadistica(grau, velocitat, temps, algorisme, comprimit);
+        Object[] RETORN = new Object[3];
+        RETORN[0] = grau;
+        RETORN[1] = velocitat;
+        RETORN[2] = temps;
+        return RETORN;
     }
 
-    public static byte[] llegirFitxer(String path) throws IOException {
-        try {
-            if (!ControladorPersistencia.existeix_path(path)) throw new Exception("Path no existent");
-            return ControladorPersistencia.Llegeix(path);
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-            System.exit(-1);
-
-        }
-        return new byte[1];
+    public static byte[] llegirFitxer(String path) throws Exception {
+        if (!ControladorPersistencia.existeix_path(path)) throw new Exception("Path no existent");
+        return ControladorPersistencia.Llegeix(path);
     }
 
-    public static void comprimirCarpeta(String path, String algorisme) throws IOException {
+    public static void comprimirCarpeta(String path, String algorisme) throws Exception {
 
         if (algorisme == "Automatic")
             algorisme = "LZW";
@@ -123,15 +99,8 @@ public class ControladorDomini {
         ControladorPersistencia.Save(path + ".DirComp", aux);
     }
 
-    private static Object[] comprimirCarpeta_rec(String path, String algorisme) throws IOException {
-
-        try {
-            if (!ControladorPersistencia.existeix_path(path)) throw new Exception("Path no existent");
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-            System.exit(-1);
-        }
+    private static Object[] comprimirCarpeta_rec(String path, String algorisme) throws Exception {
+        if (!ControladorPersistencia.existeix_path(path)) throw new Exception("Path no existent");
 
         String [] noms = ControladorPersistencia.getNames(path);
         int n = noms.length;
@@ -167,7 +136,6 @@ public class ControladorDomini {
 
                 // Comprimeix arxiu
                 else {
-                    try {
                     byte[] contingut = ControladorPersistencia.Llegeix(path_arxiu);
                     int tamany = contingut.length;
                 
@@ -188,11 +156,6 @@ public class ControladorDomini {
                     byte[] aux = concatenateByteArray(prefix.getBytes(), contingut_retorn);
 
                     output = concatenateByteArray(output, aux);
-                    }
-                    catch (IOException e){
-                        System.out.println(e.getMessage());
-                        System.exit(-1);
-                    }
                 }
             }
         }
@@ -203,7 +166,7 @@ public class ControladorDomini {
         return ret;
     }
 
-    public static void descomprimirCarpeta(String path) throws IOException {
+    public static void descomprimirCarpeta(String path) throws Exception {
 
         byte[] input = ControladorPersistencia.Llegeix(path);
         String[] prefix = new String(input).split(System.getProperty("line.separator"));
@@ -216,7 +179,7 @@ public class ControladorDomini {
     }
 
     // Retorna el index en el que s'ha quedat
-    private static int descomprimirCarpeta_rec(String path, String algorisme, byte[] input, int index){
+    private static int descomprimirCarpeta_rec(String path, String algorisme, byte[] input, int index) throws Exception {
         while (index < input.length){
             byte[] content = segregateFromByteArray(input, index, input.length);
             String[] prefix = new String(content).split(System.getProperty("line.separator"));
@@ -225,13 +188,7 @@ public class ControladorDomini {
             if (prefix[0].contains("IC")) {
                 String nomCarpeta = prefix[1];
                 int aux_index = index + prefix[0].length() + prefix[1].length() + 2;
-                try {
-                    ControladorPersistencia.MakeDir(path + "/" + nomCarpeta);
-                }
-                catch (IOException e){
-                    System.out.println(e.getMessage());
-                    System.exit(-1);
-                }
+                ControladorPersistencia.MakeDir(path + "/" + nomCarpeta);
                 index = descomprimirCarpeta_rec(path + "/" + nomCarpeta, algorisme, input, aux_index);
             }
 
@@ -263,13 +220,7 @@ public class ControladorDomini {
                 long temps = (long) A[3];
                 Est.assignarNovaEstadistica(grau, velocitat, temps, algorisme, true);
 
-                try { 
                 ControladorPersistencia.Save(path + "/" + nomFitxer, contingut_retorn);
-                }
-                catch (IOException e){
-                    System.out.println(e.getMessage());
-                    System.exit(-1);
-                }
 
                 index += prefix[0].length() + prefix[1].length() + 2 + size;
             }
@@ -278,10 +229,10 @@ public class ControladorDomini {
         return index;
     }
 
-    public static void saveFile(String path, String algoritme, byte[] contingut, boolean comprimir) throws IOException {
-        try{
-            if (!ControladorPersistencia.existeix_path(path)) throw new Exception("Path no existent");
-            String nou_path;
+    public static void saveFile(String path, String algoritme, byte[] contingut, boolean comprimir) throws Exception {
+
+        if (!ControladorPersistencia.existeix_path(path)) throw new Exception("Path no existent");
+        String nou_path;
         if (comprimir) {
             nou_path = path + "." + algoritme;
         }
@@ -300,13 +251,7 @@ public class ControladorDomini {
             }
             nou_path = new String(aux2);
         }
-            ControladorPersistencia.Save(nou_path, contingut);
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-            System.exit(-1);
-
-        }
+        ControladorPersistencia.Save(nou_path, contingut);
     }
 
     public static Object[] getEstadistiquesGenerals(String nom_algorisme, boolean comprimit){
@@ -314,7 +259,6 @@ public class ControladorDomini {
     }
 
     public static String[] triaAlgorisme(String path_entrada, int opcio) throws Exception {
-        try {
             if (!ControladorPersistencia.existeix_path(path_entrada)) throw new Exception("Path no existent");
             String[] algorismes;
             int llargada = path_entrada.length()-1;
@@ -370,12 +314,6 @@ public class ControladorDomini {
             else {
                 throw new Exception("Path incorrecte");
             }
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-            System.exit(-1);
-        }
-        return new String[1];
     }
 
     public static void saveAllEstadistiques() {
