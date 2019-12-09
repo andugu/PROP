@@ -1,6 +1,6 @@
 main -> codi del programa
 test -> codi dels test
-makefile.sh -> script per comilar tot el projecte
-executar amb ./makefile.sh
+FitxerEstadistiquesGenerals.txt -> fitxer que conte els valors de les estadistiques generals
+makefile.sh -> script per comilar tot el projecte, executar amb ./makefile.sh
 Manifest.txt -> marca el punt d'entrada per al jar
 RunJUnitTestEstadistiquesGenerals.sh -> script per executar el test amb JUnit
