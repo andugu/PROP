@@ -90,7 +90,7 @@ public class ControladorDomini {
 
     public static void comprimirCarpeta(String path, String algorisme) throws Exception {
 
-        if (algorisme == "Automatic")
+        if (algorisme.equals("Automatic"))
             algorisme = "LZW";
 
         Object[] a = comprimirCarpeta_rec(path, algorisme);
@@ -172,7 +172,10 @@ public class ControladorDomini {
         String[] prefix = new String(input).split(System.getProperty("line.separator"));
         String nom_carpeta = prefix[0];
         String algorisme = prefix[1];
-        String path_nou = path.substring(0, path.lastIndexOf("/"));
+        int index = path.lastIndexOf("/");
+        if (index == -1)
+            index = 0;
+        String path_nou = path.substring(0, index);
         ControladorPersistencia.MakeDir(path_nou + "/" + nom_carpeta);
 
         descomprimirCarpeta_rec(path_nou + "/" + nom_carpeta, algorisme, input, nom_carpeta.length()+algorisme.length()+2);
