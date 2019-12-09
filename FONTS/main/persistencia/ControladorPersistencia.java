@@ -32,8 +32,6 @@ public class ControladorPersistencia {
 
         OutputStream os = new FileOutputStream(file);
         os.write(contingut);
-
-        System.out.println("\u001B[32m" + "El fitxer ha estat guardat, en el següent directori: " + nou_path + "\u001B[0m");
         //TODO: Ara es guarda en la mateixa carpeta, hem de fer que es guardi en una nova?
     }
 
@@ -48,9 +46,6 @@ public class ControladorPersistencia {
         FileInputStream fis = new FileInputStream(file);
         fis.read(b);
         fis.close();
-
-        System.out.println("\u001B[32m" + "El fitxer ha estat llegit" + "\u001B[0m");
-
         return b;
     }
 
@@ -71,20 +66,16 @@ public class ControladorPersistencia {
         return file.isDirectory();
     }
 
-    public void setAllEstadistiquesFile(Object[] estadistiques)  {
+    public void setAllEstadistiquesFile(Object[] estadistiques) throws Exception {
         try {
             FitxerEstGen.saveAllEstadistiquesFile(estadistiques);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException e) {}
     }
 
     public Object [] getAllEstadistiquesFile() {
         try {
             return FitxerEstGen.getAllEstadistiquesFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException e) {}
         return new Object[0];
     }
 
