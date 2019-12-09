@@ -1,1 +1,2 @@
 ControladorPresentacio -> codi font del controlador de presentacio
+interficie -> codi font de la inteficie
