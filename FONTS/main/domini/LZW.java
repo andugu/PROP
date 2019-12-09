@@ -13,8 +13,26 @@ public class LZW extends Algorisme {
 
     public Object[] comprimir(byte[] entradaBytes) {
         long time_start = System.currentTimeMillis();
+        if(entradaBytes.length < 5) {   //cas que sigui molt petit
+            long time_end = System.currentTimeMillis();
+            long tempsTotal = time_end - time_start;
+            Object[] ret = {entradaBytes, tempsTotal};
+            return ret;
+
+        }
 
         String entrada = new String(entradaBytes);
+        //optimitzar diccionari
+        int maxim_utilitzat = -1;
+        int minim_utilitzat = Integer.MAX_VALUE;
+        for(int b=0; b<entrada.length(); ++b) {
+
+            int auxefi = (int)entrada.charAt(b);
+            if(auxefi<minim_utilitzat)minim_utilitzat = auxefi;
+            if(auxefi>maxim_utilitzat)maxim_utilitzat = auxefi;
+
+        }
+        final_diccionari_inicial = maxim_utilitzat+1;
         HashMap < String, Integer > diccionari = new HashMap < String, Integer > ();
         
         //ini diccionari
@@ -82,8 +100,22 @@ public class LZW extends Algorisme {
             }
         }
 
-        byte[] sortida5 = new byte[contaaa];
-        for(int i=0; i<sortida5.length; ++i){
+        byte[] sortida5 = new byte[contaaa+6];//afegir tamany de la entrada(per optimitzar sortida al descomprimir i finaldiccionari
+        byte[] auxfin = intTObyte_especial3(entrada.length());
+        sortida5[contaaa] = auxfin[0];
+        sortida5[contaaa+1] = auxfin[1];
+        sortida5[contaaa+2] = auxfin[2];
+
+
+
+        auxfin = intTObyte_especial3(final_diccionari_inicial);
+        sortida5[contaaa+3] = auxfin[0];
+        sortida5[contaaa+4] = auxfin[1];
+        sortida5[contaaa+5] = auxfin[2];
+
+
+
+        for(int i=0; i<sortida5.length-6; ++i){
             
             sortida5[i] = sortida4[i];
         }
@@ -100,12 +132,26 @@ public class LZW extends Algorisme {
 
     public Object[] descomprimir(byte[] novaEntrada) {
         long time_start = System.currentTimeMillis();
+        if(novaEntrada.length < 5) {   //cas que sigui molt petit
+        
+            long time_end = System.currentTimeMillis();
+            long tempsTotal = time_end - time_start;
+            Object[] ret = {novaEntrada, tempsTotal};
+            return ret;
+        }
+
+        byte[] auxfidicbyte = {novaEntrada[novaEntrada.length-3],novaEntrada[novaEntrada.length-2],novaEntrada[novaEntrada.length-1]};
+        final_diccionari_inicial = bytetoInt_especial3(auxfidicbyte);
+
         int[] entrada = new int[(novaEntrada.length)/2];//com a maxim sabem que tindra la meitat de posicions que nova entrada amb bytes
+
+        byte[] tam_ant_aux = {novaEntrada[novaEntrada.length-3-3],novaEntrada[novaEntrada.length-2-3],novaEntrada[novaEntrada.length-1-3]};
+        int tamany_meva_sortida = bytetoInt_especial3(tam_ant_aux);
        
         int contador = 0;
         int k = 0;
 
-        for(k=0; contador<novaEntrada.length; ++k) {
+        for(k=0; contador<novaEntrada.length-3-3; ++k) {//per l'afegit-3-3
 
             byte[] aux = {novaEntrada[contador], novaEntrada[++contador]};
             ++contador;
@@ -134,8 +180,11 @@ public class LZW extends Algorisme {
 
 
         String sortida = new String("");
+        StringBuilder sortida_builder = new StringBuilder(tamany_meva_sortida);
         Integer viejo = entrada[0];
-        sortida += diccionari.get(viejo);
+
+        //sortida += diccionari.get(viejo);
+        sortida_builder.append(diccionari.get(viejo));
         String s = diccionari.get(viejo);
         String c = s.substring(0, 1);
         
@@ -151,7 +200,8 @@ public class LZW extends Algorisme {
                 s = diccionari.get(nou);
             }
 
-            sortida += s;
+            //sortida += s;
+            sortida_builder.append(s);
             c = s.substring(0, 1);
             diccionari.add(diccionari.get(viejo) + c);
             ++final_local;
@@ -159,7 +209,7 @@ public class LZW extends Algorisme {
         } 
         
        
-        byte[] sortida2 = sortida.getBytes();
+        byte[] sortida2 = sortida_builder.toString().getBytes();
         long time_end = System.currentTimeMillis();
         long tempsTotal = time_end - time_start;
         Object[] ret = {sortida2,tempsTotal};
