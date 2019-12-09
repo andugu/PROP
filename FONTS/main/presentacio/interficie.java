@@ -1,3 +1,5 @@
+package main.presentacio;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*; 
@@ -7,7 +9,7 @@ public class interficie{
 
     
     public static void main(String[] args) {
-        interficiev2 i = new interficiev2();
+        interficie i = new interficie();
         i.interficie_pestaña();
     }
 
