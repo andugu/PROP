@@ -57,7 +57,11 @@ public class interficie{
     c.gridy = 2;
     c.gridwidth = 1;
     panel_comprimir.add(tf_compr,c);
-    
+    //aqui s'haura de cridar a:
+        /*
+        String[] nomsAlgorisme = cDom.triaAlgorisme(path, opcio);
+        aixo serà les opcions que ho haurem de posar com a combos
+         */
     JComboBox menu_combo_compr = new JComboBox();
     menu_combo_compr.addItem("LZ78");
     menu_combo_compr.addItem("LZSS");
@@ -135,5 +139,9 @@ public class interficie{
 
     frame.setVisible(true); 
     }
+    public void interficie_excepcio() {
+        //aqui va la interficie d'excepcio, s'haurà de cridar des de l'altre lloc
+    }
+
 }
 
