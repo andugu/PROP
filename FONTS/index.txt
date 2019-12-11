@@ -4,3 +4,4 @@ FitxerEstadistiquesGenerals.txt -> fitxer que conte els valors de les estadistiq
 makefile.sh -> script per comilar tot el projecte, executar amb ./makefile.sh
 Manifest.txt -> marca el punt d'entrada per al jar
 RunJUnitTestEstadistiquesGenerals.sh -> script per executar el test amb JUnit
+Compresor.jar -> Executable del projecte
