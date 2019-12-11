@@ -2,8 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*; 
 
-public class interficie{
+public class interficie implements ActionListener{
     JFrame frame;  
+    JTextField tf_compr;
 
     
     public static void main(String[] args) {
@@ -21,7 +22,7 @@ public class interficie{
     GridBagConstraints c = new GridBagConstraints();
     c.weightx = 1;
     c.weighty = 1;
-    c.fill = GridBagConstraints.HORIZONTAL;//que ocupin tot el que puguin
+   c.fill = GridBagConstraints.HORIZONTAL;//que ocupin tot el que puguin
 
 
 
@@ -46,31 +47,80 @@ public class interficie{
         //comprimir
     JPanel panel_comprimir = new JPanel(new GridBagLayout());
 
-    JLabel et_comp = new JLabel("Estas a la pestanya de comprimir");
+
+    JLabel et_comp = new JLabel("Introdueix el path");
     c.gridx = 0;
     c.gridy = 0;
-    c.gridwidth = 3;
-    panel_comprimir.add(et_comp,c);
-    pestañas.addTab("Comprimir", panel_comprimir);
-    JTextField tf_compr = new JTextField(20);
-    c.gridx = 0;
-    c.gridy = 2;
     c.gridwidth = 1;
+    panel_comprimir.add(et_comp,c);
+    //pestañas.addTab("Comprimir", panel_comprimir);
+
+
+
+     tf_compr = new JTextField(20);
+    c.gridx = 0;
+    c.gridy = 1;
+    c.gridwidth = 3;
+    //c.gridheight = ;
     panel_comprimir.add(tf_compr,c);
+
+    JButton boton_ok_compr=new JButton("OK");
+    c.gridx = 3;
+    c.gridy = 1;
+    c.gridwidth = 1;
+     panel_comprimir.add(boton_ok_compr, c);
+
+
+    boton_ok_compr.addActionListener(this);
+
+
+
+    JLabel et_comp_2 = new JLabel("Selecciona l'algorisme");
+    c.gridx = 0;
+    c.gridy = 3;
+    c.gridwidth = 2;
+    panel_comprimir.add(et_comp_2,c);
     //aqui s'haura de cridar a:
         /*
         String[] nomsAlgorisme = cDom.triaAlgorisme(path, opcio);
         aixo serà les opcions que ho haurem de posar com a combos
          */
-    JComboBox menu_combo_compr = new JComboBox();
+   JComboBox menu_combo_compr = new JComboBox();
     menu_combo_compr.addItem("LZ78");
     menu_combo_compr.addItem("LZSS");
     menu_combo_compr.addItem("LZW");
     menu_combo_compr.addItem("JPEG");
-    c.gridx = 1;
-    c.gridy = 4;
-    c.gridwidth = 3;
+    c.gridx = 2;
+    c.gridy = 3;
+    c.gridwidth = 1;
     panel_comprimir.add(menu_combo_compr,c);
+
+
+     JButton boton_comprimir=new JButton("COMPRIMEIX");
+    c.gridx = 0;
+    c.gridy = 5;
+    c.gridwidth = 1;
+     panel_comprimir.add(boton_comprimir, c);
+
+     
+     
+
+
+    JLabel et_comp_est = new JLabel("Estadistiques:");
+    c.gridx = 0;
+    c.gridy = 6;
+    c.gridwidth = 2;
+    panel_comprimir.add(et_comp_est,c);
+
+   // String content_estadistiques = new String("Grau:  unitats\nVelocitat: unitats\nTemps: unitats");
+    String content_estadistiques = new String("<html>Grau unitats <br/> elocitat: unitats <br/> Temps: unitats</html>");
+    JLabel et_comp_est_dades = new JLabel(content_estadistiques);
+    c.gridx = 0;
+    c.gridy = 7;
+    c.gridwidth = 2;
+    panel_comprimir.add(et_comp_est_dades,c);
+    pestañas.addTab("Comprimir", panel_comprimir);
+
 
 
     /*JMenu menu_algorismes = new JMenu("Tria l'algorisme");
@@ -94,12 +144,71 @@ public class interficie{
 
 
     //descomprimir
-    JPanel panel_descomprimir = new JPanel();
-    JLabel et_descomp = new JLabel("Estas a la pestanya de descomprimir");
-    panel_descomprimir.add(et_descomp);
+    JPanel panel_descomprimir = new JPanel(new GridBagLayout());
+     JLabel et_compdes = new JLabel("Introdueix el path");
+    c.gridx = 0;
+    c.gridy = 0;
+    c.gridwidth = 1;
+    panel_descomprimir.add(et_compdes,c);
+    //pestañas.addTab("Comprimir", panel_comprimir);
+
+    JTextField tf_descompr = new JTextField(20);
+    c.gridx = 0;
+    c.gridy = 1;
+    c.gridwidth = 3;
+    //c.gridheight = ;
+    panel_descomprimir.add(tf_descompr,c);
+
+    JLabel et_descomp_2 = new JLabel("Selecciona l'algorisme");
+    c.gridx = 0;
+    c.gridy = 3;
+    c.gridwidth = 2;
+    panel_descomprimir.add(et_descomp_2,c);
+    //aqui s'haura de cridar a:
+        /*
+        String[] nomsAlgorisme = cDom.triaAlgorisme(path, opcio);
+        aixo serà les opcions que ho haurem de posar com a combos
+         */
+   JComboBox menu_combo_descompr = new JComboBox();
+    menu_combo_descompr.addItem("LZ78");
+    menu_combo_descompr.addItem("LZSS");
+    menu_combo_descompr.addItem("LZW");
+    menu_combo_descompr.addItem("JPEG");
+    c.gridx = 2;
+    c.gridy = 3;
+    c.gridwidth = 1;
+    panel_descomprimir.add(menu_combo_descompr,c);
+
+
+     JButton boton_descomprimir=new JButton("COMPRIMEIX");
+    c.gridx = 0;
+    c.gridy = 5;
+    c.gridwidth = 1;
+     panel_descomprimir.add(boton_descomprimir, c);
+     
+
+
+    JLabel et_descomp_est = new JLabel("Estadistiques:");
+    c.gridx = 0;
+    c.gridy = 6;
+    c.gridwidth = 2;
+    panel_descomprimir.add(et_descomp_est,c);
+
+   // String content_estadistiques = new String("Grau:  unitats\nVelocitat: unitats\nTemps: unitats");
+    String content_estadistiques_desc = new String("<html>Grau unitats <br/> elocitat: unitats <br/> Temps: unitats</html>");
+    JLabel et_descomp_est_dades = new JLabel(content_estadistiques);
+    c.gridx = 0;
+    c.gridy = 7;
+    c.gridwidth = 2;
+    panel_descomprimir.add(et_descomp_est_dades,c);
+
     pestañas.addTab("Descomprimir", panel_descomprimir);
-    JTextField tf_descomp = new JTextField(20);
-    panel_descomprimir.add(tf_descomp);
+
+
+
+
+
+
 
     //comparar
     JPanel panel_comparar = new JPanel();
@@ -142,6 +251,16 @@ public class interficie{
     public void interficie_excepcio() {
         //aqui va la interficie d'excepcio, s'haurà de cridar des de l'altre lloc
     }
+
+
+    public void actionPerformed(ActionEvent e) {    
+    System.out.println("Has apretat el boto OK");
+    System.out.println(tf_compr.getText());
+    
+
+
+  
+}    
 
 }
 
