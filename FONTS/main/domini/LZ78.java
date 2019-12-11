@@ -74,7 +74,7 @@ public class LZ78 extends Algorisme {
         //return resultat;
     }
 
-    private static byte[] converteix_a_text(ArrayList<Integer> Llista1, ArrayList<Character> Llista2, int a) throws UnsupportedEncodingException {
+    public static byte[] converteix_a_text(ArrayList<Integer> Llista1, ArrayList<Character> Llista2, int a) throws UnsupportedEncodingException {
         int n = Llista1.size();
         int num_bytes = 0;
         boolean assignat = false;
