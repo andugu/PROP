@@ -140,24 +140,29 @@ public class ControladorDomini {
                 else {
                     byte[] contingut = ControladorPersistencia.Llegeix(path_arxiu);
                     int tamany = contingut.length;
+
+                    if (path_arxiu.substring(path_arxiu.lastIndexOf("."), path_arxiu.length()).equals(".ppm") || path_arxiu.substring(path_arxiu.lastIndexOf("."), path_arxiu.length()).equals(".txt")){
                 
-                    Descomprimit Des = new Descomprimit(path_arxiu, tamany, Algorismes[i]);
-                    Object[] A = Des.comprimir(contingut);
+	                    Descomprimit Des = new Descomprimit(path_arxiu, tamany, Algorismes[i]);
+	                    Object[] A = Des.comprimir(contingut);
 
-                    byte[] contingut_retorn = (byte[]) A[0];
+	                    byte[] contingut_retorn = (byte[]) A[0];
 
-                    double grau = (double) A[1];
-                    double velocitat = (double) A[2];
-                    long temps = (long) A[3];
-                    Est.assignarNovaEstadistica(grau, velocitat, temps, algorisme, false);
-                    total_time += temps;
+	                    double grau = (double) A[1];
+	                    double velocitat = (double) A[2];
+	                    long temps = (long) A[3];
+	                    Est.assignarNovaEstadistica(grau, velocitat, temps, algorisme, false);
+	                    total_time += temps;
 
-                    tamany = ((byte[]) A[0]).length;
+	                    tamany = ((byte[]) A[0]).length;
 
-                    String prefix = noms[x] + "\n" + tamany + "\n";
-                    byte[] aux = concatenateByteArray(prefix.getBytes(), contingut_retorn);
+	                    String prefix = noms[x] + "\n" + tamany + "\n";
+	                    byte[] aux = concatenateByteArray(prefix.getBytes(), contingut_retorn);
 
-                    output = concatenateByteArray(output, aux);
+	                    output = concatenateByteArray(output, aux);
+	                }
+	                // El fitxer no es pot comprimir
+	                else throw new Exception("La carpeta conté un arxiu que no és ni .txt ni .ppm, i per tant no es pot comprimir.\nEl path del arxiu és: " + path_arxiu);
                 }
             }
         }
@@ -181,12 +186,12 @@ public class ControladorDomini {
         // En el cas de que el path sigui relatiu
         if (index == -1){
             ControladorPersistencia.MakeDir(nom_carpeta);
-            descomprimirCarpeta_rec(nom_carpeta, algorisme, input, nom_carpeta.length()+algorisme.length()+2);
+            descomprimirCarpeta_rec(nom_carpeta, algorisme, input, nom_carpeta.getBytes().length + algorisme.length() + 2);
         }
         else {
             path_nou = path.substring(0, index);
             ControladorPersistencia.MakeDir(path_nou + "/" + nom_carpeta);
-            descomprimirCarpeta_rec(path_nou + "/" + nom_carpeta, algorisme, input, nom_carpeta.length()+algorisme.length()+2);
+            descomprimirCarpeta_rec(path_nou + "/" + nom_carpeta, algorisme, input, nom_carpeta.getBytes().length + algorisme.length() + 2);
         }
     }
 
@@ -197,19 +202,23 @@ public class ControladorDomini {
             byte[] content = segregateFromByteArray(input, index, input.length);
             String[] prefix = new String(content).split(System.getProperty("line.separator"));
 
+            System.out.println(path);
+            System.out.println(index);
+
             // Inici de carpeta
-            if (prefix[0].contains("IC")) {
+            if (prefix[0].equals("IC")) {
                 String nomCarpeta = prefix[1];
-                int aux_index = index + prefix[0].length() + prefix[1].length() + 2;
+                int aux_index = index + prefix[0].length() + prefix[1].getBytes().length + 2;
                 ControladorPersistencia.MakeDir(path + "/" + nomCarpeta);
                 index = descomprimirCarpeta_rec(path + "/" + nomCarpeta, algorisme, input, aux_index);
             }
 
-            else if (prefix[0].contains("FC"))
+            else if (prefix[0].equals("FC"))
                 return index + prefix[0].length() + 1;
 
             // Tenim un fitxer
             else {
+
                 String nomFitxer = prefix[0];
 
                 int i = 2;
@@ -220,7 +229,7 @@ public class ControladorDomini {
                     i = 3;
 
                 int size = Integer.parseInt(prefix[1]);
-                int start = index + prefix[0].length() + prefix[1].length() + 2;
+                int start = index + prefix[0].getBytes().length + prefix[1].length() + 2;
                 byte[] fitxer = segregateFromByteArray(input, start, start + size);
 
                 Comprimit Comp = new Comprimit(path + "/" + nomFitxer, size, Algorismes[i]);
@@ -235,7 +244,7 @@ public class ControladorDomini {
 
                 ControladorPersistencia.Save(path + "/" + nomFitxer, contingut_retorn);
 
-                index += prefix[0].length() + prefix[1].length() + 2 + size;
+                index += prefix[0].getBytes().length + prefix[1].length() + 2 + size;
             }
         }
 
