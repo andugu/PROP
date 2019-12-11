@@ -202,8 +202,8 @@ public class ControladorDomini {
             byte[] content = segregateFromByteArray(input, index, input.length);
             String[] prefix = new String(content).split(System.getProperty("line.separator"));
 
-            System.out.println(path);
-            System.out.println(index);
+            System.out.println(path);  //TODO: Això ho hem de treure
+            System.out.println(index); //TODO: Això ho hem de treure
 
             // Inici de carpeta
             if (prefix[0].equals("IC")) {
