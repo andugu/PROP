@@ -4,8 +4,15 @@ import java.awt.event.*;
 
 public class interficie implements ActionListener{
     JFrame frame;  
-    JTextField tf_compr;
+    //textfields per introduir path
+    JTextField[] introdueix_path = new JTextField[5];//{C,D,COMPARAR,CC,DC}
+    JButton[] ok_path = new JButton[5];
+    JComboBox[] menu_algorismes = new JComboBox[4];//{C,D,COMPARAR,CC}
+    
+    OKPATH ok_button_accio;
 
+    
+    
     
     public static void main(String[] args) {
         interficie i = new interficie();
@@ -56,22 +63,23 @@ public class interficie implements ActionListener{
     //pestañas.addTab("Comprimir", panel_comprimir);
 
 
-
-     tf_compr = new JTextField(20);
+    introdueix_path[0] = new JTextField(20);
     c.gridx = 0;
     c.gridy = 1;
     c.gridwidth = 3;
     //c.gridheight = ;
-    panel_comprimir.add(tf_compr,c);
+    panel_comprimir.add(introdueix_path[0],c);
 
-    JButton boton_ok_compr=new JButton("OK");
+    ok_path[0] = new JButton("OK");
     c.gridx = 3;
     c.gridy = 1;
     c.gridwidth = 1;
-     panel_comprimir.add(boton_ok_compr, c);
+    panel_comprimir.add(ok_path[0], c);
+    ok_button_accio = new OKPATH("Comprimir");
+    ok_path[0].addActionListener(ok_button_accio);
 
 
-    boton_ok_compr.addActionListener(this);
+    
 
 
 
@@ -85,15 +93,12 @@ public class interficie implements ActionListener{
         String[] nomsAlgorisme = cDom.triaAlgorisme(path, opcio);
         aixo serà les opcions que ho haurem de posar com a combos
          */
-   JComboBox menu_combo_compr = new JComboBox();
-    menu_combo_compr.addItem("LZ78");
-    menu_combo_compr.addItem("LZSS");
-    menu_combo_compr.addItem("LZW");
-    menu_combo_compr.addItem("JPEG");
+    menu_algorismes[0] = new JComboBox();
     c.gridx = 2;
     c.gridy = 3;
     c.gridwidth = 1;
-    panel_comprimir.add(menu_combo_compr,c);
+    menu_algorismes[0] = new JComboBox();
+    panel_comprimir.add(menu_algorismes[0],c);
 
 
      JButton boton_comprimir=new JButton("COMPRIMEIX");
@@ -151,13 +156,23 @@ public class interficie implements ActionListener{
     c.gridwidth = 1;
     panel_descomprimir.add(et_compdes,c);
     //pestañas.addTab("Comprimir", panel_comprimir);
-
-    JTextField tf_descompr = new JTextField(20);
+    
+    introdueix_path[1] = new JTextField(20);
+   // JTextField tf_descompr = new JTextField(20);
     c.gridx = 0;
     c.gridy = 1;
     c.gridwidth = 3;
     //c.gridheight = ;
-    panel_descomprimir.add(tf_descompr,c);
+    panel_descomprimir.add(introdueix_path[1],c);
+
+    ok_path[1] = new JButton("OK");
+    c.gridx = 3;
+    c.gridy = 1;
+    c.gridwidth = 1;
+    panel_descomprimir.add(ok_path[1], c);
+    ok_button_accio = new OKPATH("Descomprimir");
+    ok_path[1].addActionListener(ok_button_accio);
+
 
     JLabel et_descomp_2 = new JLabel("Selecciona l'algorisme");
     c.gridx = 0;
@@ -169,15 +184,14 @@ public class interficie implements ActionListener{
         String[] nomsAlgorisme = cDom.triaAlgorisme(path, opcio);
         aixo serà les opcions que ho haurem de posar com a combos
          */
-   JComboBox menu_combo_descompr = new JComboBox();
-    menu_combo_descompr.addItem("LZ78");
-    menu_combo_descompr.addItem("LZSS");
-    menu_combo_descompr.addItem("LZW");
-    menu_combo_descompr.addItem("JPEG");
-    c.gridx = 2;
-    c.gridy = 3;
-    c.gridwidth = 1;
-    panel_descomprimir.add(menu_combo_descompr,c);
+        menu_algorismes[1] = new JComboBox();
+        c.gridx = 2;
+        c.gridy = 3;
+        c.gridwidth = 1;
+        menu_algorismes[1] = new JComboBox();
+        panel_comprimir.add(menu_algorismes[1],c);
+
+    
 
 
      JButton boton_descomprimir=new JButton("COMPRIMEIX");
@@ -215,32 +229,65 @@ public class interficie implements ActionListener{
     JLabel et_comparar = new JLabel("Estas a la pestanya de comprimir");
     panel_comparar.add(et_comparar);
     pestañas.addTab("Comparar", panel_comparar);
-    JTextField tf_comparar = new JTextField(20);
-    panel_comparar.add(tf_comparar);
+    //JTextField tf_comparar = new JTextField(20);
+    introdueix_path[2] = new JTextField(20);
+    panel_comparar.add(introdueix_path[2]);
+
+    ok_path[2] = new JButton("OK");
+    
+    panel_comparar.add(ok_path[2]);
+    ok_button_accio = new OKPATH("Comparar");
+    ok_path[2].addActionListener(ok_button_accio);
+    menu_algorismes[2] = new JComboBox();
+    c.gridx = 2;
+    c.gridy = 3;
+    c.gridwidth = 1;
+    menu_algorismes[2] = new JComboBox();
+    panel_comprimir.add(menu_algorismes[2],c);
 
     //estadistiques
     JPanel panel_estadistiques = new JPanel();
     JLabel et_est = new JLabel("Estas a la pestanya estadistiques");
     panel_estadistiques.add(et_est);
     pestañas.addTab("Estadistiques", panel_estadistiques);
-    JTextField tf_estad = new JTextField(20);
-    panel_estadistiques.add(tf_estad);
+   // JTextField tf_estad = new JTextField(20);
+  //introdueix_path[3] = new JTextField(20);
+    //panel_estadistiques.add(introdueix_path[3]);
 
     //comprimir carpeta
     JPanel panel_compr_carpeta = new JPanel();
     JLabel et_carpeta_compr = new JLabel("Estas a la pestanya comprimir carpeta");
     panel_compr_carpeta.add(et_carpeta_compr);
     pestañas.addTab("Comprimir carpeta", panel_compr_carpeta);
-    JTextField tf_carpeta_compr = new JTextField(20);
-    panel_compr_carpeta.add(tf_carpeta_compr);
+   // JTextField tf_carpeta_compr = new JTextField(20);
+   introdueix_path[3] = new JTextField(20);
+    panel_compr_carpeta.add(introdueix_path[3]);
+    ok_path[3] = new JButton("OK");
+    
+    panel_compr_carpeta.add(ok_path[3]);
+    ok_button_accio = new OKPATH("Comprimir_carpeta");
+    ok_path[3].addActionListener(ok_button_accio);
+    menu_algorismes[3] = new JComboBox();
+    c.gridx = 2;
+    c.gridy = 3;
+    c.gridwidth = 1;
+    menu_algorismes[3] = new JComboBox();
+    panel_comprimir.add(menu_algorismes[3],c);
 
     //descomprimir carpeta
     JPanel panel_descompr_carpeta = new JPanel();
     JLabel et_carpeta_descompr = new JLabel("Estas a la pestanya descomprimir carpeta");
     panel_descompr_carpeta.add(et_carpeta_descompr);
     pestañas.addTab("Descomprimir carpeta", panel_descompr_carpeta);
-    JTextField tf_carpeta_descompr = new JTextField(20);
-    panel_descompr_carpeta.add(tf_carpeta_descompr);
+   // JTextField tf_carpeta_descompr = new JTextField(20);
+   introdueix_path[4] = new JTextField(20);
+    panel_descompr_carpeta.add(introdueix_path[4]);
+
+    ok_path[4] = new JButton("OK");
+    
+    panel_descompr_carpeta.add(ok_path[4]);
+    ok_button_accio = new OKPATH("Descomprimir_carpeta");
+    ok_path[4].addActionListener(ok_button_accio);
 
 
     
@@ -255,12 +302,52 @@ public class interficie implements ActionListener{
 
     public void actionPerformed(ActionEvent e) {    
     System.out.println("Has apretat el boto OK");
-    System.out.println(tf_compr.getText());
+    System.out.println(introdueix_path[0].getText());
     
 
 
   
-}    
+}
+private class OKPATH implements ActionListener
+    {
+        public OKPATH(String funcionalitat)
+        {
+            this.funcionalitat = funcionalitat;
+        }
+
+        public void actionPerformed(ActionEvent event)
+        { 
+            switch (funcionalitat){
+                case("Comprimir"):
+                    System.out.println("Crida a tria algorisme(path) = "+ introdueix_path[0].getText());
+                    menu_algorismes[0].addItem("LZW");
+                    menu_algorismes[0].addItem("LZS");
+                break;
+                case("Descomprimir"):
+                System.out.println("Crida a tria algorisme(path) = "+ introdueix_path[1].getText());
+                menu_algorismes[1].addItem("LZW");
+                    menu_algorismes[1].addItem("LZS");
+                    menu_algorismes[1].addItem("LZ78");
+                    menu_algorismes[1].addItem("JPEG");
+                break;
+                case("Comparar"):
+                System.out.println("Crida a tria algorisme(path) = "+ introdueix_path[2].getText());
+                menu_algorismes[2].addItem("LZ78");
+                    menu_algorismes[2].addItem("JPEG");
+                break;
+                case("Comprimir_carpeta"):
+                System.out.println("Crida a tria algorisme(path) = "+ introdueix_path[3].getText());
+                menu_algorismes[0].addItem("JPEG");
+                    menu_algorismes[0].addItem("LZS");
+                break;
+                case("Descomprimir_carpeta"):
+                System.out.println("Crida a tria algorisme(path) = "+ introdueix_path[4].getText());
+                break;
+            }
+        }
+
+        private String funcionalitat;
+    }    
 
 }
 
