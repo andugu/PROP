@@ -1,3 +1,8 @@
+package main.presentacio;
+
+import main.domini.ControladorDomini;
+
+import javax.naming.ldap.Control;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*; 
@@ -310,6 +315,8 @@ public class interficie implements ActionListener{
 }
 private class OKPATH implements ActionListener
     {
+        private ControladorDomini cDom = new ControladorDomini();
+
         public OKPATH(String funcionalitat)
         {
             this.funcionalitat = funcionalitat;
@@ -320,8 +327,20 @@ private class OKPATH implements ActionListener
             switch (funcionalitat){
                 case("Comprimir"):
                     System.out.println("Crida a tria algorisme(path) = "+ introdueix_path[0].getText());
+                    /*
                     menu_algorismes[0].addItem("LZW");
                     menu_algorismes[0].addItem("LZS");
+                     */
+
+                    String[] nomsAlgorisme = new String[0];
+                    try {
+                        nomsAlgorisme = cDom.triaAlgorisme(introdueix_path[0].getText(), 1);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    for(int i = 0; i < nomsAlgorisme.length; ++i){
+                        menu_algorismes[0].addItem(nomsAlgorisme[i]);
+                    }
                 break;
                 case("Descomprimir"):
                 System.out.println("Crida a tria algorisme(path) = "+ introdueix_path[1].getText());
@@ -347,7 +366,7 @@ private class OKPATH implements ActionListener
         }
 
         private String funcionalitat;
-    }    
+    }
 
 }
 
