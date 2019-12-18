@@ -1,2 +1,2 @@
 ControladorPresentacio -> codi font del controlador de presentacio
-interficie -> codi font de la inteficie
+error.png -> Imatge de error usada pel controlador de presentacio
