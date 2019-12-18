@@ -26,7 +26,7 @@ public class ControladorPresentacio implements ActionListener{
     public void ControladorPresentacio_pestaña() {
         frame = new JFrame("Compresor");
     	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(512, 256);
+        frame.setSize(700, 300);
        
         
         //grid organitzar elements
@@ -39,17 +39,17 @@ public class ControladorPresentacio implements ActionListener{
         //Creamos el conjunto de pestañas
         JTabbedPane pestañas=new JTabbedPane();
         //Creamos el panel y lo añadimos a las pestañas
-        JPanel panel_usage=new JPanel(new GridBagLayout());
+        JPanel panel_usage=new JPanel();
 
         //Componentes del panel1
         JLabel et_p1=new JLabel("Manual d'usuari: ");
         JLabel et_p2=new JLabel("");
         JLabel et_p3=new JLabel("Amb la pestanya 2 - Comprimir, es comprimeix un arxiu introduit per l'usuari, amb l'algorisme especificat");
         JLabel et_p4=new JLabel("Amb la pestanya 3 - Descomprimir, es descomprimeix un arxiu introduit per l'usuari, amb l'algorisme amb el que es va comprimir");
-        JLabel et_p5=new JLabel("Amb la pestanya 4 - Comprimir Carpeta, es comprimeix una carpeta introduida per l'usuari, amb l'algorisme especificat");
-        JLabel et_p6=new JLabel("Amb la pestanya 5 - Descomprimir Carpeta, es descomprimeix una carpeta introduida per l'usuari, amb l'algorisme amb el que es va comprimir");
-        JLabel et_p7=new JLabel("Amb la pestanya 6 - Visualitzar Estadistiques, es mostren per pantalla les estadistiques globals del programa");
-        JLabel et_p8=new JLabel("Amb la pestanya 7 - Comparar, es comprimeix un arxiu introduit per l'usuari, amb l'algorisme especificat, i seguidament es descomprimeix, a continuació s'obren ambdos per poder veure'n les diferències");
+        JLabel et_p5=new JLabel("Amb la pestanya 4 - Comprimir Carpeta, es comprimeix una carpeta introduida per l'usuari,\n amb l'algorisme especificat");
+        JLabel et_p6=new JLabel("Amb la pestanya 5 - Descomprimir Carpeta, es descomprimeix una carpeta introduida per \nl'usuari, amb l'algorisme amb el que es va comprimir");
+        JLabel et_p7=new JLabel("Amb la pestanya 6 - Visualitzar Estadistiques, es mostren per pantalla les estadistiques\n globals del programa");
+        JLabel et_p8=new JLabel("Amb la pestanya 7 - Comparar, es comprimeix un arxiu introduit per l'usuari, amb l'algorisme\n especificat, i seguidament es descomprimeix, a continuació s'obren ambdos per poder veure'n les diferències");
         JLabel et_p9=new JLabel("Amb la pestanya 1 - Usage, es mostra aquest missatge per pantalla");
         JLabel et_p10=new JLabel("Amb el botó vermell - Sortir, es tanca el programa");
         JLabel et_p11=new JLabel("");
