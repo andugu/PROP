@@ -9,18 +9,30 @@ import java.awt.event.*;
 
 public class ControladorPresentacio implements ActionListener{
 
-    JFrame frame;  
+    JFrame frame;
+    JPanel[] panels;
     //textfields per introduir path
-    JTextField[] introdueix_path = new JTextField[5];//{C,D,COMPARAR,CC,DC}
-    JButton[] ok_path = new JButton[5];
-    JComboBox[] menu_algorismes = new JComboBox[4];//{C,D,COMPARAR,CC}
+    JTextField[] introdueix_path;//{C,D,COMPARAR,CC,DC}
+    JButton[] ok_path;
+    JComboBox[] menu_algorismes;//{C,D,COMPARAR,CC}
     
     OKPATH ok_button_accio;
+
+    JTabbedPane pestañas;
+
 
     public static void main(String[] args) {
 
         ControladorPresentacio i = new ControladorPresentacio();
         i.ControladorPresentacio_pestaña();
+    }
+
+    public  void ControladorPresentacio() {
+        pestañas = new JTabbedPane();
+        panels = new JPanel[7];
+        introdueix_path = new JTextField[5];
+        ok_path = new JButton[5];
+        menu_algorismes = new JComboBox[4];
     }
 
     public void ControladorPresentacio_pestaña() {
@@ -36,8 +48,6 @@ public class ControladorPresentacio implements ActionListener{
         c.fill = GridBagConstraints.HORIZONTAL;//que ocupin tot el que puguin
 
 
-        //Creamos el conjunto de pestañas
-        JTabbedPane pestañas=new JTabbedPane();
         //Creamos el panel y lo añadimos a las pestañas
         JPanel panel_usage=new JPanel();
 
