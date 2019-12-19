@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class ControladorPresentacio implements ActionListener {
 
@@ -26,7 +28,17 @@ public class ControladorPresentacio implements ActionListener {
         cDom = new ControladorDomini();
 
         frame =  new JFrame("Compresor");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
+        frame.addWindowListener(
+                new WindowAdapter(){
+                    public void windowClosing(WindowEvent e){
+                        cDom.saveAllEstadistiques();
+                        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    }
+                }
+        );
+
         frame.setSize(700, 300);
 
         pestanyes = new JTabbedPane();
