@@ -1,6 +1,7 @@
 package main.persistencia;
 
 import java.io.*;
+import java.awt.Desktop;
 
 public class ControladorPersistencia {
     private FitxerEstadistiquesGenerals FitxerEstGen;
@@ -58,6 +59,12 @@ public class ControladorPersistencia {
 
         File file = new File(path);
         return file.list();
+    }
+
+    public static void open(String path) throws IOException{
+
+        File file = new File(path);
+        Desktop.getDesktop().open(file);
     }
 
     public static boolean isCarpeta(String path){
