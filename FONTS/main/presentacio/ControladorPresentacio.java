@@ -125,19 +125,6 @@ public class ControladorPresentacio implements ActionListener {
     private void pestanyaComprimir() { //crea la pestanya de comprimir
         JPanel panel_comprimir = new JPanel();
 
-        GridLayout gran = new GridLayout(3,1);
-        GridLayout fila1 = new GridLayout(1,4);
-        GridLayout fila2 = new GridLayout(1,3);
-        GridLayout fila3 = new GridLayout(1,2);
-
-        JPanel panel_fila1 = new JPanel();
-        JPanel panel_fila2 = new JPanel();
-        JPanel panel_fila3 = new JPanel();
-
-        panel_comprimir.setLayout(gran);
-        panel_fila1.setLayout(fila1);
-        panel_fila2.setLayout(fila2);
-        panel_fila3.setLayout(fila3);
 
 
         JLabel label_introdueix_path = new JLabel("Introdueix el path:");
@@ -151,21 +138,19 @@ public class ControladorPresentacio implements ActionListener {
         boto_clear[0] = new JButton("Clear");
 
 
-        panel_fila1.add(label_introdueix_path);
-        panel_fila1.add(introdueix_path[0]);
-        panel_fila1.add(boto_buscador_path[0]);
-        panel_fila1.add(ok_path[0]);
-        panel_fila2.add(label_selecciona_algorisme);
-        panel_fila2.add(menu_algorismes[0]);
-        panel_fila2.add(comprimeix_o_descomprimeix[0]);
-        panel_fila3.add(label_estadistiques[0]);
-        panel_fila3.add(boto_clear[0]);
+        panel_comprimir.add(label_introdueix_path);
+        panel_comprimir.add(introdueix_path[0]);
+        panel_comprimir.add(boto_buscador_path[0]);
+        panel_comprimir.add(ok_path[0]);
+        panel_comprimir.add(label_selecciona_algorisme);
+        panel_comprimir.add(menu_algorismes[0]);
+        panel_comprimir.add(comprimeix_o_descomprimeix[0]);
+        panel_comprimir.add(label_estadistiques[0]);
+        panel_comprimir.add(boto_clear[0]);
 
-        /*
-        panel_comprimir.add(panel_fila1);
-        panel_comprimir.add(panel_fila2);
-        panel_comprimir.add(panel_fila3);
-         */
+        
+        
+         
 
         pestanyes.addTab("Comprimir", panel_comprimir);
 
