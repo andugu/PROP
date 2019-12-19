@@ -8,15 +8,15 @@ import java.awt.event.ActionListener;
 
 public class ControladorPresentacio2 implements ActionListener {
 
-    ControladorDomini cDom;
-    JFrame frame;
-    JTabbedPane pestanyes;
-    JLabel label_selecciona_algorisme; //{C,D,COMPARAR,CC,DC}
-    JLabel[] label_estadistiques; //{C,D,COMPARAR}
-    JTextField[] introdueix_path; //{C,D,COMPARAR,CC,DC}
-    JButton[] ok_path;
-    JButton[] comprimeix_o_descomprimeix; //{C,D,COMPARAR,CC,DC}
-    JComboBox[] menu_algorismes;  //{C,D,COMPARAR,CC}
+    private ControladorDomini cDom;
+    private JFrame frame;
+    private JTabbedPane pestanyes;
+    private JLabel label_selecciona_algorisme; //{C,D,COMPARAR,CC,DC}
+    private JLabel[] label_estadistiques; //{C,D,COMPARAR}
+    private JTextField[] introdueix_path; //{C,D,COMPARAR,CC,DC}
+    private JButton[] ok_path; //{C,COMPARAR,CC}
+    private JButton[] comprimeix_o_descomprimeix; //{C,D,COMPARAR,CC,DC}
+    private JComboBox[] menu_algorismes;  //{C,COMPARAR,CC}
 
 
     public ControladorPresentacio2() { //Inicialitza tots els atributs
@@ -32,15 +32,18 @@ public class ControladorPresentacio2 implements ActionListener {
         label_selecciona_algorisme = new JLabel("Selecciona l'algorisme: ");
         label_estadistiques = new JLabel[3];
         introdueix_path = new JTextField[5];
-        ok_path = new JButton[4];
+        ok_path = new JButton[3];
         comprimeix_o_descomprimeix = new JButton[5];
         menu_algorismes = new JComboBox[3];
     }
 
     public void frameVisible() { //Crida a les totes les pestanyes i fa visible el frame
         pestanyaUsage();
-        comprimir();
-        descomprimir();
+        pestanyaComprimir();
+        pestanyaDescomprimir();
+        pestanyaComprimirCarpeta();
+        pestanyaDescomprimirCarpeta();
+        pestanyaComparar();
 
         frame.getContentPane().add(pestanyes);
         frame.setVisible(true);
@@ -70,7 +73,7 @@ public class ControladorPresentacio2 implements ActionListener {
         "Temps: " + estgen[2] + " mil·lisegons</html>";
     }
 
-    public void comprimir() { //crea la pestanya de comprimir
+    public void pestanyaComprimir() { //crea la pestanya de comprimir
         JPanel panel_comprimir = new JPanel();
 
         JLabel label_introdueix_path = new JLabel("Introdueix el path:");
@@ -96,7 +99,7 @@ public class ControladorPresentacio2 implements ActionListener {
         panel_comprimir.add(label_estadistiques[0]);
     }
 
-    public void descomprimir() { //crea la pestanya de descomprimir
+    public void pestanyaDescomprimir() { //crea la pestanya de descomprimir
         JPanel panel_descomprimir = new JPanel();
 
         JLabel label_introdueix_path = new JLabel("Introdueix el path:");
@@ -117,6 +120,73 @@ public class ControladorPresentacio2 implements ActionListener {
         panel_descomprimir.add(label_estadistiques[1]);
     }
 
+    public void pestanyaComprimirCarpeta() { //crea la pestanya de comprimir carpeta
+        JPanel panel_comprimir_carpeta = new JPanel();
+
+        JLabel label_introdueix_path = new JLabel("Introdueix el path:");
+        introdueix_path[3] = new JTextField(20);
+        ok_path[2] = new JButton("OK");
+        menu_algorismes[2] = new JComboBox();
+        comprimeix_o_descomprimeix[3] = new JButton("Comprimeix carpeta");
+
+
+        panel_comprimir_carpeta.add(label_introdueix_path);
+        panel_comprimir_carpeta.add(introdueix_path[3]);
+        panel_comprimir_carpeta.add(ok_path[2]);
+        panel_comprimir_carpeta.add(menu_algorismes[2]);
+        panel_comprimir_carpeta.add(comprimeix_o_descomprimeix[3]);
+
+
+        pestanyes.addTab("Comprimir Carpeta", panel_comprimir_carpeta);
+
+        ok_path[2].addActionListener(this);
+        comprimeix_o_descomprimeix[3].addActionListener(this);
+    }
+
+    public void pestanyaDescomprimirCarpeta() {
+        JPanel panel_descomprimir_carpeta = new JPanel();
+
+        JLabel label_introdueix_path = new JLabel("Introdueix el path:");
+        introdueix_path[4] = new JTextField(20);
+        comprimeix_o_descomprimeix[4] = new JButton("Descomprimeix carpeta");
+
+
+        panel_descomprimir_carpeta.add(label_introdueix_path);
+        panel_descomprimir_carpeta.add(introdueix_path[4]);
+        panel_descomprimir_carpeta.add(comprimeix_o_descomprimeix[4]);
+
+
+        pestanyes.addTab("Descomprimir carpeta", panel_descomprimir_carpeta);
+
+        comprimeix_o_descomprimeix[4].addActionListener(this);
+    }
+
+    public void pestanyaComparar() {
+        JPanel panel_comparar = new JPanel();
+
+        JLabel label_introdueix_path = new JLabel("Introdueix el path:");
+        introdueix_path[2] = new JTextField(20);
+        ok_path[1] = new JButton("OK");
+        menu_algorismes[1] = new JComboBox();
+        comprimeix_o_descomprimeix[2] = new JButton("Comprimeix i compara");
+        label_estadistiques[2] = new JLabel("");
+
+
+        panel_comparar.add(label_introdueix_path);
+        panel_comparar.add(introdueix_path[2]);
+        panel_comparar.add(ok_path[1]);
+        panel_comparar.add(menu_algorismes[1]);
+        panel_comparar.add(comprimeix_o_descomprimeix[2]);
+
+
+        pestanyes.addTab("Comparar", panel_comparar);
+
+        ok_path[1].addActionListener(this);
+        comprimeix_o_descomprimeix[2].addActionListener(this);
+
+        panel_comparar.add(label_estadistiques[2]);
+    }
+
     public void actionPerformed(ActionEvent event) {
         try {
             if (event.getSource() == ok_path[0]) { //Click botó OK pestanya comprimir
@@ -132,10 +202,31 @@ public class ControladorPresentacio2 implements ActionListener {
                 label_estadistiques[0].setText(contrueix_text_estadistiques(estgen));
             }
 
-            else if (event.getSource() == comprimeix_o_descomprimeix[1]) { //Click botó DESCOMPRIMEIX pestanya comprimir
-                Object[] estgen = cDom.descomprimir(introdueix_path[1].getText(), (String) menu_algorismes[1].getSelectedItem());
+            else if (event.getSource() == comprimeix_o_descomprimeix[1]) { //Click botó DESCOMPRIMEIX pestanya descomprimir
+                String[] nomAlgorisme = cDom.triaAlgorisme(introdueix_path[1].getText(), 2);
+                Object[] estgen = cDom.descomprimir(introdueix_path[1].getText(), nomAlgorisme[0]);
 
                 label_estadistiques[1].setText(contrueix_text_estadistiques(estgen));
+            }
+            else if(event.getSource() == ok_path[2]) { //Click botó OK pestanya comprimir carpeta
+                String[] nomsAlgorismes = cDom.triaAlgorisme(introdueix_path[3].getText(), 1);
+
+                for(int i = 0; i < nomsAlgorismes.length; ++i){
+                    menu_algorismes[2].addItem(nomsAlgorismes[i]);
+                }
+            }
+            else if(event.getSource() == comprimeix_o_descomprimeix[3]) { //Click botó COMPRIMEIX CARPETA pestanya comprimir carpeta
+                cDom.comprimirCarpeta(introdueix_path[3].getText(), (String) menu_algorismes[2].getSelectedItem());
+            }
+            else if(event.getSource() == comprimeix_o_descomprimeix[4]){ //Click botó DESCOMPRIMEIX CARPETA pestanya descomprimir carpeta
+                cDom.descomprimirCarpeta(introdueix_path[4].getText());
+            }
+            else if(event.getSource() == ok_path[1]) { //Click botó OK pestanya comparar
+                String[] nomsAlgorismes = cDom.triaAlgorisme(introdueix_path[2].getText(), 1);
+
+                for(int i = 0; i < nomsAlgorismes.length; ++i){
+                    menu_algorismes[1].addItem(nomsAlgorismes[i]);
+                }
             }
         }
         catch (Exception e){
