@@ -265,17 +265,18 @@ public class ControladorPresentacio implements ActionListener {
                     }
                 }
 
+                path_comprimit = path_nou + "/" + path_comprimit;
+
                 Object[] estgen_descomprimir = cDom.descomprimir(path_comprimit, (String) menu_algorismes[1].getSelectedItem());
 
 
                 Object[] estgen = new Object[3];
 
-                estgen[0] = ((double) estgen_comprimir[0] + (double) estgen_descomprimir[0]) / 2;
-                estgen[1] = ((double) estgen_comprimir[1] + (double) estgen_descomprimir[1]) / 2;;
-                estgen[2] = ((double) estgen_comprimir[2] + (double) estgen_descomprimir[2]) / 2;;
+                estgen[0] = ((double) estgen_comprimir[0] + (double) estgen_descomprimir[0]) / 2.0;
+                estgen[1] = ((double) estgen_comprimir[1] + (double) estgen_descomprimir[1]) / 2.0;;
+                estgen[2] = ((long) estgen_comprimir[2] + (long) estgen_descomprimir[2]) / 2;;
 
-                label_estadistiques[1].setText(contrueix_text_estadistiques(estgen));
-
+                label_estadistiques[2].setText(contrueix_text_estadistiques(estgen));
             }
         }
         catch (Exception e){
