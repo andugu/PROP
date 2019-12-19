@@ -183,9 +183,10 @@ public class ControladorDomini {
         int index = path.lastIndexOf("/");
         String path_nou;
         
+        int mida = nom_carpeta.getBytes().length;
+
         // En el cas de que el path sigui relatiu
         if (index == -1){
-
             if (CPer.existeix_path(nom_carpeta)){
                 String pre = nom_carpeta.substring(0, nom_carpeta.length());
                 int num = 2;
@@ -196,7 +197,7 @@ public class ControladorDomini {
             }
 
             ControladorPersistencia.MakeDir(nom_carpeta);
-            descomprimirCarpeta_rec(nom_carpeta, algorisme, input, nom_carpeta.getBytes().length + algorisme.length() + 2);
+            descomprimirCarpeta_rec(nom_carpeta, algorisme, input, mida + algorisme.length() + 2);
         }
 
         else {
@@ -212,7 +213,7 @@ public class ControladorDomini {
             }
         
             ControladorPersistencia.MakeDir(path_nou);
-            descomprimirCarpeta_rec(path_nou, algorisme, input, nom_carpeta.getBytes().length + algorisme.length() + 2);
+            descomprimirCarpeta_rec(path_nou, algorisme, input, mida + algorisme.length() + 2);
         }
     }
 
