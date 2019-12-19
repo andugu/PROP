@@ -233,7 +233,7 @@ public class ControladorPresentacio implements ActionListener {
             // Creem una nova finestra per mostrar l'error
             JFrame frame = new JFrame("Error");
             //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(400, 150);
+            frame.setSize(400, 120);
 
             JPanel panel_error = new JPanel();
 
