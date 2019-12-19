@@ -1,2 +1,3 @@
 ControladorPresentacio -> codi font del controlador de presentacio
 error.png -> Imatge de error usada pel controlador de presentacio
+ControladorPresentacioTerminal -> Controlador de presentacio antic pel terminal
