@@ -185,13 +185,34 @@ public class ControladorDomini {
         
         // En el cas de que el path sigui relatiu
         if (index == -1){
+
+            if (CPer.existeix_path(nom_carpeta)){
+                String pre = nom_carpeta.substring(0, nom_carpeta.length());
+                int num = 2;
+                while (CPer.existeix_path(nom_carpeta)) {
+                    nom_carpeta = pre + Integer.toString(num);
+                    ++num;
+                }
+            }
+
             ControladorPersistencia.MakeDir(nom_carpeta);
             descomprimirCarpeta_rec(nom_carpeta, algorisme, input, nom_carpeta.getBytes().length + algorisme.length() + 2);
         }
+
         else {
             path_nou = path.substring(0, index);
-            ControladorPersistencia.MakeDir(path_nou + "/" + nom_carpeta);
-            descomprimirCarpeta_rec(path_nou + "/" + nom_carpeta, algorisme, input, nom_carpeta.getBytes().length + algorisme.length() + 2);
+            path_nou += "/" + nom_carpeta;
+            if (CPer.existeix_path(path_nou)){
+                String pre = path_nou.substring(0, path_nou.length());
+                int num = 2;
+                while (CPer.existeix_path(path_nou)) {
+                    path_nou = pre + Integer.toString(num);
+                    ++num;
+                }
+            }
+        
+            ControladorPersistencia.MakeDir(path_nou);
+            descomprimirCarpeta_rec(path_nou, algorisme, input, nom_carpeta.getBytes().length + algorisme.length() + 2);
         }
     }
 
@@ -333,6 +354,10 @@ public class ControladorDomini {
             else {
                 throw new Exception("Path incorrecte");
             }
+    }
+
+    public static String[] getNames(String path) {
+        return CPer.getNames(path);
     }
 
     public static void saveAllEstadistiques() {
