@@ -126,7 +126,6 @@ public class ControladorPresentacio implements ActionListener {
         JPanel panel_comprimir = new JPanel();
 
 
-
         JLabel label_introdueix_path = new JLabel("Introdueix el path:");
         introdueix_path[0] = new JTextField(20);
         boto_buscador_path[0] = new JButton(UIManager.getIcon("FileView.directoryIcon"));
@@ -147,10 +146,6 @@ public class ControladorPresentacio implements ActionListener {
         panel_comprimir.add(comprimeix_o_descomprimeix[0]);
         panel_comprimir.add(label_estadistiques[0]);
         panel_comprimir.add(boto_clear[0]);
-
-        
-        
-         
 
         pestanyes.addTab("Comprimir", panel_comprimir);
 
