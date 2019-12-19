@@ -3,7 +3,6 @@ package main.presentacio;
 import main.domini.ControladorDomini;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
