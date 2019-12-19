@@ -448,6 +448,20 @@ public class ControladorPresentacio implements ActionListener {
     private void pestanyaVisualitzarEstadistiques() {
         JPanel panel_visualitzarEstadistiques = new JPanel();
 
+        GridLayout gran = new GridLayout(3,1);
+        GridLayout fila1 = new GridLayout(1,2);
+        GridLayout fila2 = new GridLayout(1,3);
+        GridLayout fila3 = new GridLayout(1,2);
+
+        JPanel panel_fila1 = new JPanel();
+        JPanel panel_fila2 = new JPanel();
+        JPanel panel_fila3 = new JPanel();
+
+        panel_visualitzarEstadistiques.setLayout(gran);
+        panel_fila1.setLayout(fila1);
+        panel_fila2.setLayout(fila2);
+        panel_fila3.setLayout(fila3);
+
         introdueix_estgen[0] = new JLabel("Escull algorisme: ");
         introdueix_estgen[1] = new JLabel("Escull tipus: ");
         menu_algorismes[3] = new JComboBox();
@@ -472,6 +486,44 @@ public class ControladorPresentacio implements ActionListener {
         panel_visualitzarEstadistiques.add(ok_path[3]);
         panel_visualitzarEstadistiques.add(boto_clear[5]);
 
+        //Creació panel fila1:
+        JPanel panel_fila1_columna1 = new JPanel();
+        JPanel panel_fila1_columna2 = new JPanel();
+
+        panel_fila1_columna1.add(introdueix_estgen[0]);
+        panel_fila1_columna2.add(menu_algorismes[3]);
+
+        panel_fila1.add(panel_fila1_columna1);
+        panel_fila1.add(panel_fila1_columna2);
+
+
+        //Creació panel fila2:
+        JPanel panel_fila2_columna1 = new JPanel();
+        JPanel panel_fila2_columna2 = new JPanel();
+        JPanel panel_fila2_columna3 = new JPanel();
+
+        panel_fila2_columna1.add(introdueix_estgen[1]);
+        panel_fila2_columna2.add(menu_tipus);
+        panel_fila2_columna3.add(ok_path[3]);
+
+        panel_fila2.add(panel_fila2_columna1);
+        panel_fila2.add(panel_fila2_columna2);
+        panel_fila2.add(panel_fila2_columna3);
+
+        //Creació panel fila2:
+        JPanel panel_fila3_columna1 = new JPanel();
+        JPanel panel_fila3_columna2 = new JPanel();
+
+        panel_fila3_columna1.add(label_estadistiques[3]);
+        panel_fila3_columna2.add(boto_clear[5]);
+
+        panel_fila3.add(panel_fila3_columna1);
+        panel_fila3.add(panel_fila3_columna2);
+
+        //Afegim panels_filaX a panel_comprimir
+        panel_visualitzarEstadistiques.add(panel_fila1);
+        panel_visualitzarEstadistiques.add(panel_fila2);
+        panel_visualitzarEstadistiques.add(panel_fila3);
 
         pestanyes.addTab("Visualitzar Estadistiques", panel_visualitzarEstadistiques);
 
