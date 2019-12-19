@@ -261,7 +261,7 @@ public class ControladorPresentacio implements ActionListener {
                 for(int i = 0; i < arxius_directori.length && !trobat; ++i){
                     if(!arxius_directori[i].equals(arxius_directori2[i])) {
                         path_comprimit = arxius_directori2[i];
-                        trobat = true; 
+                        trobat = true;
                     }
                 }
 
