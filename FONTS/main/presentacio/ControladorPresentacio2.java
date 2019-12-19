@@ -237,8 +237,8 @@ public class ControladorPresentacio2 implements ActionListener {
 
             JPanel panel_error = new JPanel();
 
-            //JLabel error = new JLabel(e.getMessage(), new ImageIcon("main/presentacio/error.png"), SwingConstants.CENTER);
-            JLabel error = new JLabel(e.getMessage());
+            JLabel error = new JLabel(e.getMessage(), new ImageIcon("error.png"), SwingConstants.CENTER);
+            //JLabel error = new JLabel(e.getMessage());
 
             panel_error.add(error);
 

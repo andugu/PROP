@@ -4,7 +4,7 @@ import java.io.*;
 
 public class FitxerEstadistiquesGenerals {
     //atributs
-    private final static String path = "./FitxerEstadistiquesGenerals.txt";
+    private final static String path = "FitxerEstadistiquesGenerals.txt";
 
     public FitxerEstadistiquesGenerals() {}
 
