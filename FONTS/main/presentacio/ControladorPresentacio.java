@@ -122,12 +122,26 @@ public class ControladorPresentacio implements ActionListener {
         }
     }
 
+
     private void pestanyaComprimir() { //crea la pestanya de comprimir
         JPanel panel_comprimir = new JPanel();
 
+        GridLayout gran = new GridLayout(3,1);
+        GridLayout fila1 = new GridLayout(1,4);
+        GridLayout fila2 = new GridLayout(1,3);
+        GridLayout fila3 = new GridLayout(1,2);
+
+        JPanel panel_fila1 = new JPanel();
+        JPanel panel_fila2 = new JPanel();
+        JPanel panel_fila3 = new JPanel();
+
+        panel_comprimir.setLayout(gran);
+        panel_fila1.setLayout(fila1);
+        panel_fila2.setLayout(fila2);
+        panel_fila3.setLayout(fila3);
 
         JLabel label_introdueix_path = new JLabel("Introdueix el path:");
-        introdueix_path[0] = new JTextField(20);
+        introdueix_path[0] = new JTextField(30);
         boto_buscador_path[0] = new JButton(UIManager.getIcon("FileView.directoryIcon"));
         ok_path[0] = new JButton("OK");
         JLabel label_selecciona_algorisme = new JLabel("Selecciona algorisme:");
@@ -146,6 +160,51 @@ public class ControladorPresentacio implements ActionListener {
         panel_comprimir.add(comprimeix_o_descomprimeix[0]);
         panel_comprimir.add(label_estadistiques[0]);
         panel_comprimir.add(boto_clear[0]);
+
+
+        //Creació panel fila1:
+        JPanel panel_fila1_columna1 = new JPanel();
+        JPanel panel_fila1_columna2 = new JPanel();
+        JPanel panel_fila1_columna3 = new JPanel();
+        JPanel panel_fila1_columna4 = new JPanel();
+
+        panel_fila1_columna1.add(label_introdueix_path);
+        panel_fila1_columna2.add(introdueix_path[0]);
+        panel_fila1_columna3.add(boto_buscador_path[0]);
+        panel_fila1_columna4.add(ok_path[0]);
+
+        panel_fila1.add(panel_fila1_columna1);
+        panel_fila1.add(panel_fila1_columna2);
+        panel_fila1.add(panel_fila1_columna3);
+        panel_fila1.add(panel_fila1_columna4);
+
+        //Creació panel fila2:
+        JPanel panel_fila2_columna1 = new JPanel();
+        JPanel panel_fila2_columna2 = new JPanel();
+        JPanel panel_fila2_columna3 = new JPanel();
+
+        panel_fila2_columna1.add(label_selecciona_algorisme);
+        panel_fila2_columna2.add(menu_algorismes[0]);
+        panel_fila2_columna3.add(comprimeix_o_descomprimeix[0]);
+
+        panel_fila2.add(panel_fila2_columna1);
+        panel_fila2.add(panel_fila2_columna2);
+        panel_fila2.add(panel_fila2_columna3);
+
+        //Creació panel fila2:
+        JPanel panel_fila3_columna1 = new JPanel();
+        JPanel panel_fila3_columna2 = new JPanel();
+
+        panel_fila3_columna1.add(label_estadistiques[0]);
+        panel_fila3_columna2.add(boto_clear[0]);
+
+        panel_fila3.add(panel_fila3_columna1);
+        panel_fila3.add(panel_fila3_columna2);
+
+        //Afegim panels_filaX a panel_comprimir
+        panel_comprimir.add(panel_fila1);
+        panel_comprimir.add(panel_fila2);
+        panel_comprimir.add(panel_fila3);
 
         pestanyes.addTab("Comprimir", panel_comprimir);
 
@@ -185,6 +244,20 @@ public class ControladorPresentacio implements ActionListener {
     private void pestanyaComprimirCarpeta() { //crea la pestanya de comprimir carpeta
         JPanel panel_comprimir_carpeta = new JPanel();
 
+        GridLayout gran = new GridLayout(3,1);
+        GridLayout fila1 = new GridLayout(1,4);
+        GridLayout fila2 = new GridLayout(1,3);
+        GridLayout fila3 = new GridLayout(1,2);
+
+        JPanel panel_fila1 = new JPanel();
+        JPanel panel_fila2 = new JPanel();
+        JPanel panel_fila3 = new JPanel();
+
+        panel_comprimir_carpeta.setLayout(gran);
+        panel_fila1.setLayout(fila1);
+        panel_fila2.setLayout(fila2);
+        panel_fila3.setLayout(fila3);
+
         JLabel label_introdueix_path = new JLabel("Introdueix el path:");
         introdueix_path[3] = new JTextField(20);
         boto_buscador_path[3] = new JButton(UIManager.getIcon("FileView.directoryIcon"));
@@ -204,6 +277,46 @@ public class ControladorPresentacio implements ActionListener {
         panel_comprimir_carpeta.add(comprimeix_o_descomprimeix[3]);
         panel_comprimir_carpeta.add(boto_clear[2]);
 
+        //Creació panel fila1:
+        JPanel panel_fila1_columna1 = new JPanel();
+        JPanel panel_fila1_columna2 = new JPanel();
+        JPanel panel_fila1_columna3 = new JPanel();
+        JPanel panel_fila1_columna4 = new JPanel();
+
+        panel_fila1_columna1.add(label_introdueix_path);
+        panel_fila1_columna2.add(introdueix_path[3]);
+        panel_fila1_columna3.add(boto_buscador_path[3]);
+        panel_fila1_columna4.add(ok_path[2]);
+
+        panel_fila1.add(panel_fila1_columna1);
+        panel_fila1.add(panel_fila1_columna2);
+        panel_fila1.add(panel_fila1_columna3);
+        panel_fila1.add(panel_fila1_columna4);
+
+        //Creació panel fila2:
+        JPanel panel_fila2_columna1 = new JPanel();
+        JPanel panel_fila2_columna2 = new JPanel();
+        JPanel panel_fila2_columna3 = new JPanel();
+
+        panel_fila2_columna1.add(label_selecciona_algorisme);
+        panel_fila2_columna2.add(menu_algorismes[2]);
+        panel_fila2_columna3.add(comprimeix_o_descomprimeix[3]);
+
+        panel_fila2.add(panel_fila2_columna1);
+        panel_fila2.add(panel_fila2_columna2);
+        panel_fila2.add(panel_fila2_columna3);
+
+        //Creació panel fila2:
+        JPanel panel_fila3_columna1 = new JPanel();
+
+        panel_fila3_columna1.add(boto_clear[2]);
+
+        panel_fila3.add(panel_fila3_columna1);
+
+        //Afegim panels_filaX a panel_comprimir
+        panel_comprimir_carpeta.add(panel_fila1);
+        panel_comprimir_carpeta.add(panel_fila2);
+        panel_comprimir_carpeta.add(panel_fila3);
 
         pestanyes.addTab("Comprimir Carpeta", panel_comprimir_carpeta);
 
