@@ -356,6 +356,20 @@ public class ControladorPresentacio implements ActionListener {
     private void pestanyaComparar() {
         JPanel panel_comparar = new JPanel();
 
+        GridLayout gran = new GridLayout(3,1);
+        GridLayout fila1 = new GridLayout(1,4);
+        GridLayout fila2 = new GridLayout(1,3);
+        GridLayout fila3 = new GridLayout(1,2);
+
+        JPanel panel_fila1 = new JPanel();
+        JPanel panel_fila2 = new JPanel();
+        JPanel panel_fila3 = new JPanel();
+
+        panel_comparar.setLayout(gran);
+        panel_fila1.setLayout(fila1);
+        panel_fila2.setLayout(fila2);
+        panel_fila3.setLayout(fila3);
+
         JLabel label_introdueix_path = new JLabel("Introdueix el path:");
         introdueix_path[2] = new JTextField(20);
         boto_buscador_path[2] = new JButton(UIManager.getIcon("FileView.directoryIcon"));
@@ -376,6 +390,49 @@ public class ControladorPresentacio implements ActionListener {
         panel_comparar.add(comprimeix_o_descomprimeix[2]);
         panel_comparar.add(boto_clear[4]);
 
+        //Creació panel fila1:
+        JPanel panel_fila1_columna1 = new JPanel();
+        JPanel panel_fila1_columna2 = new JPanel();
+        JPanel panel_fila1_columna3 = new JPanel();
+        JPanel panel_fila1_columna4 = new JPanel();
+
+        panel_fila1_columna1.add(label_introdueix_path);
+        panel_fila1_columna2.add(introdueix_path[2]);
+        panel_fila1_columna3.add(boto_buscador_path[2]);
+        panel_fila1_columna4.add(ok_path[1]);
+
+        panel_fila1.add(panel_fila1_columna1);
+        panel_fila1.add(panel_fila1_columna2);
+        panel_fila1.add(panel_fila1_columna3);
+        panel_fila1.add(panel_fila1_columna4);
+
+        //Creació panel fila2:
+        JPanel panel_fila2_columna1 = new JPanel();
+        JPanel panel_fila2_columna2 = new JPanel();
+        JPanel panel_fila2_columna3 = new JPanel();
+
+        panel_fila2_columna1.add(label_selecciona_algorisme);
+        panel_fila2_columna2.add(menu_algorismes[1]);
+        panel_fila2_columna3.add(comprimeix_o_descomprimeix[2]);
+
+        panel_fila2.add(panel_fila2_columna1);
+        panel_fila2.add(panel_fila2_columna2);
+        panel_fila2.add(panel_fila2_columna3);
+
+        //Creació panel fila3:
+        JPanel panel_fila3_columna1 = new JPanel();
+        JPanel panel_fila3_columna2 = new JPanel();
+
+        panel_fila3_columna1.add(label_estadistiques[2]);
+        panel_fila3_columna2.add(boto_clear[4]);
+
+        panel_fila3.add(panel_fila3_columna1);
+        panel_fila3.add(panel_fila3_columna2);
+
+        //Afegim panels_filaX a panel_comprimir
+        panel_comparar.add(panel_fila1);
+        panel_comparar.add(panel_fila2);
+        panel_comparar.add(panel_fila3);
 
         pestanyes.addTab("Comparar", panel_comparar);
 
