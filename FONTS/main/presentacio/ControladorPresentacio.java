@@ -219,6 +219,22 @@ public class ControladorPresentacio implements ActionListener {
         panel_comparar.add(label_estadistiques[2]);
     }
 
+    public void successPanel(){
+            // Creem una nova finestra per mostrar l'error
+            JFrame frame = new JFrame("Success");
+            //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setSize(400, 120);
+
+            JPanel panel_success = new JPanel();
+
+            JLabel success = new JLabel("Funcionalitat executada amb exit", new ImageIcon("success.png"), SwingConstants.CENTER);
+
+            panel_success.add(success);
+
+            frame.add(panel_success);
+            frame.setVisible(true);
+    }
+
     public void actionPerformed(ActionEvent event) {
         try {
             if(event.getSource() == boto_buscador_path[0]){ //Click botó BUSCADOR_PATH pestanya comprimir
@@ -235,6 +251,7 @@ public class ControladorPresentacio implements ActionListener {
                 Object[] estgen = cDom.comprimir(introdueix_path[0].getText(), (String) menu_algorismes[0].getSelectedItem());
 
                 label_estadistiques[0].setText(contrueix_text_estadistiques(estgen));
+                successPanel();
             }
             else if(event.getSource() == boto_buscador_path[1]){ //Click botó BUSCADOR_PATH pestanya descomprimir
                 accio_boto_buscador(1);
