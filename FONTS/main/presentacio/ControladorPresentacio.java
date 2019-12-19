@@ -87,6 +87,17 @@ public class ControladorPresentacio implements ActionListener {
         }
     }
 
+    private void accio_boto_buscador_carpeta(int i) {
+        JFileChooser j = new JFileChooser(".");
+        j.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int r = j.showOpenDialog(null);
+
+        // si ha triat
+        if (r == JFileChooser.APPROVE_OPTION) {
+            introdueix_path[i].setText(j.getSelectedFile().getAbsolutePath());
+        }
+    }
+
     public void pestanyaComprimir() { //crea la pestanya de comprimir
         JPanel panel_comprimir = new JPanel();
 
@@ -263,7 +274,7 @@ public class ControladorPresentacio implements ActionListener {
                 label_estadistiques[1].setText(contrueix_text_estadistiques(estgen));
             }
             else if(event.getSource() == boto_buscador_path[3]){ //Click botó BUSCADOR_PATH pestanya comprimir carpeta
-                accio_boto_buscador(3);
+                accio_boto_buscador_carpeta(3);
             }
             else if(event.getSource() == ok_path[2]) { //Click botó OK pestanya comprimir carpeta
                 String[] nomsAlgorismes = cDom.triaAlgorisme(introdueix_path[3].getText(), 1);
@@ -309,14 +320,6 @@ public class ControladorPresentacio implements ActionListener {
                 Object[] estgen_comprimir = cDom.comprimir(introdueix_path[2].getText(), (String) menu_algorismes[1].getSelectedItem());
 
 
-                path = introdueix_path[2].getText();
-
-                index = path.lastIndexOf("/");
-
-                if(index == -1)
-                    path_nou = "";
-                else path_nou = path.substring(0,index);
-
                 String[] arxius_directori2 = cDom.getNames(path_nou);
 
                 boolean trobat = false;
@@ -332,6 +335,22 @@ public class ControladorPresentacio implements ActionListener {
 
                 Object[] estgen_descomprimir = cDom.descomprimir(path_comprimit, (String) menu_algorismes[1].getSelectedItem());
 
+                String[] arxius_directori3 = cDom.getNames(path_nou);
+
+                trobat = false;
+                path_comprimit = "";
+                for(int i = 0; i < arxius_directori2.length && !trobat; ++i){
+                    if(!arxius_directori2[i].equals(arxius_directori3[i])) {
+                        path_comprimit = arxius_directori3[i];
+                        trobat = true;
+                    }
+                }
+
+                if(path_comprimit.equals("")) path_comprimit = arxius_directori3[arxius_directori3.length - 1];
+
+                path_comprimit = path_nou + "/" + path_comprimit;
+
+                System.out.println(path_comprimit);
 
                 Object[] estgen = new Object[3];
 
@@ -340,6 +359,9 @@ public class ControladorPresentacio implements ActionListener {
                 estgen[2] = ((long) estgen_comprimir[2] + (long) estgen_descomprimir[2]) / 2;;
 
                 label_estadistiques[2].setText(contrueix_text_estadistiques(estgen));
+
+                cDom.open(introdueix_path[2].getText());
+                cDom.open(path_comprimit);
             }
         }
         catch (Exception e){
