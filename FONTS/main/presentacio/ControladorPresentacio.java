@@ -33,6 +33,7 @@ public class ControladorPresentacio implements ActionListener {
 
         frame =  new JFrame("Compresor");
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.setResizable(false);
 
         frame.addWindowListener(
                 new WindowAdapter(){
@@ -43,7 +44,7 @@ public class ControladorPresentacio implements ActionListener {
                 }
         );
 
-        frame.setSize(700, 300);
+        frame.setSize(1000, 400);
 
         pestanyes = new JTabbedPane();
 
