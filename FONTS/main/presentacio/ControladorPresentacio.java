@@ -121,6 +121,7 @@ public class ControladorPresentacio implements ActionListener {
         introdueix_path[0] = new JTextField(20);
         boto_buscador_path[0] = new JButton(UIManager.getIcon("FileView.directoryIcon"));
         ok_path[0] = new JButton("OK");
+        JLabel label_selecciona_algorisme = new JLabel("Selecciona algorisme:");
         menu_algorismes[0] = new JComboBox();
         comprimeix_o_descomprimeix[0] = new JButton("Comprimeix");
         label_estadistiques[0] = new JLabel("");
@@ -130,6 +131,7 @@ public class ControladorPresentacio implements ActionListener {
         panel_comprimir.add(introdueix_path[0]);
         panel_comprimir.add(boto_buscador_path[0]);
         panel_comprimir.add(ok_path[0]);
+        panel_comprimir.add(label_selecciona_algorisme);
         panel_comprimir.add(menu_algorismes[0]);
         panel_comprimir.add(comprimeix_o_descomprimeix[0]);
 
@@ -174,6 +176,7 @@ public class ControladorPresentacio implements ActionListener {
         introdueix_path[3] = new JTextField(20);
         boto_buscador_path[3] = new JButton(UIManager.getIcon("FileView.directoryIcon"));
         ok_path[2] = new JButton("OK");
+        JLabel label_selecciona_algorisme = new JLabel("Selecciona algorisme:");
         menu_algorismes[2] = new JComboBox();
         comprimeix_o_descomprimeix[3] = new JButton("Comprimeix carpeta");
 
@@ -182,6 +185,7 @@ public class ControladorPresentacio implements ActionListener {
         panel_comprimir_carpeta.add(introdueix_path[3]);
         panel_comprimir_carpeta.add(boto_buscador_path[3]);
         panel_comprimir_carpeta.add(ok_path[2]);
+        panel_comprimir_carpeta.add(label_selecciona_algorisme);
         panel_comprimir_carpeta.add(menu_algorismes[2]);
         panel_comprimir_carpeta.add(comprimeix_o_descomprimeix[3]);
 
@@ -223,6 +227,7 @@ public class ControladorPresentacio implements ActionListener {
         introdueix_path[2] = new JTextField(20);
         boto_buscador_path[2] = new JButton(UIManager.getIcon("FileView.directoryIcon"));
         ok_path[1] = new JButton("OK");
+        JLabel label_selecciona_algorisme = new JLabel("Selecciona algorisme:");
         menu_algorismes[1] = new JComboBox();
         comprimeix_o_descomprimeix[2] = new JButton("Comparar");
         label_estadistiques[2] = new JLabel("");
@@ -232,6 +237,7 @@ public class ControladorPresentacio implements ActionListener {
         panel_comparar.add(introdueix_path[2]);
         panel_comparar.add(boto_buscador_path[2]);
         panel_comparar.add(ok_path[1]);
+        panel_comparar.add(label_selecciona_algorisme);
         panel_comparar.add(menu_algorismes[1]);
         panel_comparar.add(comprimeix_o_descomprimeix[2]);
 
