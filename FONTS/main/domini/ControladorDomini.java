@@ -361,6 +361,10 @@ public class ControladorDomini {
         return CPer.getNames(path);
     }
 
+    public static void open(String path) throws Exception {
+        CPer.open(path);
+    }
+
     public static void saveAllEstadistiques() {
         Object[] AllEstadistiques = Est.getAllEstadistiques();
 
