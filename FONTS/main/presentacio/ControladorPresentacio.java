@@ -17,6 +17,7 @@ public class ControladorPresentacio implements ActionListener {
     private JLabel[] label_estadistiques; //{C,D,COMPARAR,VisualitzarEstadistiques}
     private JTextField[] introdueix_path; //{C,D,COMPARAR,CC,DC}
     private JLabel[] introdueix_estgen; //{escullAlgorisme, escullTipus}
+    private JButton boto_manual_usuari;
     private JButton[] boto_buscador_path; //{C,D,COMPARAR,CC,DC}
     private JButton[] ok_path; //{C,COMPARAR,CC,VisualitzarEstadistiques}
     private JButton[] comprimeix_o_descomprimeix; //{C,D,COMPARAR,CC,DC}
@@ -48,6 +49,7 @@ public class ControladorPresentacio implements ActionListener {
         label_estadistiques = new JLabel[4];
         introdueix_path = new JTextField[5];
         introdueix_estgen = new JLabel[2];
+        boto_manual_usuari = new JButton("Obrir Manual d'usuari");
         boto_buscador_path = new JButton[5];
         ok_path = new JButton[4];
         comprimeix_o_descomprimeix = new JButton[5];
@@ -81,8 +83,11 @@ public class ControladorPresentacio implements ActionListener {
         "Amb el botó vermell - Sortir, es tanca el programa</html>");
 
         panel_usage.add(manual_usuari);
+        panel_usage.add(boto_manual_usuari);
 
         pestanyes.addTab("Usage", panel_usage);
+
+        boto_manual_usuari.addActionListener(this);
     }
 
     private String contrueix_text_estadistiques(Object[] estgen){
@@ -303,7 +308,10 @@ public class ControladorPresentacio implements ActionListener {
 
     public void actionPerformed(ActionEvent event) {
         try {
-            if(event.getSource() == boto_buscador_path[0]){ //Click botó BUSCADOR_PATH pestanya comprimir
+            if(event.getSource() == boto_manual_usuari) {
+                cDom.open("./Manual_usuari.pdf");  //TODO: AFEGIR PDF CORRECTE A LA CARPETA
+            }
+            else if(event.getSource() == boto_buscador_path[0]){ //Click botó BUSCADOR_PATH pestanya comprimir
                 accio_boto_buscador(0);
             }
             else if (event.getSource() == ok_path[0]) { //Click botó OK pestanya comprimir
