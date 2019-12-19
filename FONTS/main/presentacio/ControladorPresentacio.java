@@ -228,6 +228,55 @@ public class ControladorPresentacio implements ActionListener {
                     menu_algorismes[1].addItem(nomsAlgorismes[i]);
                 }
             }
+            else if(event.getSource() == comprimeix_o_descomprimeix[2]) { //Click botó COMPRIMEIX pestanya comparar
+
+                String path = introdueix_path[2].getText();
+
+                int index = path.lastIndexOf("/");
+
+                String path_nou;
+
+                if(index == -1)
+                    path_nou = "";
+                else path_nou = path.substring(0,index);
+
+                String[] arxius_directori = cDom.getNames(path_nou);
+
+
+                Object[] estgen_comprimir = cDom.comprimir(introdueix_path[2].getText(), (String) menu_algorismes[1].getSelectedItem());
+
+
+                path = introdueix_path[2].getText();
+
+                index = path.lastIndexOf("/");
+
+                if(index == -1)
+                    path_nou = "";
+                else path_nou = path.substring(0,index);
+
+                String[] arxius_directori2 = cDom.getNames(path_nou);
+
+                boolean trobat = false;
+                String path_comprimit = "";
+                for(int i = 0; i < arxius_directori.length && !trobat; ++i){
+                    if(!arxius_directori[i].equals(arxius_directori2[i])) {
+                        path_comprimit = arxius_directori2[i];
+                        trobat = true; 
+                    }
+                }
+
+                Object[] estgen_descomprimir = cDom.descomprimir(path_comprimit, (String) menu_algorismes[1].getSelectedItem());
+
+
+                Object[] estgen = new Object[3];
+
+                estgen[0] = ((double) estgen_comprimir[0] + (double) estgen_descomprimir[0]) / 2;
+                estgen[1] = ((double) estgen_comprimir[1] + (double) estgen_descomprimir[1]) / 2;;
+                estgen[2] = ((double) estgen_comprimir[2] + (double) estgen_descomprimir[2]) / 2;;
+
+                label_estadistiques[1].setText(contrueix_text_estadistiques(estgen));
+
+            }
         }
         catch (Exception e){
             // Creem una nova finestra per mostrar l'error
@@ -238,7 +287,6 @@ public class ControladorPresentacio implements ActionListener {
             JPanel panel_error = new JPanel();
 
             JLabel error = new JLabel(e.getMessage(), new ImageIcon("error.png"), SwingConstants.CENTER);
-            //JLabel error = new JLabel(e.getMessage());
 
             panel_error.add(error);
 
