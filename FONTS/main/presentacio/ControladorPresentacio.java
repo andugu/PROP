@@ -208,7 +208,7 @@ public class ControladorPresentacio implements ActionListener {
         boto_buscador_path[2] = new JButton(UIManager.getIcon("FileView.directoryIcon"));
         ok_path[1] = new JButton("OK");
         menu_algorismes[1] = new JComboBox();
-        comprimeix_o_descomprimeix[2] = new JButton("Comprimeix i compara");
+        comprimeix_o_descomprimeix[2] = new JButton("Comparar");
         label_estadistiques[2] = new JLabel("");
 
 
