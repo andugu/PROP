@@ -15,12 +15,14 @@ public class ControladorPresentacio implements ActionListener {
     private JFrame frame;
     private JTabbedPane pestanyes;
     private JLabel label_selecciona_algorisme; //{C,D,COMPARAR,CC,DC}
-    private JLabel[] label_estadistiques; //{C,D,COMPARAR}
+    private JLabel[] label_estadistiques; //{C,D,COMPARAR,VisualitzarEstadistiques}
     private JTextField[] introdueix_path; //{C,D,COMPARAR,CC,DC}
+    private JLabel[] introdueix_estgen; //{escullAlgorisme, escullTipus}
     private JButton[] boto_buscador_path; //{C,D,COMPARAR,CC,DC}
-    private JButton[] ok_path; //{C,COMPARAR,CC}
+    private JButton[] ok_path; //{C,COMPARAR,CC,VisualitzarEstadistiques}
     private JButton[] comprimeix_o_descomprimeix; //{C,D,COMPARAR,CC,DC}
-    private JComboBox[] menu_algorismes;  //{C,COMPARAR,CC}
+    private JComboBox[] menu_algorismes;  //{C,COMPARAR,CC,VisualitzarEstadistiques}
+    private JComboBox menu_tipus; //{VisualitzarEstadistiques}
 
 
     public ControladorPresentacio() { //Inicialitza tots els atributs
@@ -44,12 +46,14 @@ public class ControladorPresentacio implements ActionListener {
         pestanyes = new JTabbedPane();
 
         label_selecciona_algorisme = new JLabel("Selecciona l'algorisme: ");
-        label_estadistiques = new JLabel[3];
+        label_estadistiques = new JLabel[4];
         introdueix_path = new JTextField[5];
+        introdueix_estgen = new JLabel[2];
         boto_buscador_path = new JButton[5];
-        ok_path = new JButton[3];
+        ok_path = new JButton[4];
         comprimeix_o_descomprimeix = new JButton[5];
-        menu_algorismes = new JComboBox[3];
+        menu_algorismes = new JComboBox[4];
+        menu_tipus = new JComboBox();
     }
 
     public void frameVisible() { //Crida a les totes les pestanyes i fa visible el frame
@@ -59,6 +63,7 @@ public class ControladorPresentacio implements ActionListener {
         pestanyaComprimirCarpeta();
         pestanyaDescomprimirCarpeta();
         pestanyaComparar();
+        pestanyaVisualitzarEstadistiques();
 
         frame.getContentPane().add(pestanyes);
         frame.setVisible(true);
@@ -110,7 +115,7 @@ public class ControladorPresentacio implements ActionListener {
         }
     }
 
-    public void pestanyaComprimir() { //crea la pestanya de comprimir
+    private void pestanyaComprimir() { //crea la pestanya de comprimir
         JPanel panel_comprimir = new JPanel();
 
         JLabel label_introdueix_path = new JLabel("Introdueix el path:");
@@ -139,7 +144,7 @@ public class ControladorPresentacio implements ActionListener {
         panel_comprimir.add(label_estadistiques[0]);
     }
 
-    public void pestanyaDescomprimir() { //crea la pestanya de descomprimir
+    private void pestanyaDescomprimir() { //crea la pestanya de descomprimir
         JPanel panel_descomprimir = new JPanel();
 
         JLabel label_introdueix_path = new JLabel("Introdueix el path:");
@@ -163,7 +168,7 @@ public class ControladorPresentacio implements ActionListener {
         panel_descomprimir.add(label_estadistiques[1]);
     }
 
-    public void pestanyaComprimirCarpeta() { //crea la pestanya de comprimir carpeta
+    private void pestanyaComprimirCarpeta() { //crea la pestanya de comprimir carpeta
         JPanel panel_comprimir_carpeta = new JPanel();
 
         JLabel label_introdueix_path = new JLabel("Introdueix el path:");
@@ -190,7 +195,7 @@ public class ControladorPresentacio implements ActionListener {
         comprimeix_o_descomprimeix[3].addActionListener(this);
     }
 
-    public void pestanyaDescomprimirCarpeta() {
+    private void pestanyaDescomprimirCarpeta() {
         JPanel panel_descomprimir_carpeta = new JPanel();
 
         JLabel label_introdueix_path = new JLabel("Introdueix el path:");
@@ -212,7 +217,7 @@ public class ControladorPresentacio implements ActionListener {
         comprimeix_o_descomprimeix[4].addActionListener(this);
     }
 
-    public void pestanyaComparar() {
+    private void pestanyaComparar() {
         JPanel panel_comparar = new JPanel();
 
         JLabel label_introdueix_path = new JLabel("Introdueix el path:");
@@ -242,7 +247,40 @@ public class ControladorPresentacio implements ActionListener {
         panel_comparar.add(label_estadistiques[2]);
     }
 
-    public void successPanel(){
+    private void pestanyaVisualitzarEstadistiques() {
+        JPanel panel_visualitzarEstadistiques = new JPanel();
+
+        introdueix_estgen[0] = new JLabel("Escull algorisme: ");
+        introdueix_estgen[1] = new JLabel("Escull tipus: ");
+        menu_algorismes[3] = new JComboBox();
+        menu_tipus = new JComboBox();
+        ok_path[3] = new JButton("OK");
+        label_estadistiques[3] = new JLabel("");
+
+
+        menu_algorismes[3].addItem("LZ78");
+        menu_algorismes[3].addItem("LZSS");
+        menu_algorismes[3].addItem("LZW");
+        menu_algorismes[3].addItem("JPEG");
+
+        menu_tipus.addItem("Comprimit");
+        menu_tipus.addItem("Descomprimit");
+
+        panel_visualitzarEstadistiques.add(introdueix_estgen[0]);
+        panel_visualitzarEstadistiques.add(menu_algorismes[3]);
+        panel_visualitzarEstadistiques.add(introdueix_estgen[1]);
+        panel_visualitzarEstadistiques.add(menu_tipus);
+        panel_visualitzarEstadistiques.add(ok_path[3]);
+
+
+        pestanyes.addTab("Visualitzar Estadistiques", panel_visualitzarEstadistiques);
+
+        ok_path[3].addActionListener(this);
+
+        panel_visualitzarEstadistiques.add(label_estadistiques[3]);
+    }
+
+    private void successPanel(){
             // Creem una nova finestra per mostrar l'error
             JFrame frame = new JFrame("Success");
             //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -374,6 +412,16 @@ public class ControladorPresentacio implements ActionListener {
 
                 cDom.open(introdueix_path[2].getText());
                 cDom.open(path_comprimit);
+            }
+            else if(event.getSource() == ok_path[3]) {
+                boolean comprimit;
+                if(menu_tipus.getSelectedItem() == "Comprimit")
+                    comprimit = true;
+                else comprimit = false;
+
+                Object[] estgen = cDom.getEstadistiquesGenerals((String) menu_algorismes[3].getSelectedItem(), comprimit);
+
+                label_estadistiques[3].setText(contrueix_text_estadistiques(estgen));
             }
         }
         catch (Exception e){
