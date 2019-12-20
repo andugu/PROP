@@ -3,15 +3,16 @@ Classes desenvolupades per cada un dels membres del grup:
 Gonzalez Herrera, Roger
 1. LZ78
 2. ControladorDomini
-3. ControladorPresentacio
 i els corresponents drivers, tests i documentacio
+3. Manual d usuari
+4. Joc de proves
 
 Llanza Carmona, Anna
 1. LZSS
 2. EstadistiquesGenerals
 3. Comprimit
-4. ControladorPresentacio
 i els corresponents drivers, tests i documentacio
+4. Interficie
 
 Olive Fernandez, Josep Maria
 1. Algorisme
@@ -25,3 +26,4 @@ Roman Iglesias Adrian
 2. Fitxer
 3. Descomprimit
 i els corresponents drivers, tests i documentacio
+4. Interficie
