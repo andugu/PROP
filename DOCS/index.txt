@@ -1,1 +1,2 @@
 documentacio.pdf -> Tota la documentacio en format pdf
+*.png -> Diferents diagrmaes de les capes del programa
