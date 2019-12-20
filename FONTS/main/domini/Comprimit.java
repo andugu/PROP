@@ -23,7 +23,7 @@ public class Comprimit extends Fitxer{
 		contingutIestadistiques[0] = contingutItemps[0]; //contingutcomprimit
 		contingutIestadistiques[1] = estadistiques[0]; //grau de les estadistiques
 		contingutIestadistiques[2] = estadistiques[1]; //velocitat de les estadistiques
-		contingutIestadistiques[3] = contingutItemps[1]; //temps de les estadisitiques.
+		contingutIestadistiques[3] = temps; //temps de les estadisitiques.
 
 		return contingutIestadistiques;
 	}

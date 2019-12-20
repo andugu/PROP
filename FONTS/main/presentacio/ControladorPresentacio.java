@@ -426,6 +426,7 @@ public class ControladorPresentacio implements ActionListener {
                 Object[] estgen = cDom.descomprimir(introdueix_path[1].getText(), nomAlgorisme[0]);
 
                 label_estadistiques[1].setText(contrueix_text_estadistiques(estgen));
+                successPanel();
             }
             else if(event.getSource() == boto_clear[1]){ //Click botó CLEAR pestanya descomprimir
                 introdueix_path[1].setText("");
@@ -444,6 +445,7 @@ public class ControladorPresentacio implements ActionListener {
             }
             else if(event.getSource() == comprimeix_o_descomprimeix[3]) { //Click botó COMPRIMEIX CARPETA pestanya comprimir carpeta
                 cDom.comprimirCarpeta(introdueix_path[3].getText(), (String) menu_algorismes[2].getSelectedItem());
+                successPanel();
             }
             else if(event.getSource() == boto_clear[2]){ //Click botó CLEAR pestanya comprimir carpeta
                 introdueix_path[3].setText("");
@@ -454,6 +456,7 @@ public class ControladorPresentacio implements ActionListener {
             }
             else if(event.getSource() == comprimeix_o_descomprimeix[4]){ //Click botó DESCOMPRIMEIX CARPETA pestanya descomprimir carpeta
                 cDom.descomprimirCarpeta(introdueix_path[4].getText());
+                successPanel();
             }
             else if(event.getSource() == boto_clear[3]){ //Click botó CLEAR pestanya descomprimir carpeta
                 introdueix_path[4].setText("");
