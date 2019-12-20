@@ -1,6 +1,9 @@
 # Compiled class file
 *.class
 
+# No guardar les estadistiques locals a Github
+FitxerEstadistiquesGenerals.txt
+
 # Log file
 *.log
 $PRODUCT_WORKSPACE_FILE$
