@@ -1,0 +1,3 @@
+error.png -> imatge per mostrar les exepcions
+success.png -> imatge per mostrar la correcta execucio de la funcionalitat
+Manual_usuari -> manual d'usuari del programa

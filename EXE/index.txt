@@ -1,3 +1,4 @@
+Compresor.jar -> executable del programa
 JPEG -> Aquest directori conte els executables per provar la classe JPEG.
 LZW-> Aquest directori conte els executables per provar la classe LZW.
 LZSS -> Aquest directori conte els executables per provar la classe LZSS.
@@ -7,6 +8,4 @@ Descomprimit -> Aquest directori conte els executables per provar la classe Desc
 Comprimit -> Aquest directori conte els executables per provar la classe Comprimit.
 ControladorDomini -> Aquest directori conte els executables per provar la classe ControladorDomini.
 EstadistiquesGenerals -> Aquest directori conte els executables per provar la classe EstadistiquesGenerals.
-error.png, success.png -> Recursos del Compresor.jar
-Manual_usuari.pdf -> Recursos del Compresor.jar
-Compresor.jar -> Executable principal
+resources -> recursos del programa
