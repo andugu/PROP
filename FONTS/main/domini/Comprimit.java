@@ -16,6 +16,8 @@ public class Comprimit extends Fitxer{
 		byte[] contingut_descomprimit = (byte[]) contingutItemps[0];
 		int tamanyNou = contingut_descomprimit.length;
 
+		if(temps == 0) temps = (long) 0.5;
+
 		Object[] estadistiques = calcularEstadistiques(tamanyNou,temps);
 		
 		contingutIestadistiques[0] = contingutItemps[0]; //contingutcomprimit
