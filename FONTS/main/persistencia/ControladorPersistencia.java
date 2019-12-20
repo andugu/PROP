@@ -33,7 +33,6 @@ public class ControladorPersistencia {
 
         OutputStream os = new FileOutputStream(file);
         os.write(contingut);
-        //TODO: Ara es guarda en la mateixa carpeta, hem de fer que es guardi en una nova?
     }
 
     public static void MakeDir(String path) throws IOException {
