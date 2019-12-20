@@ -1,8 +1,6 @@
 main -> codi del programa
 test -> codi dels test
+resources -> recursos del programa
 makefile.sh -> script per comilar tot el projecte, executar amb ./makefile.sh
 Manifest.txt -> marca el punt d'entrada per al jar
 RunJUnitTestEstadistiquesGenerals.sh -> script per executar el test amb JUnit
-error.png -> recursos del programa
-success.png -> recursos del programa
-Manual_usuari -> manual d'usuari del programa
