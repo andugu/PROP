@@ -383,7 +383,7 @@ public class ControladorPresentacio implements ActionListener {
 
             JPanel panel_success = new JPanel();
 
-            JLabel success = new JLabel("Funcionalitat executada amb exit", new ImageIcon("success.png"), SwingConstants.CENTER);
+            JLabel success = new JLabel("Funcionalitat executada amb exit", new ImageIcon("resources/success.png"), SwingConstants.CENTER);
 
             panel_success.add(success);
 
@@ -394,7 +394,7 @@ public class ControladorPresentacio implements ActionListener {
     public void actionPerformed(ActionEvent event) {
         try {
             if(event.getSource() == boto_manual_usuari) {
-                cDom.open("./Manual_usuari.pdf");
+                cDom.open("resources/Manual_usuari.pdf");
             }
             else if(event.getSource() == boto_buscador_path[0]){ //Click botó BUSCADOR_PATH pestanya comprimir
                 accio_boto_buscador(0);
@@ -561,7 +561,7 @@ public class ControladorPresentacio implements ActionListener {
 
             JPanel panel_error = new JPanel();
 
-            JLabel error = new JLabel(e.getMessage(), new ImageIcon("error.png"), SwingConstants.CENTER);
+            JLabel error = new JLabel(e.getMessage(), new ImageIcon("resources/error.png"), SwingConstants.CENTER);
 
             panel_error.add(error);
 
