@@ -1,14 +1,28 @@
 # PROP
 Projecte de PROP
 
-Feina a fer en grup: 
-- Completar Controlador de Persistencia (guardar estadistiques generals a un fitxer, llegir quants fitxers te un carpeta...)
-- Fer Controlador Presentacio amb interficie grafica
+###Compilació
 
-Feina a fer Adri:
-- Test LZW
-- Test Fitxer 
+Usem el makefile per tal de compilar el projecte
 
-Feina a fer Roger: 
-- Test Controlador Domini
-- Algorisme LZ78
+````
+cd FONTS
+./makefile
+1
+````
+
+### Ús
+
+Executem el programa principal amb:
+
+````
+java -jar Compresor.jar
+````
+
+### Borrar .class i .jar
+
+````
+cd FONTS
+./makefile
+2
+````
