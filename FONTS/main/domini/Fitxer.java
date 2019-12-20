@@ -21,6 +21,8 @@ public class Fitxer {
         double grau = (double)tamanyNou * (double)100;
         grau = grau/(double)this.tamany;
 
+        if(tamany == 0) grau = 0.0;
+
         double velocitat = (double)this.tamany/(double)temps;
         ret[0] = grau;
         ret[1] = velocitat;
