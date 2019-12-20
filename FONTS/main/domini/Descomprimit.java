@@ -15,7 +15,7 @@ public class Descomprimit extends Fitxer{
         int tamanyNou = contingut_descomprimit.length;
         long temps = (long) contingutItemps[1];
 
-        if(temps == 0) temps = (long) 0.5;
+        if(temps == 0) temps = 1;
 
         Object[] grauIvelocitat = calcularEstadistiques(tamanyNou, temps);
         Object[] ret = new Object[4];
