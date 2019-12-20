@@ -43,7 +43,7 @@ public class ControladorDomini {
         double velocitat = (double) A[2];
         long temps = (long) A[3];
         saveFile(path, algorisme, contingut_retorn, true);
-        boolean comprimit = false;
+        boolean comprimit = true;
         Est.assignarNovaEstadistica(grau, velocitat, temps, algorisme, comprimit);
         Object[] Estadistiques_generades = new Object[3];
         Estadistiques_generades[0] = grau;
@@ -74,7 +74,7 @@ public class ControladorDomini {
         double velocitat = (double) A[2];
         long temps = (long) A[3];
         saveFile(path, algorisme, contingut_retorn, false);
-        boolean comprimit = true;
+        boolean comprimit = false;
         Est.assignarNovaEstadistica(grau, velocitat, temps, algorisme, comprimit);
         Object[] RETORN = new Object[3];
         RETORN[0] = grau;
