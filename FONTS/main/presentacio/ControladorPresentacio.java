@@ -142,7 +142,7 @@ public class ControladorPresentacio implements ActionListener {
         boto_buscador_path[0] = new JButton(UIManager.getIcon("FileView.directoryIcon"));
         boto_buscador_path[0].setBounds(780,10,50,30);
         ok_path[0] = new JButton("OK");
-        ok_path[0].setBounds(830, 10, 70,30);
+        ok_path[0].setBounds(840, 10, 60,30);
         JLabel label_selecciona_algorisme = new JLabel("Selecciona algorisme:");
         label_selecciona_algorisme.setBounds(85,100,200, 30);
         menu_algorismes[0] = new JComboBox();
@@ -221,7 +221,7 @@ public class ControladorPresentacio implements ActionListener {
         boto_buscador_path[3] = new JButton(UIManager.getIcon("FileView.directoryIcon"));
         boto_buscador_path[3].setBounds(780,10,50,30);
         ok_path[2] = new JButton("OK");
-        ok_path[2].setBounds(830, 10, 70,30);
+        ok_path[2].setBounds(840, 10, 60,30);
         JLabel label_selecciona_algorisme = new JLabel("Selecciona algorisme:");
         label_selecciona_algorisme.setBounds(85,100,200, 30);
         menu_algorismes[2] = new JComboBox();
@@ -296,7 +296,7 @@ public class ControladorPresentacio implements ActionListener {
         boto_buscador_path[2] = new JButton(UIManager.getIcon("FileView.directoryIcon"));
         boto_buscador_path[2].setBounds(780,10,50,30);
         ok_path[1] = new JButton("OK");
-        ok_path[1].setBounds(830, 10, 70,30);
+        ok_path[1].setBounds(840, 10, 60,30);
         JLabel label_selecciona_algorisme = new JLabel("Selecciona algorisme:");
         label_selecciona_algorisme.setBounds(85,100,200, 30);
         menu_algorismes[1] = new JComboBox();
@@ -394,7 +394,7 @@ public class ControladorPresentacio implements ActionListener {
     public void actionPerformed(ActionEvent event) {
         try {
             if(event.getSource() == boto_manual_usuari) {
-                cDom.open("./Manual_usuari.pdf");  //TODO: AFEGIR PDF CORRECTE A LA CARPETA
+                cDom.open("./Manual_usuari.pdf");
             }
             else if(event.getSource() == boto_buscador_path[0]){ //Click botó BUSCADOR_PATH pestanya comprimir
                 accio_boto_buscador(0);
