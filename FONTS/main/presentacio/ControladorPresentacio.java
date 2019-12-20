@@ -128,7 +128,7 @@ public class ControladorPresentacio implements ActionListener {
             introdueix_path[i].setText(j.getSelectedFile().getAbsolutePath());
         }
     }
-    
+
 
     private void pestanyaComprimir() { //crea la pestanya de comprimir
         JPanel panel_comprimir = new JPanel();
@@ -142,7 +142,7 @@ public class ControladorPresentacio implements ActionListener {
         boto_buscador_path[0] = new JButton(UIManager.getIcon("FileView.directoryIcon"));
         boto_buscador_path[0].setBounds(800,10,50,30);
         ok_path[0] = new JButton("OK");
-        ok_path[0].setBounds(860, 10, 35,30);
+        ok_path[0].setBounds(850, 10, 35,30);
         JLabel label_selecciona_algorisme = new JLabel("Selecciona algorisme:");
         label_selecciona_algorisme.setBounds(85,100,200, 30);
         menu_algorismes[0] = new JComboBox();
