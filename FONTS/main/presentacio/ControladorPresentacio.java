@@ -500,6 +500,7 @@ public class ControladorPresentacio implements ActionListener {
                         trobat = true;
                     }
                 }
+                if(path_comprimit.equals("")) path_comprimit = arxius_directori2[arxius_directori2.length - 1];
 
                 path_comprimit = path_nou + "/" + path_comprimit;
 
