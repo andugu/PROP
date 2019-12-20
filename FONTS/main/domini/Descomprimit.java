@@ -23,7 +23,7 @@ public class Descomprimit extends Fitxer{
         ret[0] = contingutItemps[0];//nou contingut
         ret[1] = grauIvelocitat[0];//grau
         ret[2] = grauIvelocitat[1];//velocitat
-        ret[3] = contingutItemps[1];//temps
+        ret[3] = temps;//temps
         return ret;
 
 
