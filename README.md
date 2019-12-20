@@ -1,7 +1,7 @@
 # PROP
 Projecte de PROP
 
-###Compilació
+### Compilació
 
 Usem el makefile per tal de compilar el projecte
 
