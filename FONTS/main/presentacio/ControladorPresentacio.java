@@ -128,7 +128,7 @@ public class ControladorPresentacio implements ActionListener {
             introdueix_path[i].setText(j.getSelectedFile().getAbsolutePath());
         }
     }
-
+    
 
     private void pestanyaComprimir() { //crea la pestanya de comprimir
         JPanel panel_comprimir = new JPanel();
