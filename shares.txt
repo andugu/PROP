@@ -1,0 +1,29 @@
+Classes desenvolupades per cada un dels membres del grup:
+
+_ _, Roger
+1. LZ78
+2. ControladorDomini
+i els corresponents drivers, tests i documentacio
+3. Manual d usuari
+4. Joc de proves
+
+_ _, Anna
+1. LZSS
+2. EstadistiquesGenerals
+3. Comprimit
+i els corresponents drivers, tests i documentacio
+4. Interficie
+
+_ _, Josep Maria
+1. Algorisme
+2. JPEG
+3. EstadistiquesGeneralsTest (JUnit)
+4. Comprimir i Descomprimir Carpeta
+i el corresponent driver, test i documentacio del JPEG
+
+_ _, Adrian
+1. LZW
+2. Fitxer
+3. Descomprimit
+i els corresponents drivers, tests i documentacio
+4. Interficie
