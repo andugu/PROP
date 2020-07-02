@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 _ _, Roger
 _ _, Anna
 _ _, Josep Maria
@@ -6,3 +7,13 @@ roger._@est.fib.upc.edu
 anna._@est.fib.upc.edu
 josep.maria._@est.fib.upc.edu
 adrian._@est.fib.upc.edu
+=======
+Gonzalez Herrera, Roger
+Llanza Carmona, Anna
+Olive Fernandez, Josep Maria
+Roman Iglesias Adrian
+roger.gonzalez.herrera@est.fib.upc.edu
+anna.llanza@est.fib.upc.edu
+josep.maria.olive.fernandez@est.fib.upc.edu
+adrian.roman@est.fib.upc.edu
+>>>>>>> 001e0dd8eee89a8fd37253ca4637ba728ace58d7

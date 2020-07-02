@@ -1,27 +1,43 @@
 Classes desenvolupades per cada un dels membres del grup:
 
+<<<<<<< HEAD
 _ _, Roger
+=======
+Gonzalez Herrera, Roger
+>>>>>>> 001e0dd8eee89a8fd37253ca4637ba728ace58d7
 1. LZ78
 2. ControladorDomini
 i els corresponents drivers, tests i documentacio
 3. Manual d usuari
 4. Joc de proves
 
+<<<<<<< HEAD
 _ _, Anna
+=======
+Llanza Carmona, Anna
+>>>>>>> 001e0dd8eee89a8fd37253ca4637ba728ace58d7
 1. LZSS
 2. EstadistiquesGenerals
 3. Comprimit
 i els corresponents drivers, tests i documentacio
 4. Interficie
 
+<<<<<<< HEAD
 _ _, Josep Maria
+=======
+Olive Fernandez, Josep Maria
+>>>>>>> 001e0dd8eee89a8fd37253ca4637ba728ace58d7
 1. Algorisme
 2. JPEG
 3. EstadistiquesGeneralsTest (JUnit)
 4. Comprimir i Descomprimir Carpeta
 i el corresponent driver, test i documentacio del JPEG
 
+<<<<<<< HEAD
 _ _, Adrian
+=======
+Roman Iglesias Adrian
+>>>>>>> 001e0dd8eee89a8fd37253ca4637ba728ace58d7
 1. LZW
 2. Fitxer
 3. Descomprimit
