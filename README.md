@@ -1,9 +1,7 @@
-# PROP
-Projecte de PROP
+# Projecte de PROP
+A GUI compressor utility for text files and .ppm images written in Java.
 
-### Compilació
-
-Usem el makefile per tal de compilar el projecte
+### Compile
 
 ````
 cd FONTS
@@ -11,15 +9,13 @@ cd FONTS
 1
 ````
 
-### Ús
-
-Executem el programa principal amb:
+### Run
 
 ````
 java -jar Compresor.jar
 ````
 
-### Borrar .class i .jar
+### Delete .class & .jar
 
 ````
 cd FONTS
